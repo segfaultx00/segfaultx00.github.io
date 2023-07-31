@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>modbus on SCADAsploit</title>
+    <link>https://scadasploit.dev/tags/modbus/</link>
+    <description>Recent content in modbus on SCADAsploit</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Thu, 08 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/modbus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hacking: simulazione Modbus TCP in Linux</title>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</link>
+      <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
+      
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</guid>
+      <description>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</description>
+    </item>
+    
+    <item>
+      <title>Hacking: Modbus</title>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-modbus/</link>
+      <pubDate>Wed, 07 Jul 2021 15:09:35 +0200</pubDate>
+      
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-modbus/</guid>
+      <description>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&amp;rsquo;IT. Le installazioni ICS utilizzano un&amp;rsquo;ampia varietà di protocolli che spesso hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &amp;ldquo;sicurezza per oscurità&amp;rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</description>
+    </item>
+    
+  </channel>
+</rss>

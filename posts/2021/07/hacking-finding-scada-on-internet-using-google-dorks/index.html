@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60&#43; thousand searches are conducted through Google&amp;rsquo;s search engine every second." />
+<meta name="keywords" content=", hacking, dorks" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/" />
+
+
+    <title>
+        
+            Hacking: finding SCADA on Internet using Google Dorks :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: finding SCADA on Internet using Google Dorks">
+<meta itemprop="description" content="It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60&#43; thousand searches are conducted through Google&rsquo;s search engine every second."><meta itemprop="datePublished" content="2021-07-03T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-03T15:09:35+02:00" />
+<meta itemprop="wordCount" content="1054"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,dorks," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: finding SCADA on Internet using Google Dorks"/>
+<meta name="twitter:description" content="It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60&#43; thousand searches are conducted through Google&rsquo;s search engine every second."/>
+
+
+
+    <meta property="og:title" content="Hacking: finding SCADA on Internet using Google Dorks" />
+<meta property="og:description" content="It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60&#43; thousand searches are conducted through Google&rsquo;s search engine every second." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-03T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-03T15:09:35+02:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-03 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/">Hacking: finding SCADA on Internet using Google Dorks</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <html>
+  <style>
+  .container {
+    align-items: center;
+  }
+  .my_img {
+    max-width: 100%;
+    max-height: 100%;
+    padding-top: 0px;
+    border: 1px solid #A90C1C;
+    box-shadow: 0 0 6px 6px rgba(169, 12, 28, 0.3);
+  }
+  .my_title {
+    color: #FFFFFF;
+    font-size: 38px;
+    padding-top: 0px;
+  }
+  .my_sub_title {
+    font-size: 24px;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: justify;
+  }
+  .my_text {
+    font-size: 18px;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: justify;
+  }
+  .my_img_description {
+    font-size: 18px;
+    text-align: justify;
+  }
+  </style>
+</html>
+<p>It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.</p>
+<p>Moreover, it is assumed that 60+ thousand searches are conducted through Google&rsquo;s search engine every second. This means over <strong>1 trillion</strong> searches per year. These are astronomical numbers that Google manages to keep up with thanks to the enormous infrastructure it has set up.</p>
+<p>Certainly, search engines have turned many people&rsquo;s lives upside down; having so much information in the space of 1 minute is food for thought for anyone. But the most surprising thing, despite these numbers, is that we exploit only a very small part of the potential that this tool offers us.</p>
+<p>Few people know that Google has a proprietary language to extract information beyond the normal keyword search. Even with little knowledge of Google keywords, you can find much more information than you ever imagined. Let&rsquo;s look at some of them.</p>
+<h2 id="what-are-google-dorks">What are Google Dorks</h2>
+<p>Dorks are defined as search queries that, instead of simply containing a description of what we are looking for, are also composed of several keywords that allow us to refine the parameters of the search in order to obtain specific results.</p>
+<h3 id="purposes-for-which-they-are-used">Purposes for which they are used</h3>
+<p>As mentioned, dorks are mainly used to refine search results, in order to have a more specific list of links. For instance, let&rsquo;s try searching for <em>&lsquo;pizza napoletana&rsquo;</em>. The simple word <em>&lsquo;pizza&rsquo;</em>, searched on Google, has more than 1,360,000,000 results, while combined with the word <em>‘napoletana’</em>, the results drop dramatically (still more than 15 million). This is already an attempt to refine our search and narrow the search field.</p>
+<p>Starting from the assumption that some sysadmins may not have applied certain rules, it is possible to search for certain confidential and/or reserved files, not intended for the general public on the Internet. Be careful, however: although some webmasters expose sensitive information on their own, this does not mean that it is legal to exploit it in order to gain an advantage (economic or not). Simple consultation is not a crime, but exploitation is and is prosecuted. It is quite easy to trace the surfing IP, even if a VPN service is used.</p>
+<p>Many vulnerabilities are searched for by <strong>script kiddies</strong> precisely through Google. A careful query in fact searches for error messages, configuration files or anything else that could somehow expose software versions or confidential data to the outside world.</p>
+<h3 id="some-examples-of-dorks">Some examples of dorks</h3>
+<table>
+<thead>
+<tr>
+<th>Dorks name</th>
+<th>Description</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>site:<em>domain</em></td>
+<td>results will be files and pages present in the domain “domain”</td>
+<td>site:w3school.com</td>
+</tr>
+<tr>
+<td>intitle:<em>parola</em></td>
+<td>results will contain in the title the word after the dork “intitle”</td>
+<td>intitle:hi</td>
+</tr>
+<tr>
+<td>inurl:<em>parola</em></td>
+<td>results will contain in the title the word after the dork “inurl”</td>
+<td>inurl:gallery</td>
+</tr>
+<tr>
+<td>intext:<em>testo</em></td>
+<td>results will contain pages with the searched &ldquo;text&rdquo;</td>
+<td>intext:&ldquo;Index of&rdquo;</td>
+</tr>
+<tr>
+<td>ext:<em>estensione</em></td>
+<td>results will contain files with the requested extension</td>
+<td>ext:jpg</td>
+</tr>
+<tr>
+<td>filetype:<em>type</em></td>
+<td>results will contain files with the extension specified by type</td>
+<td>filetype:pdf</td>
+</tr>
+<tr>
+<td>cache:<em>url</em></td>
+<td>redirects the user to the Google cache of the specified url</td>
+<td>cache:cyberhood.eu</td>
+</tr>
+<tr>
+<td>info:<em>root_domain</em></td>
+<td>the result will contain the root domain and all related information</td>
+<td>info:amazon.com</td>
+</tr>
+</tbody>
+</table>
+<p>It should be mentioned that dorks can be concatenated to further refine our search, such as <code>ext:ini intext:env.ini</code> or <code>ext:mdb inurl:*.mdb inurl:fpdb shop.mdb</code> .</p>
+<h2 id="google-dorks-for-scada">Google Dorks for SCADA</h2>
+<p>It must be said that there is no single Google dork that will reveal every SCADA interface that exists on the network, this is because it depends very much on the manufacturer and the products used. Each company creates its own embedded systems with proprietary features. They share common protocols and procedures, but in general they are unique objects.</p>
+<p>Some of the main manufacturers are: Siemens, Schneider Electric, Rockwell Automation, GE. In addition to this, it must be considered that each of these companies produces several products belonging to the same family, so research requires that specific Google Dorks are developed for each of them. Below is a brief summary of some of the main brands and their queries.</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/dorks_1.png"
+      class="my_img"
+    />
+</div>
+<h3 id="using-google-dorks">Using Google Dorks</h3>
+<p>Now let&rsquo;s try some dorks to find specific SCADA systems, starting with one of the most widely used products in automation systems in Italy: Siemens&rsquo; S7 series PLC. As a note, let me remind you that this is the same family of controllers that were the target of the infamous Stuxnet attack against Iran&rsquo;s Natanz nuclear power plant in 2010, probably the most sophisticated SCADA attack to date.</p>
+<p>Our Google Dork looks like this: <code>inurl:/Portal/Portal.mwsl</code></p>
+<p>When we use it in a Google search, we get the results shown below.</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/dorks_2.png"
+      class="my_img"
+    />
+</div>
+<p>If we select the first item in the list (Siemens S7-1200_1) we access the following page:</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/dorks_3.png"
+      class="my_img"
+    />
+</div>
+<p>This appears to be the Siemens S7 PLC administration portal somewhere in the world. To continue our search, we enter the IP address Google gave us (78.218.196.95) into Shodan to see where it is located. It is in Bruyères, France.</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/shodan_siemens_1.png"
+      class="my_img"
+    />
+</div>
+<p>When clicking on the <strong>Identification</strong> tab on the left, the PLC identifies itself as an S7-1200_1/PLC_1 station. It also gives us the serial number and firmware version (thus simplifying a possible attack).</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/shodan_siemens_2.png"
+      class="my_img"
+    />
+</div>
+<p>The same thing happens if we click on <strong>Communication</strong> from the menu on the left.</p>
+<div class="container">
+  <img
+      src="https://scadasploit.dev/images/2021/shodan_siemens_3.png"
+      class="my_img"
+    />
+</div>
+<p>As we can see, the security of ICS systems is still in its infancy, relying mainly on security by obscurity. These simple Google Dorks all too easily expose often critical systems without the slightest security criterion. Even a hacker with basic skills can access control systems and create chaos.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/dorks/">dorks</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1054 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-03 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Schneider Electric Building Automation</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/2021/07/la-sicurezza-industriale/">
+                    <span class="button__text">La sicurezza industriale</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

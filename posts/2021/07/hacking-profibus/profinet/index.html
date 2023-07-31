@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&amp;rsquo;IT. Le installazioni ICS utilizzano un&amp;rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &amp;ldquo;sicurezza per oscurità&amp;rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate." />
+<meta name="keywords" content=", hacking, ot, profibus" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/" />
+
+
+    <title>
+        
+            Hacking: Profibus/Profinet :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Profibus/Profinet">
+<meta itemprop="description" content="Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate."><meta itemprop="datePublished" content="2021-07-06T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-06T15:09:35+02:00" />
+<meta itemprop="wordCount" content="1058"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,ot,profibus," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: Profibus/Profinet"/>
+<meta name="twitter:description" content="Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate."/>
+
+
+
+    <meta property="og:title" content="Hacking: Profibus/Profinet" />
+<meta property="og:description" content="Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-06T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-06T15:09:35+02:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-06 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/">Hacking: Profibus/Profinet</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. </p>
+<p>Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</p>
+<p>In questo articolo vediamo le principali caratteristiche di uno di questi protocolli: il <strong>Profibus.</strong></p>
+<h2 id="lo-standard-profibus">Lo standard Profibus</h2>
+<p><strong>Profibus</strong> (<strong>Pro</strong>cess <strong>Fi</strong>eld<strong>bus</strong>) è uno standard aperto per la comunicazione industriale originariamente sviluppato in Germania. È iniziato da un gruppo di 21 aziende e istituzioni denominate &ldquo;Central Association for Electrical Industry&rdquo; (ZVEI), guidato dal gigante industriale Siemens. Per questa ragione Profibus è ampiamente utilizzato nei prodotti Siemens ed è il bus di comunicazione sfruttato dal malware Stuxnet nella centrale nucleare iraniana di Natanz durante il famoso attacco informatico.</p>
+<p>Profibus è un protocollo intelligente e bidirezionale multipunto, in cui tutti i dispositivi Profibus sono interoperabili. I dati possono rappresentare valori analogici o digitali.  È un protocollo economico, semplice e ad alta velocità. Profibus utilizza una connessione a due fili per alimentazione e dati.</p>
+<p>La tipologia del protocollo è master-slave, come molti altri protocolli SCADA/ICS, che supporta i nodi master mediante l&rsquo;uso della condivisione di un token. Simile al protocollo token-ring di IBM, solo quando il master ha il token può comunicare con gli slave. Lo slave Profibus può comunicare solo con un master. Il nodo Profibus master è in genere un PLC o RTU e gli slave sono sensori, motori o altri dispositivi di controllo.</p>
+<p><img src="https://scadasploit.dev/uploads/2021/profi_1.png" alt=""></p>
+<h3 id="tipi-di-profibus">Tipi di Profibus</h3>
+<p>La famiglia dei protocolli Profibus si divide principalmente in due due categorie: Profibus DP e ProfiNet. Gli impieghi cambiano sensibilmente: mentre il primo è un tradizionale fieldbus master-slave con trasmissione seriale con rete ad anello, il secondo ne è la sua evoluzione e permette la comunicazione tra segmenti diversi di bus utilizzando Ethernet.</p>
+<p><img src="https://scadasploit.dev/uploads/2021/profi_2.png" alt=""></p>
+<h4 id="profibus-fms">Profibus FMS</h4>
+<p>Questo era il protocollo Profibus iniziale. È stato progettato per comunicare tra PLC e PC. Sfortunatamente questo semplice protocollo non era molto flessibile e, di conseguenza, non poteva funzionare in una rete più complessa e complicata. Sebbene sia ancora in uso, la stragrande maggioranza delle reti Profibus utilizza una delle versioni più recenti.</p>
+<h4 id="profibus-dp-decentralized-periphery">Profibus DP (Decentralized Periphery)</h4>
+<p>Profibus DP è probabilmente il più comune dei protocolli Profibus. È più semplice e veloce rispetto agli altri tipi. È disponibile in tre versioni separate: DP-V0 (scambio ciclico di dati), DP-V1 (scambio aciclico di dati) e DP-V2 (modalità slave-to-slave isocrono e scambio di dati) con ogni nuova versione che offre funzionalità aggiuntive.</p>
+<h4 id="profibus-pa-process-automation">Profibus PA (Process Automation)</h4>
+<p>Profibus PA, come suggerisce il nome, è stato sviluppato per Process Automation. Questa versione del protocollo standardizza il processo di trasmissione dei dati misurati. Inoltre, è stato progettato per l&rsquo;uso in ambienti pericolosi utilizzando la tecnologia Manchester Bus Powered (MBS) che utilizza una potenza inferiore e quindi riduce la possibilità di scintille ed esplosioni.</p>
+<h3 id="prifinet-process-field-net">PrifiNet (Process Field Net)</h3>
+<p>ProfiNet (<strong>Pro</strong>cess <strong>Fi</strong>eld <strong>Net</strong>) è un altro standard aperto per l&rsquo;automazione industriale progettato per la scalabilità. Invece di scambiare dati utilizzando il bus di campo (seriale), utilizza Ethernet (IEEE802.3) come supporto. È incluso come parte di IEC-61158 e IEC-61784. Inizialmente utilizzava pacchetti TCP/IP standard.</p>
+<p>ProfiNet ha come punto di forza il fornire dati con vincoli di tempo ristretti. Esso utilizza standard IT come TCP/IP e XML per comunicare, configurare e diagnosticare macchine e dispositivi. Può funzionare fino a 100 Mbit/s su cavi a doppino intrecciato o fibra ottica.</p>
+<p>ProfiNet NON è Profibus su Ethernet, ma sono compatibili con l&rsquo;uso di specifici proxy per collegarli.</p>
+<p>ProfiNet ha due classi di funzioni:</p>
+<ol>
+<li>ProfiNet I/O (input/output)</li>
+<li>ProfiNet CBA (automazione basata su componenti)</li>
+</ol>
+<h4 id="profinet-io">ProfiNet I/O</h4>
+<p>Collega i dispositivi di campo distribuiti e utilizza comunicazioni real-time (RT) e standard (TCP/IP).</p>
+<p>Il canale real-time (RT) viene utilizzato per dati critici che richiedono tempi di scambio ridottissimi, come dati di processo ciclici, allarmi e monitoraggio delle comunicazioni ed è in grado di eseguire cicli di 10 ms.</p>
+<p>Il canale standard viene utilizzato per il download di configurazione e parametri, diagnostica, informazioni sulla gestione del dispositivo e altre comunicazioni non critiche con tempi di scambio nell&rsquo;intervallo di 100 ms.</p>
+<p>Appartenente sempre alla famiglia I/O esiste poi il ProfiNet IRT (Isochronous Real-Time), che viene utilizzato nei sistemi di azionamento con tempi di ciclo inferiori a 1 ms. Poiché ProfiNet IRT è una tecnologia Layer 2 basata su hardware non è instradabile.</p>
+<p>Profibus I/O utilizza le porte TCP/UDP numero 34962, 34963 e 34964.</p>
+<h4 id="profinet-cba">ProfiNet CBA</h4>
+<p>E&rsquo; progettato per applicazioni di automazione industriale distribuita. ProfiNet CBA è basato sullo standard DCOM (Distributed Component Model) e RPC (Remote procedure Call). Questo significa anche che ne eredita quindi le vulnerabilità di DCOM e RPC.</p>
+<p>ProfiNet CBA utilizza la porta standard TCP numero 135.</p>
+<h2 id="la-sicurezza-dei-protocolli">La sicurezza dei protocolli</h2>
+<p>Come molti protocolli OT/ICS, anche Profibus DP manca di autenticazione. Ciò significa che qualsiasi nodo può falsificare un nodo master. Poiché solo quest&rsquo;ultimo può controllare gli slave, questa è una delle maggiori vulnerabilità del sistema. Un nodo master contraffatto sarebbe in grado di acquisire il token, interrompere le funzioni del nodo e persino causare un Denial of Service (DoS). Dal momento che la maggior parte dei nodi master in una rete Profibus DP sono collegati a una rete Ethernet, questo li rende sensibili a quasi tipo di attacco basato su Ethernet.</p>
+<p>La stessa cosa vale per ProfiNet. Poiché esistono diverse tecnologie in questa suite il rischio dipende da quella utilizzata. Fa eccezione, almeno in parte, il protocollo ProfiNet IRT che utilizza indirizzi non instradabili e quindi risulta immune alle vulnerabilità IP.</p>
+<h2 id="nota-importante"><strong>Nota importante</strong></h2>
+<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/profibus/">profibus</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1058 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-06 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/2021/07/hacking-modbus/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Modbus</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/">
+                    <span class="button__text">Hacking: Metasploit SCADA modules</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

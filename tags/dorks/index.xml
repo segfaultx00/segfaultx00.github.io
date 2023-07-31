@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dorks on SCADAsploit</title>
+    <link>https://scadasploit.dev/tags/dorks/</link>
+    <description>Recent content in dorks on SCADAsploit</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 03 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/dorks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hacking: finding SCADA on Internet using Google Dorks</title>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</link>
+      <pubDate>Sat, 03 Jul 2021 15:09:35 +0200</pubDate>
+      
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</guid>
+      <description>It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60+ thousand searches are conducted through Google&amp;rsquo;s search engine every second.</description>
+    </item>
+    
+  </channel>
+</rss>
