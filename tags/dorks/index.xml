@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dorks on Omar Morando</title>
+    <link>https://www.omarmorando.com/tags/dorks/</link>
+    <description>Recent content in dorks on Omar Morando</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sat, 03 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://www.omarmorando.com/tags/dorks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hacking: trovare SCADA in rete usando Google Dorks</title>
+      <link>https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/</link>
+      <pubDate>Sat, 03 Jul 2021 15:09:35 +0200</pubDate>
+      
+      <guid>https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/</guid>
+      <description>Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.
+Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto.</description>
+    </item>
+    
+  </channel>
+</rss>

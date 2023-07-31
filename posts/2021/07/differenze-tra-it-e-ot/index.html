@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Omar Morando ">
+<meta name="description" content="Per coloro che provengono dal mondo IT la sicurezza informatica dei sistemi ICS può rappresentare un ostacolo inizialmente frustrante. Questo perchè le loro conoscenze sulle tecnologie e sulle modalità di lavoro sono molto diverse nei sistemi OT, a partire dagli obiettivi che questi due settori hanno.
+Protezione dei dati vs. Protezione del processo Quando lavoriamo per proteggere i sistemi IT ci poniamo come obiettivo quello di proteggere i dati. Questi includono la proprietà intellettuale (IP), i numeri di carta di credito, le e-mail e le informazioni di identificazione personale (PII)." />
+<meta name="keywords" content=", hacking, ot" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://www.omarmorando.com/posts/2021/07/differenze-tra-it-e-ot/" />
+
+
+    <title>
+        
+            Differenze tra IT e OT :: Omar Morando 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://www.omarmorando.com/main.7b7bf28e97b43fde821383603355f080c106b57209430d897652d632ea36b75f.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.omarmorando.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.omarmorando.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.omarmorando.com/favicon-16x16.png">
+    <link rel="manifest" href="https://www.omarmorando.com/site.webmanifest">
+    <link rel="mask-icon" href="https://www.omarmorando.com/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://www.omarmorando.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Differenze tra IT e OT">
+<meta itemprop="description" content="Per coloro che provengono dal mondo IT la sicurezza informatica dei sistemi ICS può rappresentare un ostacolo inizialmente frustrante. Questo perchè le loro conoscenze sulle tecnologie e sulle modalità di lavoro sono molto diverse nei sistemi OT, a partire dagli obiettivi che questi due settori hanno.
+Protezione dei dati vs. Protezione del processo Quando lavoriamo per proteggere i sistemi IT ci poniamo come obiettivo quello di proteggere i dati. Questi includono la proprietà intellettuale (IP), i numeri di carta di credito, le e-mail e le informazioni di identificazione personale (PII)."><meta itemprop="datePublished" content="2021-07-01T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-01T15:09:35+02:00" />
+<meta itemprop="wordCount" content="899"><meta itemprop="image" content="https://www.omarmorando.com"/>
+<meta itemprop="keywords" content="hacking,ot," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.omarmorando.com"/>
+
+<meta name="twitter:title" content="Differenze tra IT e OT"/>
+<meta name="twitter:description" content="Per coloro che provengono dal mondo IT la sicurezza informatica dei sistemi ICS può rappresentare un ostacolo inizialmente frustrante. Questo perchè le loro conoscenze sulle tecnologie e sulle modalità di lavoro sono molto diverse nei sistemi OT, a partire dagli obiettivi che questi due settori hanno.
+Protezione dei dati vs. Protezione del processo Quando lavoriamo per proteggere i sistemi IT ci poniamo come obiettivo quello di proteggere i dati. Questi includono la proprietà intellettuale (IP), i numeri di carta di credito, le e-mail e le informazioni di identificazione personale (PII)."/>
+
+
+
+    <meta property="og:title" content="Differenze tra IT e OT" />
+<meta property="og:description" content="Per coloro che provengono dal mondo IT la sicurezza informatica dei sistemi ICS può rappresentare un ostacolo inizialmente frustrante. Questo perchè le loro conoscenze sulle tecnologie e sulle modalità di lavoro sono molto diverse nei sistemi OT, a partire dagli obiettivi che questi due settori hanno.
+Protezione dei dati vs. Protezione del processo Quando lavoriamo per proteggere i sistemi IT ci poniamo come obiettivo quello di proteggere i dati. Questi includono la proprietà intellettuale (IP), i numeri di carta di credito, le e-mail e le informazioni di identificazione personale (PII)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.omarmorando.com/posts/2021/07/differenze-tra-it-e-ot/" /><meta property="og:image" content="https://www.omarmorando.com"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-01T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-01T15:09:35+02:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-01 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://www.omarmorando.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> cd /home</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://www.omarmorando.com/about/">01_About</a></li><li><a href="https://www.omarmorando.com/posts/">02_Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://www.omarmorando.com/posts/2021/07/differenze-tra-it-e-ot/">Differenze tra IT e OT</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Per coloro che provengono dal mondo IT la sicurezza informatica dei sistemi ICS può rappresentare un ostacolo inizialmente frustrante. Questo perchè le loro conoscenze sulle tecnologie e sulle modalità di lavoro sono molto diverse nei sistemi OT, a partire dagli obiettivi che questi due settori hanno.</p>
+<h3 id="protezione-dei-dati-vs-protezione-del-processo">Protezione dei dati vs. Protezione del processo</h3>
+<p>Quando lavoriamo per proteggere i sistemi IT ci poniamo come obiettivo quello di proteggere i dati. Questi includono la proprietà intellettuale (IP), i numeri di carta di credito, le e-mail e le informazioni di identificazione personale (PII). Stiamo cercando di impedire all&rsquo;hacker di avere accesso a quello che, per un&rsquo;azienda, può rappresentare gran parte del proprio patrimonio.</p>
+<p>Ciò contrasta nettamente con i sistemi ICS in cui il principale obiettivo è <strong>proteggere il processo</strong>. Essi sono concepiti per un&rsquo;elaborazione continua del ciclo di lavorazione, e non è solo per una questione economica. In alcuni casi, un arresto non previsto di un&rsquo;impianto può richiedere giorni, settimane o addirittura mesi per il suo riavvio, causando ingenti danni.</p>
+<p>Basti pensare, ad esempio, a un sistema ICS che controlla la generazione e la distribuzione elettrica o agli impianti di acqua potabile e reflue, la cui interruzione può causare gravi problemi. Oltre al grande disagio si può incorrere in situazioni che mettono in pericolo la salute delle persone, sottolineando la necessità di proteggere il processo.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/differenze_1.jpg" alt=""></p>
+<h3 id="tecnologie">Tecnologie</h3>
+<p>Nei sistemi IT tradizionali siamo abituati a lavorare con protocolli come TCP, IP, UDP, DNS, DHCP, ecc. La maggior parte dei sistemi ICS utilizza uno degli oltre 100 protocolli dedicati, di cui alcuni proprietari. I più diffusi sul mercato sono Modbus, DNP3, ProfiNet/Profibus, OPC e altri ancora.</p>
+<p>Un sistema ICS basa il proprio funzionamento operativo sul <em>Controllore a Logica Programmabile</em> o PLC. Questi sono utilizzati per quasi ogni tipo di sistema di controllo industriale, sia che si tratti di produzione, raffinazione del petrolio, trasmissione di elettricità, trattamento delle acque, ecc. I PLC sono comparabili a computer industriali, con un loro Sistema Operativo proprietario. Utilizzano linguaggi di programmazione che derivano dal mondo della logica elettromeccanica, come il Ladder Logic, per controllare sensori, attuatori, valvole, allarmi e altri dispositivi. L&rsquo;hacking dei sistemi ICS richiede spesso una conoscenza della programmazione di questi PLC.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/differenze_2.png" alt="PLC Schneider Electric serie compatta"></p>
+<h3 id="requisiti-di-disponibilità">Requisiti di disponibilità</h3>
+<p>Sebbene la <strong>disponibilità</strong> (CIA) sia un componente chiave della sicurezza IT tradizionale, i sistemi ICS la portano ad un altro livello. Come accennato in precedenza, stiamo proteggendo il processo, piuttosto che i dati. Ciò significa che spesso l&rsquo;opzione di applicare una patch software e riavviare il sistema potrebbe NON essere un&rsquo;opzione se non a intervalli discreti, quali arresti di manutenzione annuali o trimestrali. Ciò può significare che il sistema operativo e le applicazioni possono rimanere privi di patch con vulnerabilità note per mesi, se non addirittura per anni. L&rsquo;ingegnere dei sistemi SCADA o PLC deve spesso optare per controlli compensativi per prevenire intrusioni, rispetto ad un approccio molto più rapido di un amministratore della sicurezza IT che sarebbe in grado di applicare delle patch a intervalli molto più rapidi.</p>
+<h3 id="accesso-ai-componenti">Accesso ai componenti</h3>
+<p>Con alcune eccezioni, nel tradizionale campo della sicurezza IT il tecnico della sicurezza ha accesso fisico diretto ai componenti del sistema. Nei sistemi ICS i componenti del sistema possono essere distribuiti su centinaia o migliaia di metri (es. condutture, rete elettrica, ecc.). Ciò può rendere difficile l&rsquo;implementazione dei controlli di sicurezza. Le stazioni remote in campo possono diventare un punto di accesso per l&rsquo;hacker all&rsquo;intero sistema ICS.</p>
+<h3 id="sicurezza-attraverso-loscurità">Sicurezza attraverso l&rsquo;oscurità</h3>
+<p>Negli ultimi tempi, e di recente col concetto di Industria 4.0, molti dei sistemi ICS sono stati progressivamente collegati a Internet tramite una connessione TCP/IP diretta. Sebbene la comunicazione interna possa essere ancora gestita con reti proprietarie, l&rsquo;accesso remoto consente un monitoraggio continuo da parte dei responsabili degli impianti. Rimangono comunque delle eccezioni, come ad esempio alcune dighe e altri sistemi di infrastrutture pubbliche che rimangono off-line per proteggerli dagli aggressori.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/differenze_3.png" alt="Sicurezza ottenuta tramite una protezione &ldquo;air gap&rdquo;"></p>
+<p>Per anni questi sistemi hanno beneficiato della <strong>sicurezza attraverso l&rsquo;oscurità</strong>. In altre parole, erano al sicuro perché poche persone sapevano della loro esistenza e ancora meno capivano le loro tecnologie. I protocolli utilizzati erano noti solo a tecnici del settore, a chi aveva avuto modo di acquisire esperienza diretta lavorando a stretto contatto con SCADA, PLC e terminali HMI.</p>
+<p>Questo sta diventando il loro punto debole, perchè oggi sono esposti in rete senza che siano state implementate le misure di sicurezza più elementari. Un esempio è ciò che è accaduto nel 2016 ad opera del ricercatore indipendente Karn Ganeshen che è riuscito a entrare in un sistema di <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">Building Automation di Schneider Electric</a> sfruttando una vulnerabilità 0-day e ottenendo un accesso <strong>root</strong> al server.</p>
+<p>Con l&rsquo;avvento di strumenti come <a href="https://www.shodan.io/">Shodan</a> e di altri strumenti di ricognizione questi sistemi non possono più fare affidamento sulla sicurezza attraverso l&rsquo;oscurità. L&rsquo;industria sta iniziando solo ora ad attuare misure di sicurezza modeste. Una delle sfide più grandi è che molti prodotti di sicurezza standard IT non garantisco lo stesso livello di protezione con i protocolli industriali. Nella maggior parte dei casi occorre personalizzare i firewall e gli IDS per renderli compatibili ed applicabili all&rsquo;OT.</p>
+<p>Di fronte alla minaccia del cyber terrorismo e della guerra cibernetica la protezione dei sistemi ICS è cruciale. A partire dal 2010 sono diventati i primi bersagli presi di mira non solo da hacker criminali ma anche da governi, come nel caso di <a href="https://it.wikipedia.org/wiki/Stuxnet">Stuxnet</a> o del targeting Russo del sistema elettrico Ucraino durante il loro conflitto.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://www.omarmorando.com/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://www.omarmorando.com/tags/ot/">ot</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        899 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-01 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://www.omarmorando.com/posts/2021/07/la-sicurezza-industriale/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">La sicurezza industriale</span>
+                </a>
+            </span>
+            
+
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://www.omarmorando.com">Omar Morando</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://www.omarmorando.com/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>

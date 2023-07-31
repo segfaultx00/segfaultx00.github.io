@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Omar Morando ">
+<meta name="description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30." />
+<meta name="keywords" content=", hacking, ot, building_automation" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://www.omarmorando.com/posts/2021/07/hacking-schneider-electric-building-automation/" />
+
+
+    <title>
+        
+            Hacking: Schneider Electric Building Automation :: Omar Morando 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://www.omarmorando.com/main.7b7bf28e97b43fde821383603355f080c106b57209430d897652d632ea36b75f.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.omarmorando.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.omarmorando.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.omarmorando.com/favicon-16x16.png">
+    <link rel="manifest" href="https://www.omarmorando.com/site.webmanifest">
+    <link rel="mask-icon" href="https://www.omarmorando.com/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://www.omarmorando.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Schneider Electric Building Automation">
+<meta itemprop="description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30."><meta itemprop="datePublished" content="2021-07-04T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-04T15:09:35+02:00" />
+<meta itemprop="wordCount" content="1112"><meta itemprop="image" content="https://www.omarmorando.com"/>
+<meta itemprop="keywords" content="hacking,ot,building_automation," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.omarmorando.com"/>
+
+<meta name="twitter:title" content="Hacking: Schneider Electric Building Automation"/>
+<meta name="twitter:description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30."/>
+
+
+
+    <meta property="og:title" content="Hacking: Schneider Electric Building Automation" />
+<meta property="og:description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.omarmorando.com/posts/2021/07/hacking-schneider-electric-building-automation/" /><meta property="og:image" content="https://www.omarmorando.com"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-04T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-04T15:09:35+02:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-04 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://www.omarmorando.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> cd /home</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://www.omarmorando.com/about/">01_About</a></li><li><a href="https://www.omarmorando.com/posts/">02_Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://www.omarmorando.com/posts/2021/07/hacking-schneider-electric-building-automation/">Hacking: Schneider Electric Building Automation</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30.000 vite). Nonostante ciò, questi sistemi sono insolitamente vulnerabili all&rsquo;hacking e alle attività dannose.</p>
+<p>In questo tutorial mostrerò come hackerare un sistema di controllo industriale di Schneider Electric, uno dei maggiori produttori al mondo di sistemi ICS e per la Buinding Automation. A causa della debole sicurezza integrata in fase di sviluppo, problema molto diffuso nei prodotti IIoT, alcuni di questi sistemi sono incredibilmente facili da violare e prenderne il controllo.</p>
+<h3 id="conosciamo-meglio-il-nostro-target">Conosciamo meglio il nostro target</h3>
+<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> è una società con sede a Parigi, leader mondiale nel settore del controllo industriale. Sono stati tra i pionieri in questo campo introducendo molti concetti innovativi poi replicati dai concorrenti, e hanno anche il merito di aver sviluppato il protocollo di comunicazione più utilizzato nei sistemi di controllo industriale: il <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>.</p>
+<p>Schneider Electric all&rsquo;interno del proprio vasto catalogo conta anche una gamma di PLC dedicati all&rsquo;automazione degli edifici.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/building_1.png" alt="Un server della famiglia SmartStruxure"></p>
+<p>Uno dei loro prodotti, lo SmartStruxure Automation Server, viene utilizzato negli edifici commerciali per controllare e automatizzare i numerosi sistemi tra cui riscaldamento e raffreddamento, illuminazione, sicurezza, ecc. Nel 2016, il ricercatore indipendente Karn Ganeshen ha individuato una vulnerabilità 0-day, oggetto poi di una patch da parte di Schneider, che permetteva di entrare nel server con una shell e acquisire i privilegi di root.</p>
+<p>Ma andiamo con ordine.</p>
+<h3 id="trovare-i-server-schneider-automation-con-shodan">Trovare i server Schneider Automation con Shodan</h3>
+<p>Possiamo trovare questi server di automazione su Shodan cercando:</p>
+<p><code>&quot;schneider electric&quot; automation</code></p>
+<p><img src="https://www.omarmorando.com/uploads/2021/building_2.png" alt="I risultati su Shodan"></p>
+<p>Come possiamo notare, compare un lungo elenco di dispositivi direttamente connessi a Internet, con il relativo indirizzo IP pubblico. Nel nostro caso userò un prodotto dimostrativo all&rsquo;interno della rete locale.</p>
+<h2 id="la-vulnerabilità">La vulnerabilità</h2>
+<p>La vulnerabilità in oggetto consente all&rsquo;autore dell&rsquo;attacco di connettersi al server di automazione con una shell SSH utilizzando le credenziali predefinite e di ottenere facilmente i privilegi di &ldquo;root&rdquo;. Così facendo, l&rsquo;attaccante non possiede solo la &ldquo;scatola&rdquo;, ma l&rsquo;intero edificio!</p>
+<h3 id="connessione-al-building-automation-server">Connessione al Building Automation Server</h3>
+<p>Innanzitutto, colleghiamoci al nostro server con una shell SSH. Userò Kali Linux, ma dal momento che questo hack è molto semplice può essere eseguito usando qualsiasi distribuzione, senza l&rsquo;ausilio di strumenti di hacking particolari come ad es. Metasploit.</p>
+<pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
+</code></pre><p>Dopo che ci siamo connessi il server ci chiederà una password. Utilizziamo la password predefinita &ldquo;<strong>admin</strong>&rdquo;.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/root_1.png" alt=""></p>
+<p>A questo punto siamo all&rsquo;interno dell&rsquo;account amministratore di Automation Server. Possiamo digitare <code>help</code> per vedere quali comandi possiamo usare con questo account.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/root_2.png" alt=""></p>
+<p>Ad esempio, digitiamo <code>release</code>. Il sistema risponde con le informazioni sulla versione del server. Inoltre, va notato che uno dei comandi è <code>reboot</code>, che potrebbe essere utile nel caso di un attacco DoS.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/root_3.png" alt=""></p>
+<p>Possiamo inoltre vedere il tempo trascorso dall&rsquo;ultimo avvio digitando il comando <code>uptime</code>. Questa informazione è sempre molto utile in fase di attacco perchè può indicare, normalmente, il tempo trascorso da quando il sistema ha subito una patch di aggiornamento.</p>
+<pre tabindex="0"><code>admin:&gt; uptime
+</code></pre><p><img src="https://www.omarmorando.com/uploads/2021/root_4.png" alt=""></p>
+<p>Uno dei punti deboli di questo sistema è che possiamo usare il comando Linux pipe &ldquo;|&rdquo; per inoltrare ulteriori comandi al server sottostante. Facendo un esempio pratico, possiamo vedere il file &ldquo;passwd&rdquo; sul server digitando:</p>
+<pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
+</code></pre><p><img src="https://www.omarmorando.com/uploads/2021/root_5.png" alt=""></p>
+<p>In questo modo abbiamo elencato tutti gli account presenti sul server. Naturalmente questo file contiene solo gli account e non le password, che invece si trovano nel file <strong>/etc/shadow</strong> accessibile unicamente con i diritti di <strong>root</strong>.</p>
+<h3 id="privilege-escalation">Privilege escalation</h3>
+<p>La fase di privilege escalation, nella maggior parte dei casi in campo IT, richiede procedure a volte lunghe e complesse, indipendentemente che si stia attaccando una macchina Windows o Linux. Ma come ho detto, nel campo OT non sempre i livelli di sicurezza sono (in questo caso, &ldquo;erano&rdquo;) adeguati. Possiamo ottenere il livello di root semplicemente digitando:</p>
+<pre tabindex="0"><code>admin:&gt; sudo -i
+</code></pre><p><img src="https://www.omarmorando.com/uploads/2021/root_6.png" alt=""></p>
+<p><strong>Boom!</strong> La configurazione predefinita di questo server di automazione dell&rsquo;edificio non ha password per l&rsquo;account &ldquo;root&rdquo;, quindi è sufficiente premere Invio quando viene richiesta una password.</p>
+<p>Come possiamo vedere, il prompt diventa verde e indica che siamo root!</p>
+<p>Dato che ora abbiamo i privilegi di root siamo in grado di fare praticamente qualsiasi cosa. Digitiamo <code>cat /etc/shadow</code> per vedere se riusciamo a recuperare gli hash delle password nella cartella <strong>/etc/shadow</strong>.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/root_7.png" alt=""></p>
+<p>Ed ecco che siamo riusciti a ottenere tutti gli account e i loro hash delle password! Se necessario, potremmo scoprirle attraverso un attacco brute-force come <strong>hashcat</strong> per recuperare le password in chiaro.</p>
+<p>È probabile che il file di configurazione per Automation Server sia nella directory <strong>/etc</strong>. Entriamo in questa cartella ed elenchiamo tutti i file e le directory.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root:&gt; cd /etc
+root:&gt; ls -l
+</code></pre></div><p><img src="https://www.omarmorando.com/uploads/2021/root_8.png" alt=""></p>
+<p>Se scorriamo questo elenco troviamo un file chiamato &ldquo;whitelist.rules&rdquo;, che probabilmente contiene le regole per la connessione al server. Apriamolo.</p>
+<pre tabindex="0"><code>root:&gt; cat whitelist.rules
+</code></pre><p><img src="https://www.omarmorando.com/uploads/2021/root_9.png" alt=""></p>
+<p>L&rsquo;amministratore di sistema non ha mai impostato &ldquo;whitelist.rules&rdquo; su questo server e, di conseguenza, chiunque può connettersi.</p>
+<p>Infine, poiché abbiamo i privilegi di root possiamo aggiungere un nuovo utente che possano fare da backdoor. Prima di partire, posso aggiungermi agli utenti, concedermi i privilegi di root e aggiungermi a whitelist.rules, in modo che anche se l&rsquo;amministratore dovesse correggere questa vulnerabilità avrò comunque un account e potrò accedere ancora a questo server.</p>
+<pre tabindex="0"><code>root:&gt; useradd cyberhood
+</code></pre><p>Questo esempio risale alle vulnerabilità scoperte nel 2016 e riconosciute da Schneider Electric, che successivamente ha aggiornato i propri sistemi al fine di impedire un accesso così facile al server. Maggiori informazioni le puoi <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">trovare qui</a>.</p>
+<p><strong>N.B.</strong> Lo scopo di questa guida non è certo quello di screditare un produttore a discapito di un altro, ma vuole unicamente evidenziare quanto lavoro ci sia da fare sui <strong>prodotti OT di tutti i principali produttori</strong> al fine di renderli &ldquo;<strong>secure by design</strong>&rdquo;, progettati e costruiti con criteri di sicurezza intrinseca.</p>
+<h2 id="nota-importante"><strong>Nota importante</strong></h2>
+<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far comprendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://www.omarmorando.com/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://www.omarmorando.com/tags/ot/">ot</a></span>
+        <span class="tag"><a href="https://www.omarmorando.com/tags/building_automation/">building_automation</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1112 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-04 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://www.omarmorando.com/posts/2021/07/hacking-metasploit-scada-modules/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Metasploit SCADA modules</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/">
+                    <span class="button__text">Hacking: trovare SCADA in rete usando Google Dorks</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://www.omarmorando.com">Omar Morando</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://www.omarmorando.com/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>

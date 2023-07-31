@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Omar Morando ">
+<meta name="description" content="Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&amp;rsquo;occhiata al worm Stuxnet.;
+Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs." />
+<meta name="keywords" content=", hacking, ot" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://www.omarmorando.com/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/" />
+
+
+    <title>
+        
+            Hacking: attaccare un PLC con Stuxnet :: Omar Morando 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://www.omarmorando.com/main.7b7bf28e97b43fde821383603355f080c106b57209430d897652d632ea36b75f.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.omarmorando.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.omarmorando.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.omarmorando.com/favicon-16x16.png">
+    <link rel="manifest" href="https://www.omarmorando.com/site.webmanifest">
+    <link rel="mask-icon" href="https://www.omarmorando.com/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://www.omarmorando.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: attaccare un PLC con Stuxnet">
+<meta itemprop="description" content="Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&rsquo;occhiata al worm Stuxnet.;
+Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs."><meta itemprop="datePublished" content="2021-07-09T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-09T15:09:35+02:00" />
+<meta itemprop="wordCount" content="2224"><meta itemprop="image" content="https://www.omarmorando.com"/>
+<meta itemprop="keywords" content="hacking,ot," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.omarmorando.com"/>
+
+<meta name="twitter:title" content="Hacking: attaccare un PLC con Stuxnet"/>
+<meta name="twitter:description" content="Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&rsquo;occhiata al worm Stuxnet.;
+Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs."/>
+
+
+
+    <meta property="og:title" content="Hacking: attaccare un PLC con Stuxnet" />
+<meta property="og:description" content="Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&rsquo;occhiata al worm Stuxnet.;
+Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.omarmorando.com/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/" /><meta property="og:image" content="https://www.omarmorando.com"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-09T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-09T15:09:35+02:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-09 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://www.omarmorando.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> cd /home</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://www.omarmorando.com/about/">01_About</a></li><li><a href="https://www.omarmorando.com/posts/">02_Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        11 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://www.omarmorando.com/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/">Hacking: attaccare un PLC con Stuxnet</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&rsquo;occhiata al worm <a href="https://en.wikipedia.org/wiki/Stuxnet">Stuxnet</a>.;</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_1.jpg" alt=""></p>
+<h2 id="introduzione-a-stuxnet">Introduzione a Stuxnet</h2>
+<p>Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da <a href="https://eugene.kaspersky.com/2011/11/02/the-man-who-found-stuxnet-sergey-ulasen-in-the-spotlight/">Sergey Ulasen</a> di Kaspersky Labs. Una versione precedente di Stuxnet era già stata scoperta nel 2009. Tuttavia, il worm è stato sviluppato molto prima, probabilmente già nel 2005. Stuxnet è stato progettato principalmente per danneggiare una centrale nucleare situata a Natanz, in Iran. Sfortunatamente però Stuxnet si è diffuso in oltre 115 paesi, il che dimostra come anche un attacco mirato potrebbe diffondersi e causare danni al di fuori del suo scopo principale.</p>
+<p>Il worm è stato appositamente progettato per modificare la velocità del rotore delle centrifughe all&rsquo;interno della centrale nucleare di Natanz, causandone l&rsquo;esplosione. Ciò che è interessante con Stuxnet è che si trattava di un worm mirato, progettato con cura per causare danni solo se fossero stati soddisfatti determinati criteri, il che significa che la maggior parte degli impianti in cui si è successivamente diffuso non avrebbero dovuto subire danni. In effetti, Stuxnet aumenterebbe la velocità del rotore delle centrifughe solo se l&rsquo;architettura del sistema di controllo industriale corrispondesse all&rsquo;impianto nucleare di Natanz. Per la sua struttura e complessità, Stuxnet è stata definita come una minaccia persistente avanzata (APT). Un APT raccoglie i dati ed esegue i comandi continuamente per un lungo periodo di tempo senza essere rilevato. Questo è anche noto come attacco &ldquo;basso e lento&rdquo;.</p>
+<h2 id="come-funziona">Come funziona</h2>
+<p>Il worm Stuxnet è stato portato nella struttura di Natanz attraverso un&rsquo;unità flash USB, consentendogli di attaccare il sistema dall&rsquo;interno. Ciò era considerato uno dei prerequisiti per l&rsquo;attacco in quanto la struttura di Natanz non era direttamente accessibile da Internet ma potretto tramite air gap.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_2.png" alt="Un PLC Simatic S7-300"></p>
+<p>Dopo l&rsquo;esecuzione, il worm si è diffuso su tutta la rete fino a quando non ha trovato un sistema operativo Windows con STEP 7. </p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_3.png" alt="Siemens Step 7"></p>
+<p>STEP 7 è il software di programmazione Siemens progettato per i propri PLC. Il computer che esegue STEP 7 è noto come computer di controllo e interagisce direttamente con e invia comandi al PLC. Una volta arrivato con successo al computer di controllo STEP 7, Stuxnet ha manipolato i blocchi di codice inviati dal computer di controllo, eseguito comandi pericolosi sul PLC e fatto girare le centrifughe a una frequenza superiore rispetto a quanto inizialmente programmato. </p>
+<p>{% hint style=&ldquo;info&rdquo; %}
+Il software STEP 7 utilizza una libreria chiamata <strong>s7otbxdx.dll</strong> per eseguire la comunicazione con il PLC. Ad esempio, se un blocco di codice deve essere letto dal PLC viene chiamata la routine &ldquo;s7blk_read&rdquo;. Stuxnet usa una tecnica di DLL hijacking per intercettare tutti i comandi provenienti da STEP 7 e WinCC (il sistema SCADA di Siemens) e, a sua volta, li inoltra alla libreria originale dopo averne modificato il contenuto. In questo modo invia comandi imprevisti al PLC restituendo agli utenti un loop di valori di funzionamento normale.
+{% endhint %}</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_4.png" alt="L&rsquo;attacco di tipo DLL hijacking sulle librerie STEP 7"></p>
+<p>Gli attacchi al PLC sono stati eseguiti ogni 27 giorni circa per rendere l&rsquo;attacco furtivo e difficile da rilevare, che rappresenta una parte centrale di un APT. Stuxnet ha inoltre rilevato il computer di controllo e visualizzato un output falso sul software STEP 7. Questo passaggio dell&rsquo;attacco era una parte fondamentale nota come &ldquo;inganno&rdquo;. Gli ingegneri situati nella centrale nucleare non hanno ricevuto alcuna indicazione di errori, supponendo che le centrifughe stessero ruotando alla frequenza corretta. Ricevendo un output falso in STEP 7, essi presumevano che il tracollo fosse stato causato da un errore umano anzichè da un malware. Stuxnet ha anche nascosto il codice direttamente sul PLC dopo l&rsquo;infezione ed è stato quindi definito anche un rootkit del PLC.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_5.png" alt="Un esempio di sistema SCADA basato su Siemens WinCC"></p>
+<p>Per la sua diffusione in rete Stuxnet ha sfruttato una delle vulnerabilità 0-day dei sistemi operativi Windows. Esso infatti si è diffuso attraverso il protocollo di condivisione dei file Server Message Block (SMB) come documentato nel rapporto sulla vulnerabilità <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250">CVE-2008-4250</a> nel National Vulnerability Database. La vulnerabilità ha consentito l&rsquo;esecuzione di codice in modalità remota, diffondendosi in modo aggressivo sulla rete locale. Il worm aveva diverse altre funzionalità, come l&rsquo;auto-replica, si aggiornava usando un centro di comando e controllo, conteneva un rootkit di Windows che nascondeva i suoi file binari e tentava di aggirare i sistemi di sicurezza presenti sui computer (anti-virus e anti-malware).</p>
+<h2 id="le-conseguenze-del-suo-attacco">Le conseguenze del suo attacco</h2>
+<p>Stuxnet è conosciuta come la prima arma digitale del mondo e ha distrutto circa 1.000 centrifughe all&rsquo;interno della centrale di Natanz. Gli attacchi informatici che causano danni fisici hanno rivoluzionato il modo in cui gli esperti di sicurezza informatica eseguono l&rsquo;analisi delle minacce, nonché il modo in cui i produttori di PLC li progettano.</p>
+<p>Se vogliamo trovargli un merito, Stuxnet ha spazzato via la convinzione che i sistemi ICS fossero inviolabili, sicuri perchè isolati e perchè così diversi dai tradizionali dispositivi presenti nel mondo IT.</p>
+<p>Ma la conseguenza più grande è determinata dal fatto che per la prima volta un ente governativo, in questo caso quello americano insieme a quello israeliano, ha creato un&rsquo;arma informatica in grado di causare danni a persone e cose. Non si era ancora visto qualcosa del genere e di questa entità, hackers e malwares avevano finora l&rsquo;obiettivo di estorcere denaro, rubare informazioni o infrangere barriere politiche, ma nessuno aveva superato la soglia del danno tangibile.</p>
+<h2 id="hacking-di-un-plc">Hacking di un PLC</h2>
+<p>Una parte di Stuxnet consisteva nell&rsquo;utilizzare i PLC di destinazione come strumento hacker mediante un rootkit del PLC e manipolando la comunicazione tra il computer di controllo (SCADA) e il PLC stesso. Mirando entrambi questi dispositivi Stuxnet è riuscito a raggiungere il suo obiettivo e allo stesso tempo ha ingannato gli operatori, avendo così abbastanza tempo per distruggere le centrifughe. Stuxnet come APT è un attacco sofisticato che richiede una significativa raccolta di informazioni e risorse per essere eseguito. È inoltre necessario disporre di conoscenze approfondite sui protocolli di comunicazione proprietari in uso e sull&rsquo;architettura dei PLC target, in particolare per la realizzazione del rootkit. Il suo codice è ora pubblicamente disponibile e può essere studiato in modo approfondito.</p>
+<p>Un sistema di controllo industriale (ICS) e un PLC fanno uso di più protocolli di comunicazione. Tra i più utilizzati troviamo <a href="hacking-profibus-profinet.md">Profinet, Profibus</a> e <a href="hacking-modbus.md">Modbus</a>. La maggior parte di essi sono stati concepiti all&rsquo;origine senza misure di sicurezza integrate, con la conseguenza di permettere l&rsquo;esecuzione di codice in modalità remota, lo sniffing dei pacchetti e gli attacchi replay a causa della mancanza di autenticazione e crittografia.</p>
+<p>Profinet utilizza l&rsquo;hardware Ethernet tradizionale, che lo rende compatibile con la maggior parte delle apparecchiature. Profinet è ampiamente utilizzato nel settore dell&rsquo;automazione e il suo design si basa sul modello Open Systems Interconnection (OSI). Profinet consente la comunicazione bidirezionale ed è il protocollo di comunicazione preferito per i PLC Siemens Simatic.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_6.png" alt=""></p>
+<p>Profibus è uno standard di comunicazione internazionale per bus di campo. Viene utilizzato per collegare insieme più dispositivi e consente la comunicazione bidirezionale. Esistono due tipi di Profibus: Profibus Decentralized Peripherals (DP) e Profibus Process Automation (PA). Una limitazione con Profibus è che è in grado di comunicare solo con un dispositivo alla volta. La nuova versione di Profibus è standardizzata in IEC 61158.</p>
+<p>Modbus è un protocollo di comunicazione seriale progettato e pubblicato da Modicon (Schneider Electric) nel 1979. Modbus esegue una comunicazione di tipo master e slave, con un numero massimo di dispositivi fino a 247. Il computer di controllo - HMI o SCADA - normalmente funge da master, mentre i dispositivi di automazione, o i PLC, sono gli slave. È stato originariamente progettato come protocollo di comunicazione per PLC e successivamente è diventato uno standard internazionale per il collegamento di più dispositivi industriali. Modbus è facile da implementare, economico e ampiamente accettato come standard di comunicazione. Esistono almeno tre varianti del protocollo Modbus: American Standard Code for Information Interchange (ASCII), unità terminale remota (RTU) e TCP/IP.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/stuxnet_7.png" alt=""></p>
+<p>Esistono diversi scanner <a href="hacking-metasploit-scada-modules.md">Metasploit</a> che consentono il rilevamento e lo sfruttamento di Modbus e Profinet. Scanner simili in Python sono disponibili anche su GitHub. Nel 2011 Dillon Beresford, ingegnere senior per la ricerca delle vulnerabilità presso Dell, ha lanciato exploit remoti verso la serie di PLC Simatic di Siemens attravero Profinet, che comunica utilizzando la porta TCP 102.</p>
+<p>Ciò che è interessante di questi exploit è che scaricano e visualizzano la memoria, e sono in grado di effettuare comandi ON/OFF sull&rsquo;unità centrale di elaborazione (CPU) del PLC. Un esempio è l&rsquo;exploit chiamato &ldquo;remote-memory-viewer&rdquo;, che esegue l&rsquo;autenticazione utilizzando una password backdoor codificata nel PLC Simatic S7-300 di Siemens. In questo exploit, il modulo di avvio/arresto della CPU esegue il codice shell verso il PLC e lo accende/spegne da remoto. Lo stesso exploit start/stop può essere trovato per la serie S7-1200. Inoltre, iniettando shellcode, è anche possibile ottenere l&rsquo;accesso remoto al PLC.</p>
+<p>A causa della mancanza di controlli di integrità, i PLC più vecchi eseguono comandi indipendentemente dal fatto che vengano ricevuti da una fonte legittima. La ragione di ciò è che non ci sono checksum sui pacchetti di rete. È stato dimostrato che una serie di attacchi replay funziona contro un gran numero di PLC, il che consente all&rsquo;attaccante di inviare comandi di esecuzione in remoto. Pertanto, lo sfruttamento dei PLC in remoto con strumenti open source costituisce una grave minaccia per i sistemi SCADA.;</p>
+<p>Durante il BlackHat USA nel 2011, Beresford ha presentato una demo live creata per le serie Siemens Simatic S7-300 e 1200. Gli exploit utilizzati durante la sua demo sono programmati in Ruby, reso compatibile con il Metasploit Framework.</p>
+<p>Gli exploit remoti su ICS erano una parte essenziale del worm Stuxnet. Tuttavia, Beresford ha dimostrato come sia possibile ottenere l&rsquo;accesso remoto a un PLC utilizzando la password hardcoded integrata nel software, e per certi versi rappresenta un passo avanti rispetto a quanto fatto in Stuxnet.</p>
+<h2 id="ma-succede-solo-con-siemens">Ma succede solo con Siemens?</h2>
+<p>Meglio precisarlo: questo non è esclusivamente un problema di Siemens. Rockwell Automation ha anche sperimentato un buffer overflow su stack che potrebbe consentire l&rsquo;accesso remoto al sistema iniettando codice arbitrario, secondo <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-0868">CVE-2016-0868</a> del National Vulnerability Database. La vulnerabilità è stata segnalata il 26 gennaio 2016 e riguardava il PLC MicroLogix 1100. Inoltre, ci sono molti altri exploit e scanner disponibili nel progetto Metasploit che possono essere utilizzati per eseguire comandi da remoto su diversi modelli di PLC.</p>
+<p>Il computer di controllo può anche essere utilizzato come strumento di hacker principalmente a causa di vari exploit software, alcuni dei quali garantiscono il controllo della workstation di un sistema SCADA o ICS. Ciò consente all&rsquo;attaccante di manipolare i dati inviati al PLC ed eseguire il pivoting all&rsquo;interno della rete. Un exploit creato da James Fitts, collaboratore del Exploit Database, consente a un utente malintenzionato remoto di immettere codice arbitrario nel software di programmazione PLC di Fatek, WinProladder, come documentato <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-8377">CVE-2016-8377</a> del National Vulnerability Database.</p>
+<p>Anche se l&rsquo;hacker può attivare l&rsquo;exploit in remoto, quest&rsquo;ultimo richiede comunque l&rsquo;interazione dell&rsquo;utente, come una visita a una pagina Web dannosa o l&rsquo;apertura di un file infetto, per sfruttarlo correttamente. L&rsquo;exploit è un buffer overflow su stack disponibile in Ruby per l&rsquo;importazione di Metasploit. Le applicazioni programmate in C sono spesso più vulnerabili agli overflow del buffer rispetto ad altri linguaggi di programmazione e ci sono molti pacchetti software basati su C in uso nei sistemi di controllo industriale. Ad esempio, l&rsquo;iniezione di shellcode attraverso una vulnerabilità di buffer overflow può consentire l&rsquo;accesso remoto al sistema o essere utilizzato per l&rsquo;escalation dei privilegi.</p>
+<h2 id="siamo-spacciati">Siamo spacciati?</h2>
+<p>La mancanza di sicurezza nei sistemi di controllo industriale è una delle principali preoccupazioni per la sicurezza. Un PLC è stato originariamente progettato per funzionare solo come operatore automatico in un sistema di controllo industriale e non per essere collegato a componenti esterni e raggiungibile da Internet. Tuttavia, l&rsquo;evoluzione nella progettazione di ICS ha iniziato a esporre i PLC a Internet, che può essere mostrato attraverso ricerche utilizzando strumenti come Shodan. I PLC si basano su reti con protezione &ldquo;air-gapped&rdquo; e accesso fisico limitato come misura di sicurezza.</p>
+<p>Le reti air-gapped hanno più volte dimostrato di essere un design imperfetto e non sono in alcun caso un legittimo argomento di sicurezza nei moderni ICS. Ciò è stato dimostrato dall&rsquo;attacco di Stuxnet, che si è diffuso in oltre 115 paesi, infettando le infrastrutture critiche in tutto il mondo anche se la maggior parte dei sistemi di controllo sono stati progettati in isolamento. Questo cambiamento negli ambienti ICS e nelle infrastrutture critiche implica che i PLC sono esposti a una maggiore minaccia alla sicurezza rispetto a prima.</p>
+<p><em>(Grazie al lavoro di Siv Hilde Houmb e Erik David Martin da cui è tratto questo articolo)</em></p>
+<h2 id="nota-importante"><strong>Nota importante</strong></h2>
+<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://www.omarmorando.com/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://www.omarmorando.com/tags/ot/">ot</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        2224 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-09 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://www.omarmorando.com/posts/2021/07/hacking-pentest-con-un-plc/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Pentest con un PLC</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://www.omarmorando.com/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/">
+                    <span class="button__text">Hacking: simulazione Modbus TCP in Linux</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://www.omarmorando.com">Omar Morando</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://www.omarmorando.com/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>

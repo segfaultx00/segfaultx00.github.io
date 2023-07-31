@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="Omar Morando ">
+<meta name="description" content="Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.
+Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto." />
+<meta name="keywords" content=", hacking, dorks" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/" />
+
+
+    <title>
+        
+            Hacking: trovare SCADA in rete usando Google Dorks :: Omar Morando 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://www.omarmorando.com/main.7b7bf28e97b43fde821383603355f080c106b57209430d897652d632ea36b75f.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://www.omarmorando.com/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.omarmorando.com/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.omarmorando.com/favicon-16x16.png">
+    <link rel="manifest" href="https://www.omarmorando.com/site.webmanifest">
+    <link rel="mask-icon" href="https://www.omarmorando.com/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://www.omarmorando.com/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: trovare SCADA in rete usando Google Dorks">
+<meta itemprop="description" content="Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.
+Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto."><meta itemprop="datePublished" content="2021-07-03T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-03T15:09:35+02:00" />
+<meta itemprop="wordCount" content="1089"><meta itemprop="image" content="https://www.omarmorando.com"/>
+<meta itemprop="keywords" content="hacking,dorks," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://www.omarmorando.com"/>
+
+<meta name="twitter:title" content="Hacking: trovare SCADA in rete usando Google Dorks"/>
+<meta name="twitter:description" content="Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.
+Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto."/>
+
+
+
+    <meta property="og:title" content="Hacking: trovare SCADA in rete usando Google Dorks" />
+<meta property="og:description" content="Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.
+Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/" /><meta property="og:image" content="https://www.omarmorando.com"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-03T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-03T15:09:35+02:00" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-03 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://www.omarmorando.com/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> cd /home</span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://www.omarmorando.com/about/">01_About</a></li><li><a href="https://www.omarmorando.com/posts/">02_Posts</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://www.omarmorando.com/posts/2021/07/hacking-trovare-scada-in-rete-usando-google-dorks/">Hacking: trovare SCADA in rete usando Google Dorks</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>Si stima che Google abbia archiviato più pagine di un qualsiasi altro motore di ricerca del mondo. Con oltre miliardi di pagine e un tempo relativamente basso di esecuzione, il popolare motore di ricerca californiano riesce a soddisfare tutte le ricerche, sia eseguite per fini di curiosità sia per scopi meno innoqui.</p>
+<p>Il motore di ricerca è così potente da poter categorizzare oltre 15 milioni di pagine in meno di un minuto.</p>
+<p>Oltre a ciò, si ipotizza che ogni secondo siano condotte oltre 60 mila ricerche attraverso motore di ricerca Google. Questo significa oltre <strong>1.000 miliardi</strong> di ricerche all’anno! Numeri astronomici a cui Google riesce a stare dietro con l’enorme infrastruttura che ha realizzato.</p>
+<p>Sicuramente i motori di ricerca hanno stravolto la vita di molte persone; avere così tante informazioni nel giro di 1 minuto è un punto di riflessione per chiunque. Ma la cosa più sorprendente, nonostante questi numero, è che sfruttiamo una parcentuale minima delle potenzialità che questo strumento ci offre.</p>
+<p>Poche persone sanno che Google ha un linguaggio proprietario per estrarre tali informazioni oltre a cercare tramite parole chiave. Anche solo con una scarsa conoscenza delle parole chiave di Google, puoi trovare molte più informazioni di quanto tu abbia mai immaginato.Vediamone alcune.</p>
+<h2 id="cosa-sono-le-google-dorks">Cosa sono le Google Dorks</h2>
+<p>Le dork vengono definite come query di ricerca che, anzichè contenere semplicemente la descrizione di ciò che stiamo cercando, sono composte anche da diverse keywods che permettono di affinare i parametri della ricerca stessa, al fine di ottenere dei risultati specifici.</p>
+<h3 id="scopi-per-cui-vengono-utilizzate">Scopi per cui vengono utilizzate</h3>
+<p>Come detto, le dorks vengono utilizzate principalmente per affinare i risultati di ricerca, al fine di avere un elenco di links più specifici.</p>
+<p>Come esempio molto semplice, proviamo ad eseguire la ricerca sulla &ldquo;pizza napoletana&rdquo;. La semplice parola &ldquo;pizza&rdquo;, cercata su Google, ha oltre 1.360.000.000 di risultati, mentre combinata con la parola &ldquo;napoletana&rdquo; i risultati scendono drasticamente (ne rimangono comunque più di 15 milioni&hellip;). Questa è già un tentativo di affinare la nostra ricerca per restringere il campo di ricerca.</p>
+<p>Partendo dal presupposto che alcuni sysadmin potrebbero non aver applicato alcune regole, è possibile cercare alcuni file riservati e/o confidenziali, non destinati al grande pubblico di Internet. Attenzione però: sebbene alcuni webmaster espongano informazioni sensibili per conto proprio, questo non significa che sia legale sfruttarle al fine di ottenerne un vantaggio (economico o non). La semplice consultazione non è reato, ma lo sfruttamento sì ed è perseeguito penalmente. È abbastanza facile tracciare l’IP di navigazione, anche se si utilizza un servizio VPN. Non è così anscarsa conoscenza delle parole chiave di Google, puoi trovare più informazioni di quanto tu abbia mai immaginato.onimo come si pensa.</p>
+<p>Molte vulnerabilità vengono cercate da <strong>script kiddies</strong> proprio tramite Google. Un’attenta query infatti cerca per messaggi di errori, file di configurazione o altro che potrebbero in qualche modo esporre all’esterno versione del software o dati riservati.</p>
+<h3 id="alcune-dorks-di-esempio">Alcune dorks di esempio</h3>
+<table>
+<thead>
+<tr>
+<th>Nome dorks</th>
+<th>Descrizione</th>
+<th>Esempio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>site:<em>domain</em></td>
+<td>i risultati saranno file e pagine presenti nel dominio domain</td>
+<td>site:w3school.com</td>
+</tr>
+<tr>
+<td>intitle:<em>parola</em></td>
+<td>i risultati conterranno nel titolo la parola dopo la dork “intitle”</td>
+<td>intitle:hi</td>
+</tr>
+<tr>
+<td>inurl:<em>parola</em></td>
+<td>i risultati conterranno nel titolo la parola dopo la dork “inurl”</td>
+<td>inurl:gallery</td>
+</tr>
+<tr>
+<td>intext:<em>testo</em></td>
+<td>i risultati conterranno pagine con il &ldquo;testo&rdquo; ricercato</td>
+<td>intext:&ldquo;Index of&rdquo;</td>
+</tr>
+<tr>
+<td>ext:<em>estensione</em></td>
+<td>i risultati conterranno files con l&rsquo;estensione richiesta</td>
+<td>ext:jpg</td>
+</tr>
+<tr>
+<td>filetype:<em>type</em></td>
+<td>i risultati conterranno file della estensione specificata da type</td>
+<td>filetype:pdf</td>
+</tr>
+<tr>
+<td>cache:<em>url</em></td>
+<td>reindirizza l’utente alla cache Google dell’url specificato</td>
+<td>cache:cyberhood.eu</td>
+</tr>
+<tr>
+<td>info:<em>root_domain</em></td>
+<td>il risultato conterrà il dominio principale (root domain) e tutte le informazioni relative</td>
+<td>info:amazon.com</td>
+</tr>
+</tbody>
+</table>
+<p>Va detto che le dorks possono essere concatenate in modo da affinare ulteriormente la nostra ricerca, come ad esempio <code>ext:ini intext:env.ini</code> oppure <code>ext:mdb inurl:*.mdb inurl:fpdb shop.mdb</code> .</p>
+<h2 id="google-dorks-per-gli-scada">Google Dorks per gli SCADA</h2>
+<p>Va detto che non esiste una singola dork di Google che rivelerà ogni interfaccia SCADA esistente in rete, questo perchè dipende molto dal produttore e dai prodotti utilizzati. Ogni azienda crea i propri sistemi embedded con caratteristiche proprietarie. Condividono protocolli e procedure comuni, ma in generale sono oggetti unici.</p>
+<p>Alcuni dei principali produttori sono: Siemens, Schneider Electric, Rockwell Automation, GE. Oltre a questo, va considerato che ognuna di queste aziende produce più prodotti appartenenti alla stessa famiglia, per cui la ricerca richiede che vengano sviluppate delle Google Dorks specifiche per ciascuno di essi. Di seguito una breve sintesi di alcune delle principali marche e relative queries.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/dorks_1.png" alt=""></p>
+<h3 id="uso-delle-google-dorks">Uso delle Google Dorks</h3>
+<p>Ora che abbiamo le idee un po' più chiare, almeno lo spero, proviamo ad eseguire alcune dorks per trovare specifici sistemi SCADA. Cominciamo con uno dei prodotti più diffusi in Italia negli impianti di automazione: il PLC della serie S7 di Siemens. Come nota, ti ricordo che è la stessa famiglia di controller che sono stati il bersaglio del famigerato attacco Stuxnet contro la centrale nucleare iraniana di Natanz nel 2010, probabilmente il più sofisticato attacco SCADA al momento  mai realizzato.</p>
+<p>La nostra Google Dork è composta in questo modo: <code>inurl:/Portal/Portal.mwsl</code></p>
+<p>Quando la utilizziamo in una ricerca di Google, otteniamo i risultati visualizzati di seguito.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/dorks_2.png" alt=""></p>
+<p>Se selezioniamo la prima voce dell&rsquo;elenco (Siemens S7-1200_1) accediamo alla pagina seguente:</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/dorks_3.png" alt=""></p>
+<p>Questo sembra essere il portale di amministrazione del PLC Siemens S7 da qualche parte nel mondo. Per proseguire la nostra ricerca, inseriamo l&rsquo;indirizzo IP che Google ci ha fornito (78.218.196.95) in Shodan per vedere dove si trovi. E' a Bruyères in Francia.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/shodan_siemens_1.png" alt=""></p>
+<p>Quando si fa clic sulla scheda &ldquo;<strong>Identification</strong>&rdquo; a sinistra, il PLC si identifica come una stazione S7-1200_1/PLC_1. Inoltre ci fornisce il numero di serie e la versione del firmware (così ci semplifica un eventuale attacco).</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/shodan_siemens_2.png" alt=""></p>
+<p>La stessa cosa succede se selezioniamo la voce &ldquo;<strong>Communication</strong>&rdquo; sempre dal menù a sinistra.</p>
+<p><img src="https://www.omarmorando.com/uploads/2021/shodan_siemens_3.png" alt=""></p>
+<p>Come possiamo vedere, la sicurezza dei sistemi ICS è ancora agli inizi, basandosi principalmente sulla sicurezza per oscurità. Queste semplici Google Dorks espongono in modo fin troppo facile degli impianti spesso critici senza il minimo criterio di sicurezza. Anche un hacker con abilità rudimentali può accedere ai sistemi di controllo e provocare il caos.</p>
+<h2 id="nota-importante"><strong>Nota importante</strong></h2>
+<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far comprendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://www.omarmorando.com/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://www.omarmorando.com/tags/dorks/">dorks</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1089 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-03 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://www.omarmorando.com/posts/2021/07/hacking-schneider-electric-building-automation/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Schneider Electric Building Automation</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://www.omarmorando.com/posts/2021/07/la-sicurezza-industriale/">
+                    <span class="button__text">La sicurezza industriale</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://www.omarmorando.com">Omar Morando</a></span>
+            
+            
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span><span>Made with &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://www.omarmorando.com/bundle.min.599099f1f14b78b657d524b28e10e0c5098e7cd46e9c7aed73d577068a276c3ff1bb234cbf29cb313333e83cf411727b43157c91ce5b809e2ffc81664614608e.js" integrity="sha512-WZCZ8fFLeLZX1SSyjhDgxQmOfNRunHrtc9V3BoonbD/xuyNMvynLMTMz6Dz0EXJ7QxV8kc5bgJ4v/IFmRhRgjg=="></script>
+
+
+
+    </body>
+</html>
