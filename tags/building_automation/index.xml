@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>building_automation on SCADAsploit</title>
-    <link>https://scadasploit.dev/tags/building_automation/</link>
+    <link>localhost/tags/building_automation/</link>
     <description>Recent content in building_automation on SCADAsploit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 04 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/building_automation/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 04 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="localhost/tags/building_automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking: Schneider Electric Building Automation</title>
-      <link>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</link>
+      <link>localhost/posts/2021/07/hacking-schneider-electric-building-automation/</link>
       <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</guid>
+      <guid>localhost/posts/2021/07/hacking-schneider-electric-building-automation/</guid>
       <description>I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30.</description>
     </item>
     

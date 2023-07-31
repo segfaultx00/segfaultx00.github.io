@@ -9,7 +9,7 @@
 <meta name="keywords" content=", hacking, ot, modbus" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
-<link rel="canonical" href="https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/" />
+<link rel="canonical" href="localhost/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/" />
 
 
     <title>
@@ -25,26 +25,26 @@
 
 
 
-<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+<link rel="stylesheet" href="localhost/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
 
 
 
-    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
-    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
-    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
-    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="localhost/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="localhost/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="localhost/favicon-16x16.png">
+    <link rel="manifest" href="localhost/site.webmanifest">
+    <link rel="mask-icon" href="localhost/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="localhost/favicon.ico">
     <meta name="msapplication-TileColor" content="">
 
 
 <meta itemprop="name" content="Hacking: simulazione Modbus TCP in Linux">
 <meta itemprop="description" content="I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP."><meta itemprop="datePublished" content="2021-07-08T15:09:35+02:00" />
 <meta itemprop="dateModified" content="2021-07-08T15:09:35+02:00" />
-<meta itemprop="wordCount" content="1003"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="wordCount" content="1003"><meta itemprop="image" content="localhost"/>
 <meta itemprop="keywords" content="hacking,ot,modbus," />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://scadasploit.dev"/>
+<meta name="twitter:image" content="localhost"/>
 
 <meta name="twitter:title" content="Hacking: simulazione Modbus TCP in Linux"/>
 <meta name="twitter:description" content="I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP."/>
@@ -54,7 +54,7 @@
     <meta property="og:title" content="Hacking: simulazione Modbus TCP in Linux" />
 <meta property="og:description" content="I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="localhost/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/" /><meta property="og:image" content="localhost"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-08T15:09:35+02:00" />
 <meta property="article:modified_time" content="2021-07-08T15:09:35+02:00" />
 
@@ -83,7 +83,7 @@
         <div class="container">
             <header class="header">
     <span class="header__inner">
-        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+        <a href="localhost/" style="text-decoration: none;">
     <div class="logo">
         
             <span class="logo__mark">$</span>
@@ -101,7 +101,7 @@
         <span class="header__right">
             
                 <nav class="menu">
-    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    <ul class="menu__inner"><li><a href="localhost/features/">01_Features</a></li><li><a href="localhost/posts/">02_Blogs</a></li><li><a href="localhost/contact/">03_Contact</a></li>
     </ul>
 </nav>
 
@@ -135,7 +135,7 @@
 
     <article>
       <h1 class="post-title">
-        <a href="https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/">Hacking: simulazione Modbus TCP in Linux</a>
+        <a href="localhost/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/">Hacking: simulazione Modbus TCP in Linux</a>
       </h1>
 
       
@@ -146,19 +146,19 @@
 
       <div class="post-content">
         <p>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_1.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_1.png" alt=""></p>
 <p>Se vuoi approfondire l&rsquo;argomento ti suggerisco di leggere la guida che ho scritto &ldquo;<a href="hacking-modbus.md">Hacking: Modbus</a>&rdquo;.</p>
 <p>In questo tutorial simuleremo una configurazione master e slave Modbus per illustrare come questo protocollo ormai quasi onnipresente nei sistemi OT funzioni in un ambiente industriale. Lo scopo è di capire meglio come funziona il protocollo e come può essere hackerato, manipolato e protetto.</p>
 <h2 id="installazione">Installazione</h2>
 <p>Modbus utilizza un&rsquo;architettura master/slave (client/server) in cui solo un dispositivo può inviare le richieste. Gli slave/server forniscono i dati richiesti al master o eseguono l&rsquo;azione richiesta dal master stesso. Uno slave è qualsiasi dispositivo periferico (trasduttore, valvola, unità di rete o altro ancora) che elabora le informazioni e invia il suo output al master tramite il protocollo Modbus.</p>
 <p>Nel nostro caso useremo due software di simulazione disponibili in forma gratuita, uno con funzionalità di master chiamato <a href="https://sourceforge.net/projects/qmodmaster/">QModMaster</a> e l&rsquo;altro in versione slave, dal nome <a href="https://sourceforge.net/projects/modbuspal/">ModbusPal</a>.</p>
 <p><strong>QModMaster</strong> è un&rsquo;applicazione open source basata sul framework Qt che implementa le funzioni di un master Modbus. E&rsquo; dotata di una GUI che consente una facile configurazione delle modalità di comunicazione (RTU, TCP) e di un bus monitor per analizzare il traffico dei pacchetti di comunicazione. Nel caso si utilizzi Windows è disponibile la versione binaria pre-compilata. Nel nostro caso, faremo il download del codice sorgente e ne eseguiremo la compilazione su una macchina Linux.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_2.png" alt="QModMuster in esecuzione su Linux"></p>
+<p><img src="localhost/uploads/2021/mod_sim_2.png" alt="QModMuster in esecuzione su Linux"></p>
 <p><strong>ModbusPal</strong> è un&rsquo;applicazione scritta in Java, quindi non necessita di alcuna compilazione in quanto indipendente dall&rsquo;host di esecuzione. Simula un dispositivo slave Modbus, con alcune funzioni avanzate come gli scripts Python.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_3.png" alt="ModbusPal con la tipica interfaccia &ldquo;Java style&rdquo;"></p>
+<p><img src="localhost/uploads/2021/mod_sim_3.png" alt="ModbusPal con la tipica interfaccia &ldquo;Java style&rdquo;"></p>
 <p>Come detto, dobbiamo compilare QModBus in modo che possa essere eseguito su sistemi Linux, nel mio caso Kubuntu 19.10. Scarichiamo il coside sorgente <a href="https://sourceforge.net/projects/qmodmaster/files/qModMaster-code-0.5.2-3.zip/download">qModMaster-code-0.5.2-3.zip</a> e salviamolo in una cartella di lavoro, nel mio caso <code>~/Develop/Projects/Modbus/qModMaster-code-0.5.2-3</code>.</p>
 <p>Se listiamo i files presenti nella cartella vediamo che è presente il file <code>qModMaster.pro</code>, tipico di un progetto sviluppato con Qt. Per la compilazione è necessario disporre di una versione minima Qt 5.2.1 o superiore, scaricabile da <a href="http://www.qt.io/download/">questo link</a>.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_4.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_4.png" alt=""></p>
 <p>A questo punto possiamo usare il comando <code>qmake</code> per convertire il file .pro in Makefile, compilabile con il più classico <code>make</code>.</p>
 <pre tabindex="0"><code>$ qmake -o Makefile qModMaster.pro 
 $ make
@@ -174,11 +174,11 @@ Entrambe le applicazioni richiedono privilegi <code>sudo</code> per poter accede
 Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p>
 <p><strong>Modbus slaves</strong><br>
 ****Aggiungiamo un nodo slave premendo il pulsante &ldquo;Add&rdquo;, selezioniamo il numero dello slave e inseriamo un nome, nel nostro caso &ldquo;Slave1&rdquo;.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_5.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_5.png" alt=""></p>
 <p>A questo punto dobbiamo configurare i parametri che rendiamo disponibili nel nostro slave. Click sull&rsquo;icona con l&rsquo;occhio per aprire la schermata delle proprietà. Successivamente, click su &ldquo;Add&rdquo; e inseriamo il numero di registri che vogliamo aggiungere, nel nostro caso da 1 a 8.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_6.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_6.png" alt=""></p>
 <p>Ed ecco che compare la lista degli holding registers che abbiamo creato, con valori di default a 0. Possiamo già modificare il loro valore a piacimento, oppure farlo quando anche il master è attivo per vederne la lettura aggiornata in tempo reale.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_7.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_7.png" alt=""></p>
 <p>Siamo pronti per avviare lo slave, premiamo il pulsante &ldquo;Run&rdquo; della schermata principale e passiamo a configurare il master.</p>
 <h3 id="configurazione-del-modulo-master-qmodmaster"><strong>Configurazione del modulo master QModMaster</strong></h3>
 <p>La configurazione del modulo master è altrettanto semplice, occorre tener presente alcuni parametri coerenti con lo slave che abbiamo creato:</p>
@@ -186,19 +186,19 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
 <strong>Unit ID:</strong> 1 (corrisponde al numero dello slave che abbiamo dichiarato prima)<br>
 <strong>Function Code:</strong> Read Holding Registers (0x03)<br>
 <strong>Number of Registers:</strong> 8</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_8.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_8.png" alt=""></p>
 <p>I &ldquo;Function Code&rdquo; e &ldquo;Mumber of Registers&rdquo; corrispondono al tipo e alla quantità di dati che abbiamo dichiarato nel modulo slave.</p>
 <p>Di fault l&rsquo;app master è configurata in modo che comunichi con indirizzp IP 127.0.0.1 e porta 502 (come anche lo slave). Possiamo cambiare questi valori selezionando la schermata dal menù &ldquo;Options&rdquo; e poi &ldquo;Modbus TCP&rdquo;.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_9.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_9.png" alt=""></p>
 <p>A questo punto non ci resta che attivare la connessione e l&rsquo;aggiornamento continuo dei dati tramite i pulsanti &ldquo;Connect&rdquo; e &ldquo;Scan&rdquo;. Il tempo di aggiornamento continuo dei dati è determinano dal parametro &ldquo;Scan Rate (ms)&rdquo;, che nel nostro caso corrisponde a un intervallo di 1 secondo.</p>
 <h3 id="aggiornamento-dei-dati">Aggiornamento dei dati</h3>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_10.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_10.png" alt=""></p>
 <p>Ed ecco che se andiamo a modificare i dati dei registri del nostro slave avremo il corrispondente aggiornamento sul master.</p>
 <h3 id="proviamo-a-scrivere-col-master">Proviamo a scrivere col master</h3>
 <p>Ora che abbiamo visto come sia possibile leggere i dati dallo slave proviamo a modificare i valori dei registri dal master. Interrompiamo lo scan continuo e scegliamo &ldquo;Write Multiple Registers&rdquo; nel parametro &ldquo;Function Code&rdquo; della schermata principale di QModMaster.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_11.png" alt="Selezioniamo Write Multiple Registers"></p>
+<p><img src="localhost/uploads/2021/mod_sim_11.png" alt="Selezioniamo Write Multiple Registers"></p>
 <p>Riattiviamo lo scan continuo, ora possiamo fare un doppio click su ciascun campo del registro per modificarne il valore, che vedremo aggiornarsi sul modulo slave.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/mod_sim_12.png" alt=""></p>
+<p><img src="localhost/uploads/2021/mod_sim_12.png" alt=""></p>
 <h2 id="nota-importante"><strong>Nota importante</strong></h2>
 <p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
 <p>Stay safe, stay free.</p>
@@ -213,9 +213,9 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
     <p>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
 
-        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
-        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
-        <span class="tag"><a href="https://scadasploit.dev/tags/modbus/">modbus</a></span>
+        <span class="tag"><a href="localhost/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="localhost/tags/ot/">ot</a></span>
+        <span class="tag"><a href="localhost/tags/modbus/">modbus</a></span>
         
     </p>
 
@@ -257,7 +257,7 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
         <div class="pagination__buttons">
             
             <span class="button previous">
-                <a href="https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/">
+                <a href="localhost/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/">
                     <span class="button__icon">←</span>
                     <span class="button__text">Hacking: attaccare un PLC con Stuxnet</span>
                 </a>
@@ -266,7 +266,7 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
 
             
             <span class="button next">
-                <a href="https://scadasploit.dev/posts/2021/07/hacking-modbus/">
+                <a href="localhost/posts/2021/07/hacking-modbus/">
                     <span class="button__text">Hacking: Modbus</span>
                     <span class="button__icon">→</span>
                 </a>
@@ -290,7 +290,7 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
     <div class="footer__inner">
         <div class="footer__content">
             <span>&copy; 2023</span>
-            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            <span><a href="localhost">segfaultx00</a></span>
             
             
             <span>Made with &#10084</span>
@@ -307,7 +307,7 @@ Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p
 
 
 
-<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+<script type="text/javascript" src="localhost/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
 
 
 

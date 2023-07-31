@@ -2,91 +2,91 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://scadasploit.dev/</loc>
+    <loc>localhost/</loc>
     <lastmod>2023-05-09T18:14:13+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/contact/</loc>
+    <loc>localhost/contact/</loc>
     <lastmod>2022-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/about/</loc>
+    <loc>localhost/about/</loc>
     <lastmod>2022-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/workshop/</loc>
+    <loc>localhost/workshop/</loc>
     <lastmod>2022-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/</loc>
+    <loc>localhost/posts/</loc>
     <lastmod>2022-04-22T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/scadasploit/</loc>
+    <loc>localhost/tags/scadasploit/</loc>
     <lastmod>2022-04-22T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2022/04/scadasploit-module-modbus-payload-transfer/</loc>
+    <loc>localhost/posts/2022/04/scadasploit-module-modbus-payload-transfer/</loc>
     <lastmod>2022-04-22T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/</loc>
+    <loc>localhost/tags/</loc>
     <lastmod>2022-04-22T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2022/04/scadasploit-module-modbus-scan/</loc>
+    <loc>localhost/posts/2022/04/scadasploit-module-modbus-scan/</loc>
     <lastmod>2022-04-17T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2022/04/scadasploit-framework/</loc>
+    <loc>localhost/posts/2022/04/scadasploit-framework/</loc>
     <lastmod>2022-04-14T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/hacking/</loc>
+    <loc>localhost/tags/hacking/</loc>
     <lastmod>2021-07-11T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</loc>
+    <loc>localhost/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</loc>
     <lastmod>2021-07-11T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/ot/</loc>
+    <loc>localhost/tags/ot/</loc>
     <lastmod>2021-07-11T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</loc>
+    <loc>localhost/posts/2021/07/hacking-pentest-on-a-plc/</loc>
     <lastmod>2021-07-10T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</loc>
+    <loc>localhost/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</loc>
     <lastmod>2021-07-09T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</loc>
+    <loc>localhost/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</loc>
     <lastmod>2021-07-08T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/modbus/</loc>
+    <loc>localhost/tags/modbus/</loc>
     <lastmod>2021-07-08T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-modbus/</loc>
+    <loc>localhost/posts/2021/07/hacking-modbus/</loc>
     <lastmod>2021-07-07T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</loc>
+    <loc>localhost/posts/2021/07/hacking-profibus/profinet/</loc>
     <lastmod>2021-07-06T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/profibus/</loc>
+    <loc>localhost/tags/profibus/</loc>
     <lastmod>2021-07-06T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</loc>
+    <loc>localhost/posts/2021/07/hacking-metasploit-scada-modules/</loc>
     <lastmod>2021-07-05T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/building_automation/</loc>
+    <loc>localhost/tags/building_automation/</loc>
     <lastmod>2021-07-04T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</loc>
+    <loc>localhost/posts/2021/07/hacking-schneider-electric-building-automation/</loc>
     <lastmod>2021-07-04T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/tags/dorks/</loc>
+    <loc>localhost/tags/dorks/</loc>
     <lastmod>2021-07-03T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</loc>
+    <loc>localhost/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</loc>
     <lastmod>2021-07-03T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/la-sicurezza-industriale/</loc>
+    <loc>localhost/posts/2021/07/la-sicurezza-industriale/</loc>
     <lastmod>2021-07-02T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</loc>
+    <loc>localhost/posts/2021/07/differences-between-it-and-ot/</loc>
     <lastmod>2021-07-01T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/categories/</loc>
+    <loc>localhost/categories/</loc>
   </url><url>
-    <loc>https://scadasploit.dev/features/</loc>
+    <loc>localhost/features/</loc>
   </url><url>
-    <loc>https://scadasploit.dev/series/</loc>
+    <loc>localhost/series/</loc>
   </url>
 </urlset>
