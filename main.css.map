@@ -1,7 +1,7 @@
 {
 	"version": 3,
 	"file": "main.css",
-	"sourceRoot": "/Users/omarmorando/Documents/Progetti/SCADAsploit/Website/scadasploit",
+	"sourceRoot": "/home/omar/Documents/Progetti/SCADAsploit/Website/scadasploit",
 	"sources": [
 		"themes/hello/assets/scss/main.scss",
 		"themes/hello/assets/scss/_normalize.scss",
