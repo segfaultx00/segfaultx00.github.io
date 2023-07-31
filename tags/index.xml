@@ -2,72 +2,72 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on SCADAsploit</title>
-    <link>https://scadasploit.dev/tags/</link>
+    <link>https://www.scadasploit.dev/tags/</link>
     <description>Recent content in Tags on SCADAsploit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Fri, 22 Apr 2022 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 22 Apr 2022 15:09:35 +0200</lastBuildDate><atom:link href="https://www.scadasploit.dev/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SCADAsploit</title>
-      <link>https://scadasploit.dev/tags/scadasploit/</link>
+      <link>https://www.scadasploit.dev/tags/scadasploit/</link>
       <pubDate>Fri, 22 Apr 2022 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/scadasploit/</guid>
+      <guid>https://www.scadasploit.dev/tags/scadasploit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hacking</title>
-      <link>https://scadasploit.dev/tags/hacking/</link>
+      <link>https://www.scadasploit.dev/tags/hacking/</link>
       <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/hacking/</guid>
+      <guid>https://www.scadasploit.dev/tags/hacking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ot</title>
-      <link>https://scadasploit.dev/tags/ot/</link>
+      <link>https://www.scadasploit.dev/tags/ot/</link>
       <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/ot/</guid>
+      <guid>https://www.scadasploit.dev/tags/ot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>modbus</title>
-      <link>https://scadasploit.dev/tags/modbus/</link>
+      <link>https://www.scadasploit.dev/tags/modbus/</link>
       <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/modbus/</guid>
+      <guid>https://www.scadasploit.dev/tags/modbus/</guid>
       <description></description>
     </item>
     
     <item>
       <title>profibus</title>
-      <link>https://scadasploit.dev/tags/profibus/</link>
+      <link>https://www.scadasploit.dev/tags/profibus/</link>
       <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/profibus/</guid>
+      <guid>https://www.scadasploit.dev/tags/profibus/</guid>
       <description></description>
     </item>
     
     <item>
       <title>building_automation</title>
-      <link>https://scadasploit.dev/tags/building_automation/</link>
+      <link>https://www.scadasploit.dev/tags/building_automation/</link>
       <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/building_automation/</guid>
+      <guid>https://www.scadasploit.dev/tags/building_automation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>dorks</title>
-      <link>https://scadasploit.dev/tags/dorks/</link>
+      <link>https://www.scadasploit.dev/tags/dorks/</link>
       <pubDate>Sat, 03 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/tags/dorks/</guid>
+      <guid>https://www.scadasploit.dev/tags/dorks/</guid>
       <description></description>
     </item>
     

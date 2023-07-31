@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>profibus on SCADAsploit</title>
-    <link>https://scadasploit.dev/tags/profibus/</link>
+    <link>https://www.scadasploit.dev/tags/profibus/</link>
     <description>Recent content in profibus on SCADAsploit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Tue, 06 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/profibus/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 06 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://www.scadasploit.dev/tags/profibus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking: Profibus/Profinet</title>
-      <link>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</link>
+      <link>https://www.scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</link>
       <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</guid>
+      <guid>https://www.scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</guid>
       <description>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&amp;rsquo;IT. Le installazioni ICS utilizzano un&amp;rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &amp;ldquo;sicurezza per oscurità&amp;rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</description>
     </item>
     
