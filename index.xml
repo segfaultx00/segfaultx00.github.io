@@ -9,18 +9,6 @@
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 09 May 2023 18:14:13 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title></title>
-      <link>https://scadasploit.dev/_index_completo/</link>
-      <pubDate>Tue, 09 May 2023 18:14:13 +0200</pubDate>
-      
-      <guid>https://scadasploit.dev/_index_completo/</guid>
-      <description>SCADAsploit Prova This is my title #1 fsjdfksdhsd hjak jasdk hsdak jhsadkjsahdksa jdhka shk ssdfsdfasdfsad adfasdff asdf asd fas df asdf as df asdf asdfasd f js sajhd ksajka jhfka sdhfka jh a
-This is my title #2
-fsjdfksdhsd hjak jasdk hsdak jhsadkjsahdksa jdhka shk ssdfsdfasdfsad adfasdff asdf asd fas df asdf as df asdf asdfasd f js sajhd ksajka jhfka sdhfka jh a
-This is my title #2 fsjdfksdhsd hjak jasdk hsdak jhsadkjsahdksa jdhka shk ssdfsdfasdfsad adfasdff asdf asd fas df asdf as df asdf asdfasd f js sajhd ksajka jhfka sdhfka jh a</description>
-    </item>
-    
-    <item>
       <title>Contact</title>
       <link>https://scadasploit.dev/contact/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
@@ -107,6 +95,15 @@ perimeter protection, such as firewalls to reduce the risk of unwanted network t
       <guid>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</guid>
       <description>Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&amp;rsquo;occhiata al worm Stuxnet.;
 Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs.</description>
+    </item>
+    
+    <item>
+      <title>Hacking: simulazione Modbus TCP in Linux</title>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</link>
+      <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
+      
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</guid>
+      <description>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</description>
     </item>
     
   </channel>
