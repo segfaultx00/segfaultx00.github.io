@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="segfaultx00 ">
-<meta name="description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30." />
+<meta name="description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)." />
 <meta name="keywords" content=", hacking, ot, building_automation" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -39,20 +39,20 @@
 
 
 <meta itemprop="name" content="Hacking: Schneider Electric Building Automation">
-<meta itemprop="description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30."><meta itemprop="datePublished" content="2021-07-04T15:09:35+02:00" />
+<meta itemprop="description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)."><meta itemprop="datePublished" content="2021-07-04T15:09:35+02:00" />
 <meta itemprop="dateModified" content="2021-07-04T15:09:35+02:00" />
-<meta itemprop="wordCount" content="1112"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="wordCount" content="1107"><meta itemprop="image" content="https://scadasploit.dev"/>
 <meta itemprop="keywords" content="hacking,ot,building_automation," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://scadasploit.dev"/>
 
 <meta name="twitter:title" content="Hacking: Schneider Electric Building Automation"/>
-<meta name="twitter:description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30."/>
+<meta name="twitter:description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)."/>
 
 
 
     <meta property="og:title" content="Hacking: Schneider Electric Building Automation" />
-<meta property="og:description" content="I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30." />
+<meta property="og:description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-07-04T15:09:35+02:00" />
@@ -145,60 +145,60 @@
       
 
       <div class="post-content">
-        <p>I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30.000 vite). Nonostante ciò, questi sistemi sono insolitamente vulnerabili all&rsquo;hacking e alle attività dannose.</p>
-<p>In questo tutorial mostrerò come hackerare un sistema di controllo industriale di Schneider Electric, uno dei maggiori produttori al mondo di sistemi ICS e per la Buinding Automation. A causa della debole sicurezza integrata in fase di sviluppo, problema molto diffuso nei prodotti IIoT, alcuni di questi sistemi sono incredibilmente facili da violare e prenderne il controllo.</p>
-<h3 id="conosciamo-meglio-il-nostro-target">Conosciamo meglio il nostro target</h3>
-<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> è una società con sede a Parigi, leader mondiale nel settore del controllo industriale. Sono stati tra i pionieri in questo campo introducendo molti concetti innovativi poi replicati dai concorrenti, e hanno anche il merito di aver sviluppato il protocollo di comunicazione più utilizzato nei sistemi di controllo industriale: il <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>.</p>
-<p>Schneider Electric all&rsquo;interno del proprio vasto catalogo conta anche una gamma di PLC dedicati all&rsquo;automazione degli edifici.</p>
-<p><img src="https://scadasploit.dev/images/2021/building_1.png" alt="Un server della famiglia SmartStruxure"></p>
-<p>Uno dei loro prodotti, lo SmartStruxure Automation Server, viene utilizzato negli edifici commerciali per controllare e automatizzare i numerosi sistemi tra cui riscaldamento e raffreddamento, illuminazione, sicurezza, ecc. Nel 2016, il ricercatore indipendente Karn Ganeshen ha individuato una vulnerabilità 0-day, oggetto poi di una patch da parte di Schneider, che permetteva di entrare nel server con una shell e acquisire i privilegi di root.</p>
-<p>Ma andiamo con ordine.</p>
-<h3 id="trovare-i-server-schneider-automation-con-shodan">Trovare i server Schneider Automation con Shodan</h3>
-<p>Possiamo trovare questi server di automazione su Shodan cercando:</p>
+        <p>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives). Despite this, these systems are unusually vulnerable to hacking and malicious activity.</p>
+<p>In this tutorial I will show how to hack an industrial control system from Schneider Electric, one of the world&rsquo;s largest manufacturers of ICS and Building Automation systems. Due to weak in-development security, a common problem with IIoT products, some of these systems are incredibly easy to hack and take over.</p>
+<h3 id="we-know-our-target-better">We know our target better</h3>
+<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> is a Paris-based company, world leader in the industrial control sector. They were among the pioneers in this field by introducing many innovative concepts then replicated by their competitors, and they also have the merit of having developed the most used communication protocol in industrial control systems: the [Modbus](<a href="https://it.wikipedia">https://it.wikipedia</a>. org/wiki/Modbus).</p>
+<p>Schneider Electric also has a range of PLCs dedicated to building automation in its vast catalogue.</p>
+<p><img src="https://scadasploit.dev/images/2021/building_1.png" alt="A server of the SmartStruxure family"></p>
+<p>One of their products, the SmartStruxure Automation Server, is used in commercial buildings to control and automate the many systems including heating and cooling, lighting, security, etc. In 2016, independent researcher Karn Ganeshen discovered a 0-day vulnerability, which was later patched by Schneider, which allowed logging into the server with a shell and acquiring root privileges.</p>
+<p>But let&rsquo;s go in order.</p>
+<h3 id="find-schneider-automation-servers-with-shodan">Find Schneider Automation servers with Shodan</h3>
+<p>We can find these automation servers on Shodan by searching for:</p>
 <p><code>&quot;schneider electric&quot; automation</code></p>
-<p><img src="https://scadasploit.dev/images/2021/building_2.png" alt="I risultati su Shodan"></p>
-<p>Come possiamo notare, compare un lungo elenco di dispositivi direttamente connessi a Internet, con il relativo indirizzo IP pubblico. Nel nostro caso userò un prodotto dimostrativo all&rsquo;interno della rete locale.</p>
-<h2 id="la-vulnerabilità">La vulnerabilità</h2>
-<p>La vulnerabilità in oggetto consente all&rsquo;autore dell&rsquo;attacco di connettersi al server di automazione con una shell SSH utilizzando le credenziali predefinite e di ottenere facilmente i privilegi di &ldquo;root&rdquo;. Così facendo, l&rsquo;attaccante non possiede solo la &ldquo;scatola&rdquo;, ma l&rsquo;intero edificio!</p>
-<h3 id="connessione-al-building-automation-server">Connessione al Building Automation Server</h3>
-<p>Innanzitutto, colleghiamoci al nostro server con una shell SSH. Userò Kali Linux, ma dal momento che questo hack è molto semplice può essere eseguito usando qualsiasi distribuzione, senza l&rsquo;ausilio di strumenti di hacking particolari come ad es. Metasploit.</p>
+<p><img src="https://scadasploit.dev/images/2021/building_2.png" alt="The results on Shodan"></p>
+<p>As we can see, a long list of devices directly connected to the Internet appears, with the relative public IP address. In our case I will use a demo product within the local network.</p>
+<h2 id="vulnerability">Vulnerability</h2>
+<p>The vulnerability in question allows an attacker to connect to the automation server with an SSH shell using default credentials and easily gain &ldquo;root&rdquo; privileges. By doing so, the attacker not only owns the &ldquo;box&rdquo;, but the entire building!</p>
+<h3 id="connection-to-building-automation-server">Connection to Building Automation Server</h3>
+<p>First, let&rsquo;s connect to our server with an SSH shell. I will be using Kali Linux, but since this hack is very simple it can be done using any distribution, without the help of special hacking tools such as e.g. Metasploit.</p>
 <pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
-</code></pre><p>Dopo che ci siamo connessi il server ci chiederà una password. Utilizziamo la password predefinita &ldquo;<strong>admin</strong>&rdquo;.</p>
+</code></pre><p>After we connect the server will ask us for a password. We use the default password &ldquo;<strong>admin</strong>&rdquo;.</p>
 <p><img src="https://scadasploit.dev/images/2021/root_1.png" alt=""></p>
-<p>A questo punto siamo all&rsquo;interno dell&rsquo;account amministratore di Automation Server. Possiamo digitare <code>help</code> per vedere quali comandi possiamo usare con questo account.</p>
+<p>At this point we are inside the Automation Server administrator account. We can type <code>help</code> to see what commands we can use with this account.</p>
 <p><img src="https://scadasploit.dev/images/2021/root_2.png" alt=""></p>
-<p>Ad esempio, digitiamo <code>release</code>. Il sistema risponde con le informazioni sulla versione del server. Inoltre, va notato che uno dei comandi è <code>reboot</code>, che potrebbe essere utile nel caso di un attacco DoS.</p>
+<p>For example, we type <code>release</code>. The system responds with server version information. Also, it should be noted that one of the commands is <code>reboot</code>, which could be useful in the event of a DoS attack.</p>
 <p><img src="https://scadasploit.dev/images/2021/root_3.png" alt=""></p>
-<p>Possiamo inoltre vedere il tempo trascorso dall&rsquo;ultimo avvio digitando il comando <code>uptime</code>. Questa informazione è sempre molto utile in fase di attacco perchè può indicare, normalmente, il tempo trascorso da quando il sistema ha subito una patch di aggiornamento.</p>
+<p>We can also see the elapsed time since the last boot by typing the <code>uptime</code> command. This information is always very useful in the attack phase because it can normally indicate the time elapsed since the system has undergone an update patch.</p>
 <pre tabindex="0"><code>admin:&gt; uptime
 </code></pre><p><img src="https://scadasploit.dev/images/2021/root_4.png" alt=""></p>
-<p>Uno dei punti deboli di questo sistema è che possiamo usare il comando Linux pipe &ldquo;|&rdquo; per inoltrare ulteriori comandi al server sottostante. Facendo un esempio pratico, possiamo vedere il file &ldquo;passwd&rdquo; sul server digitando:</p>
+<p>One of the weaknesses of this system is that we can use the Linux pipe command &ldquo;|&rdquo; to forward further commands to the underlying server. Taking a practical example, we can see the &ldquo;passwd&rdquo; file on the server by typing:</p>
 <pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
 </code></pre><p><img src="https://scadasploit.dev/images/2021/root_5.png" alt=""></p>
-<p>In questo modo abbiamo elencato tutti gli account presenti sul server. Naturalmente questo file contiene solo gli account e non le password, che invece si trovano nel file <strong>/etc/shadow</strong> accessibile unicamente con i diritti di <strong>root</strong>.</p>
+<p>In this way we have listed all the accounts present on the server. Naturally this file contains only the accounts and not the passwords, which instead are found in the <strong>/etc/shadow</strong> file accessible only with <strong>root</strong> rights.</p>
 <h3 id="privilege-escalation">Privilege escalation</h3>
-<p>La fase di privilege escalation, nella maggior parte dei casi in campo IT, richiede procedure a volte lunghe e complesse, indipendentemente che si stia attaccando una macchina Windows o Linux. Ma come ho detto, nel campo OT non sempre i livelli di sicurezza sono (in questo caso, &ldquo;erano&rdquo;) adeguati. Possiamo ottenere il livello di root semplicemente digitando:</p>
+<p>The privilege escalation phase, in most cases in the IT field, requires sometimes long and complex procedures, regardless of whether you are attacking a Windows or Linux machine. But as I said, in the OT field the security levels are not always (in this case, &ldquo;were&rdquo;) adequate. We can get the root level by simply typing:</p>
 <pre tabindex="0"><code>admin:&gt; sudo -i
 </code></pre><p><img src="https://scadasploit.dev/images/2021/root_6.png" alt=""></p>
-<p><strong>Boom!</strong> La configurazione predefinita di questo server di automazione dell&rsquo;edificio non ha password per l&rsquo;account &ldquo;root&rdquo;, quindi è sufficiente premere Invio quando viene richiesta una password.</p>
-<p>Come possiamo vedere, il prompt diventa verde e indica che siamo root!</p>
-<p>Dato che ora abbiamo i privilegi di root siamo in grado di fare praticamente qualsiasi cosa. Digitiamo <code>cat /etc/shadow</code> per vedere se riusciamo a recuperare gli hash delle password nella cartella <strong>/etc/shadow</strong>.</p>
+<p><strong>Boom!</strong> The default configuration of this building automation server has no password for the &ldquo;root&rdquo; account, so just hit Enter when prompted for a password.</p>
+<p>As we can see, the prompt turns green and indicates that we are root!</p>
+<p>Since we now have root privileges we are able to do just about anything. Type <code>cat /etc/shadow</code> to see if we can recover the password hashes in the <strong>/etc/shadow</strong> folder.</p>
 <p><img src="https://scadasploit.dev/images/2021/root_7.png" alt=""></p>
-<p>Ed ecco che siamo riusciti a ottenere tutti gli account e i loro hash delle password! Se necessario, potremmo scoprirle attraverso un attacco brute-force come <strong>hashcat</strong> per recuperare le password in chiaro.</p>
-<p>È probabile che il file di configurazione per Automation Server sia nella directory <strong>/etc</strong>. Entriamo in questa cartella ed elenchiamo tutti i file e le directory.</p>
+<p>Lo and behold we managed to get all the accounts and their password hashes! If needed, we could discover them through a brute-force attack like <strong>hashcat</strong> to recover plaintext passwords.</p>
+<p>The configuration file for the Automation Server is likely to be in the <strong>/etc</strong> directory. We enter this folder and list all the files and directories.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root:&gt; cd /etc
 </span></span><span style="display:flex;"><span>root:&gt; ls -l
 </span></span></code></pre></div><p><img src="https://scadasploit.dev/images/2021/root_8.png" alt=""></p>
-<p>Se scorriamo questo elenco troviamo un file chiamato &ldquo;whitelist.rules&rdquo;, che probabilmente contiene le regole per la connessione al server. Apriamolo.</p>
+<p>If we scroll through this list we find a file called &ldquo;whitelist.rules&rdquo;, which probably contains the rules for connecting to the server. Let&rsquo;s open it.</p>
 <pre tabindex="0"><code>root:&gt; cat whitelist.rules
 </code></pre><p><img src="https://scadasploit.dev/images/2021/root_9.png" alt=""></p>
-<p>L&rsquo;amministratore di sistema non ha mai impostato &ldquo;whitelist.rules&rdquo; su questo server e, di conseguenza, chiunque può connettersi.</p>
-<p>Infine, poiché abbiamo i privilegi di root possiamo aggiungere un nuovo utente che possano fare da backdoor. Prima di partire, posso aggiungermi agli utenti, concedermi i privilegi di root e aggiungermi a whitelist.rules, in modo che anche se l&rsquo;amministratore dovesse correggere questa vulnerabilità avrò comunque un account e potrò accedere ancora a questo server.</p>
+<p>The system administrator has never set &ldquo;whitelist.rules&rdquo; on this server and, therefore, anyone can connect.</p>
+<p>Finally, since we have root privileges we can add a new user who can act as a backdoor. Before I leave, I can add myself to users, grant myself root privileges, and add myself to whitelist.rules, so that even if the admin fixes this vulnerability I will still have an account and can still access this server.</p>
 <pre tabindex="0"><code>root:&gt; useradd cyberhood
-</code></pre><p>Questo esempio risale alle vulnerabilità scoperte nel 2016 e riconosciute da Schneider Electric, che successivamente ha aggiornato i propri sistemi al fine di impedire un accesso così facile al server. Maggiori informazioni le puoi <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">trovare qui</a>.</p>
-<p><strong>N.B.</strong> Lo scopo di questa guida non è certo quello di screditare un produttore a discapito di un altro, ma vuole unicamente evidenziare quanto lavoro ci sia da fare sui <strong>prodotti OT di tutti i principali produttori</strong> al fine di renderli &ldquo;<strong>secure by design</strong>&rdquo;, progettati e costruiti con criteri di sicurezza intrinseca.</p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far comprendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
+</code></pre><p>This example dates back to vulnerabilities discovered in 2016 and recognized by Schneider Electric, which subsequently updated its systems in order to prevent such easy access to the server. You can find more information <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">here</a>.</p>
+<p><strong>NB</strong> The purpose of this guide is certainly not to discredit one manufacturer to the detriment of another, but only wants to highlight how much work there is to be done on the <strong>OT products of all the main manufacturers</strong> in order to make them &ldquo;<strong>secure by design</strong>&rdquo;, designed and built with intrinsic safety criteria.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
 <p>Stay safe, stay free.</p>
 
       </div>
@@ -227,7 +227,7 @@
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1112 Words
+        1107 Words
       </p>
 
       <p>

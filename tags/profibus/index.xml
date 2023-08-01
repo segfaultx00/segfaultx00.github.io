@@ -6,13 +6,14 @@
     <description>Recent content in profibus on SCADAsploit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://scadasploit.dev/tags/profibus/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Tue, 06 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/profibus/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking: Profibus/Profinet</title>
-      <link>https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</link>
+      <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/</guid>
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</guid>
       <description>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that they often share have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</description>
     </item>
     

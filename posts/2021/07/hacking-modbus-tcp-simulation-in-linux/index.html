@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one." />
+<meta name="keywords" content=", hacking, ot, modbus" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/2021/07/hacking-modbus-tcp-simulation-in-linux/" />
+
+
+    <title>
+        
+            Hacking: Modbus TCP simulation in Linux :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Modbus TCP simulation in Linux">
+<meta itemprop="description" content="ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one."><meta itemprop="datePublished" content="2021-07-08T15:09:35+02:00" />
+<meta itemprop="dateModified" content="2021-07-08T15:09:35+02:00" />
+<meta itemprop="wordCount" content="1054"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,ot,modbus," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: Modbus TCP simulation in Linux"/>
+<meta name="twitter:description" content="ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one."/>
+
+
+
+    <meta property="og:title" content="Hacking: Modbus TCP simulation in Linux" />
+<meta property="og:description" content="ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/2021/07/hacking-modbus-tcp-simulation-in-linux/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-07-08T15:09:35+02:00" />
+<meta property="article:modified_time" content="2021-07-08T15:09:35+02:00" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-07-08 15:09:35 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        5 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/2021/07/hacking-modbus-tcp-simulation-in-linux/">Hacking: Modbus TCP simulation in Linux</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a> protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_1.png" alt=""></p>
+<p>If you want to learn more about the topic, I suggest you read the guide I wrote &ldquo;<a href="hacking-modbus.md">Hacking: Modbus</a>&rdquo;.</p>
+<p>In this tutorial we will simulate a Modbus master and slave configuration to illustrate how this now almost ubiquitous protocol in OT systems works in an industrial environment. The aim is to better understand how the protocol works and how it can be hacked, manipulated and protected.</p>
+<h2 id="installation">Installation</h2>
+<p>Modbus uses a master/slave (client/server) architecture where only one device can send requests. The slaves/servers provide the requested data to the master or perform the action requested by the master itself. A slave is any peripheral device (transducer, valve, network unit, etc.) that processes information and sends its output to the master via the Modbus protocol.</p>
+<p>In our case we will use two simulation software available for free, one with master functionality called <a href="https://sourceforge.net/projects/qmodmaster/">QModMaster</a> and the other in slave version, called <a href="https://sourceforge.net/projects/modbuspal/">ModbusPal</a>.</p>
+<p><strong>QModMaster</strong> is an open source application based on the Qt framework which implements the functions of a Modbus master. It is equipped with a GUI that allows easy configuration of the communication modes (RTU, TCP) and with a bus monitor to analyze the traffic of the communication packets. If you use Windows, the pre-compiled binary version is available. In our case, we will download the source code and compile it on a Linux machine.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_2.png" alt="QModMuster running on Linux"></p>
+<p><strong>ModbusPal</strong> is an application written in Java, therefore it does not need any compilation as it is independent from the execution host. Simulate a Modbus slave device, with some advanced features like Python scripts.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_3.png" alt="ModbusPal with the typical &amp;ldquo;Java style&amp;rdquo; interface"></p>
+<p>As mentioned, we need to compile QModBus so that it can run on Linux systems, in my case Kubuntu 19.10. Download the source file <a href="https://sourceforge.net/projects/qmodmaster/files/qModMaster-code-0.5.2-3.zip/download">qModMaster-code-0.5.2-3.zip</a> and save it in a working directory, in my case <code>~/Develop/Projects/Modbus/qModMaster-code-0.5.2-3</code>.</p>
+<p>If we list the files present in the folder we see that the <code>qModMaster.pro</code> file is present, typical of a project developed with Qt. To compile it is necessary to have a minimum version of Qt 5.2.1 or higher, which can be downloaded from <a href="http://www.qt.io/download/">this link</a>.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_4.png" alt=""></p>
+<p>At this point we can use the <code>qmake</code> command to convert the .pro file into a Makefile, which can be compiled with the more classic <code>make</code>.</p>
+<pre tabindex="0"><code>$ qmake -o Makefile qModMaster.pro
+$make
+</code></pre><p>After a few seconds of processing we have our executable ready!</p>
+<h2 id="using-the-simulator">Using the simulator</h2>
+<p>First we have to configure the slave, so that it makes its resources available to be read by the master, in this case we configure the &ldquo;Holding Registers&rdquo;.</p>
+<p>{% hint style=&ldquo;info&rdquo; %}
+Both applications require <code>sudo</code> privileges to access port 502/TCP, so you need to start them with <code>sudo ./ModbusPal</code> and <code>sudo ./qModMaster</code> in their respective working directories.
+{% endhint %}</p>
+<h3 id="modbuspal-slave-module-configuration"><strong>ModbusPal Slave Module Configuration</strong></h3>
+<p><strong>Link settings</strong><br>
+****Select &ldquo;TCP Port 502&rdquo;.<br>
+The Modbus TCP protocol uses port 502 for TCP communication by default</p>
+<p><strong>Modbus slaves</strong><br>
+****We add a slave node by pressing the &ldquo;Add&rdquo; button, select the slave number and enter a name, in our case &ldquo;Slave1&rdquo;.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_5.png" alt=""></p>
+<p>At this point we have to configure the parameters that we make available in our slave. Click on the eye icon to open the properties screen. Subsequently, click on &ldquo;Add&rdquo; and enter the number of registers we want to add, in our case from 1 to 8.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_6.png" alt=""></p>
+<p>And here is the list of holding registers that we have created, with default values of 0. We can already modify their value at will, or do it when the master is also active to see their reading updated in real time.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_7.png" alt=""></p>
+<p>We are ready to start the slave, press the &ldquo;Run&rdquo; button on the main screen and go on to configure the master.</p>
+<h3 id="qmodmaster-master-module-configuration"><strong>QModMaster master module configuration</strong></h3>
+<p>The configuration of the master module is equally simple, it is necessary to keep in mind some parameters consistent with the slave that we have created:</p>
+<p><strong>Mobbus Mode:</strong> TCP<br>
+<strong>Unit ID:</strong> 1 (corresponds to the number of the slave we declared earlier)<br>
+<strong>Function Code:</strong> Read Holding Registers (0x03)<br>
+<strong>Number of Registers:</strong> 8</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_8.png" alt=""></p>
+<p>The &ldquo;Function Code&rdquo; and &ldquo;Mumber of Registers&rdquo; correspond to the type and amount of data that we declared in the slave module.</p>
+<p>By default the master app is configured to communicate with IP address 127.0.0.1 and port 502 (as well as the slave). We can change these values by selecting the screen from the &ldquo;Options&rdquo; menu and then &ldquo;Modbus TCP&rdquo;.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_9.png" alt=""></p>
+<p>At this point we just have to activate the connection and the continuous updating of the data using the &ldquo;Connect&rdquo; and &ldquo;Scan&rdquo; buttons. The continuous updating time of the data is determined by the &ldquo;Scan Rate (ms)&rdquo; parameter, which in our case corresponds to an interval of 1 second.</p>
+<h3 id="data-update">Data update</h3>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_10.png" alt=""></p>
+<p>And here is that if we go to modify the data of the registers of our slave we will have the corresponding update on the master.</p>
+<h3 id="lets-try-to-write-with-the-master">Let&rsquo;s try to write with the master</h3>
+<p>Now that we have seen how it is possible to read data from the slave let&rsquo;s try to modify the values of the registers from the master. We interrupt the continuous scan and choose &ldquo;Write Multiple Registers&rdquo; in the &ldquo;Function Code&rdquo; parameter of the QModMaster main screen.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_11.png" alt="We select Write Multiple Registers"></p>
+<p>Let&rsquo;s reactivate the continuous scan, now we can double click on each field of the register to modify its value, which we will see updated on the slave module.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_sim_12.png" alt=""></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/modbus/">modbus</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1054 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2021-07-08 15:09
+        
+
+         
+          
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/2021/07/hacking-attacking-a-plc-with-stuxnet/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: attacking a PLC with Stuxnet</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/2021/07/hacking-modbus/">
+                    <span class="button__text">Hacking: Modbus</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

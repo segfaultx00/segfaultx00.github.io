@@ -6,13 +6,14 @@
     <description>Recent content in building_automation on SCADAsploit</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright><atom:link href="https://scadasploit.dev/tags/building_automation/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
+    <lastBuildDate>Sun, 04 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/building_automation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking: Schneider Electric Building Automation</title>
-      <link>https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</link>
+      <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/</guid>
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</guid>
       <description>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives).</description>
     </item>
     
