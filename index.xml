@@ -9,6 +9,15 @@
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 09 May 2023 18:14:13 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Workshop</title>
+      <link>https://scadasploit.dev/workshop/</link>
+      <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://scadasploit.dev/workshop/</guid>
+      <description>Advanced Training OT **Advanced OT** is dedicated to the cybersecurity of OT/ICS equipment as a result of more than 20 years of experience on SCADA systems, PLCs, fieldbuses, remote I/O, etc. Fundamentals of Information Security, explaining attacks, risks, vulnerabilities detection and the role of human resources. Protection systems for OT devices. Fundamentals of secure network, secure communication protocols, segmentation, detection &amp;amp; protection (IDS/IPS). Secure Network Architecture, network management, OT security devices, and architecture monitoring.</description>
+    </item>
+    
+    <item>
       <title>Contact</title>
       <link>https://scadasploit.dev/contact/</link>
       <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
@@ -25,16 +34,6 @@
       <guid>https://scadasploit.dev/about/</guid>
       <description>Head of OT Cybersecurity &amp;amp; Innovation Lab (01/2023 - present) Sababa Security
 Recent events are highlighting even more how Cybersecurity in the OT world is developing into one of the most fundamental areas in the field, especially when it comes to the protection of critical infrastructures and strategic industrial sites. • After having matured 20+ years of experience in PLC and SCADA systems, I have now taken up the leadership of Sababa&amp;rsquo;s OT Cybersecurity, with particular focus on the ICS, Automotive and Industrial IoT sectors.</description>
-    </item>
-    
-    <item>
-      <title>Workshop</title>
-      <link>https://scadasploit.dev/workshop/</link>
-      <pubDate>Tue, 06 Sep 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://scadasploit.dev/workshop/</guid>
-      <description>Advanced Training OT Advanced OT is dedicated to the cybersecurity of OT/ICS equipment as a result of more than 20 years of experience on SCADA systems, PLCs, fieldbuses, remote I/O, etc.
-Fundamentals of Information Security, explaining attacks, risks, vulnerabilities detection and the role of human resources. Protection systems for OT devices. Fundamentals of secure network, secure communication protocols, segmentation, detection &amp;amp; protection (IDS/IPS). Secure Network Architecture, network management, OT security devices, and architecture monitoring.</description>
     </item>
     
     <item>
