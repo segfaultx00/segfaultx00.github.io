@@ -471,7 +471,7 @@ How does it work The infamous malware Stuxnet, which the United States and Israe
 <p>The attacker must then download the automation program from the PLC. This can be done from a compromised engineering station or if the PLC is accessible to any machine on the network without authentication. The attacker must then recompile the automation program using the techniques described by the Airbus researchers and create a malicious program to embed into the legitimate automation software.</p>
 <p>Finally, the attacker must upload the modified program to the PLC and execute it, but this requires stopping and starting the automation software, and experts say this could be noticed.</p>
 <h2 id="the-solutions-in-place">The solutions in place</h2>
-<p>The vulnerability discovered by Airbus researchers in Schneider Electric products is referred to as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7475">CVE-2020-7475</a> and classified as strict. It has been patched by the company with a hotfix for EcoStruxure Control Expert and firmware updates for Modicon M340 and M580 controllers as noted in [this note](<a href="https://www.se.com/ww/en/download/document">https://www.se.com/ww/en/download/document</a> /SEVD-2020-080-01/).</p>
+<p>The vulnerability discovered by Airbus researchers in Schneider Electric products is referred to as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7475">CVE-2020-7475</a> and classified as strict. It has been patched by the company with a hotfix for EcoStruxure Control Expert and firmware updates for Modicon M340 and M580 controllers as noted in <a href="https://www.se.com/ww/en/download/document/SEVD-2020-080-01/">this note</a>.</p>
 <p>Schneider Electric and Airbus encourage all customer companies to implement cybersecurity best practices across their operations in an effort to reduce the risk of attacks.</p>
 <p>&ldquo;Where necessary, this includes locating industrial systems and remotely accessible devices behind firewalls; installing physical controls to prevent unauthorized access; preventing access to mission-critical systems and devices from external networks; systematically patching security and activation of antivirus software; and the enforcement of whitelisting solutions,” Schneider said.</p>
 <h2 id="important-note"><strong>Important note</strong></h2>
@@ -531,21 +531,21 @@ Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemen
 <p><img src="/images/2021/stuxnet_2.png" alt="A Simatic S7-300 PLC"></p>
 <p>After execution, the worm spread throughout the network until it found a Windows operating system with STEP 7. </p>
 <p><img src="/images/2021/stuxnet_3.png" alt="Siemens Step 7"></p>
-<p>STEP 7 is Siemens programming software designed for their PLCs. The computer running STEP 7 is known as the controlling computer and interacts directly with and sends commands to the PLC. Once successfully arriving at the STEP 7 controlling computer, Stuxnet manipulated code blocks sent from the controlling computer, executed dangerous commands on the PLC, and spun the centrifuges at a higher frequency than originally programmed. </p>
+<p>STEP 7 is Siemens programming software designed for their PLCs. The computer running STEP 7 is known as the controlling computer and interacts directly with and sends commands to the PLC. Once successfully arriving at the STEP 7 controlling computer, Stuxnet manipulated code blocks sent from the controlling computer, executed dangerous commands on the PLC, and spun the centrifuges at a higher frequency than originally programmed.</p>
 <p>{% hint style=&ldquo;info&rdquo; %}
 The STEP 7 software uses a library called <strong>s7otbxdx.dll</strong> to communicate with the PLC. For example, if a block of code is to be read by the PLC, the &ldquo;s7blk_read&rdquo; routine is called. Stuxnet uses a DLL hijacking technique to intercept all commands coming from STEP 7 and WinCC (Siemens&rsquo; SCADA system) and, in turn, forwards them to the original library after modifying their contents. In this way it sends unexpected commands to the PLC returning a loop of normal operating values to the users.
 {% endhint %}</p>
 <p><img src="/images/2021/stuxnet_4.png" alt="DLL hijacking attack on STEP 7 libraries"></p>
 <p>Attacks on the PLC were performed approximately every 27 days to make the attack stealthy and hard to detect, which is a central part of an APT. Stuxnet also took over the controlling computer and displayed fake output on the STEP 7 software. This step of the attack was a key part known as &ldquo;deception&rdquo;. Engineers located at the nuclear power plant received no indication of errors, assuming the centrifuges were spinning at the correct frequency. Receiving false output in STEP 7, they assumed that the crash was caused by human error rather than malware. Stuxnet also hid the code directly on the PLC after the infection and was therefore also referred to as a PLC rootkit.</p>
 <p><img src="/images/2021/stuxnet_5.png" alt="An example of a SCADA system based on Siemens WinCC"></p>
-<p>For its diffusion on the net Stuxnet has exploited one of the 0-day vulnerabilities of the Windows operating systems. In fact, it spread through the Server Message Block (SMB) file sharing protocol as documented in the vulnerability report [CVE-2008-4250](<a href="https://cve.mitre.org/cgi-bin/cvename.cgi">https://cve.mitre.org/cgi-bin/cvename.cgi</a>? name=CVE-2008-4250) in the National Vulnerability Database. The vulnerability allowed remote code execution by aggressively spreading on the local network. The worm had several other features, such as self-replication, updated itself using a command and control center, contained a Windows rootkit that hid its binaries, and attempted to bypass computer security systems (anti-virus and anti-malware).</p>
+<p>For its diffusion on the net Stuxnet has exploited one of the 0-day vulnerabilities of the Windows operating systems. In fact, it spread through the Server Message Block (SMB) file sharing protocol as documented in the vulnerability report <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250">CVE-2008-4250</a> in the National Vulnerability Database. The vulnerability allowed remote code execution by aggressively spreading on the local network. The worm had several other features, such as self-replication, updated itself using a command and control center, contained a Windows rootkit that hid its binaries, and attempted to bypass computer security systems (anti-virus and anti-malware).</p>
 <h2 id="the-aftermath-of-his-attack">The aftermath of his attack</h2>
 <p>Stuxnet is known as the world&rsquo;s first digital weapon and destroyed about 1,000 centrifuges inside the Natanz plant. Cyberattacks that cause physical damage have revolutionized the way cybersecurity experts perform threat analysis, as well as the way PLC manufacturers design them.</p>
 <p>If we want to find merit, Stuxnet swept away the belief that ICS systems were inviolable, secure because they were isolated and because they were so different from the traditional devices present in the IT world.</p>
 <p>But the greatest consequence is determined by the fact that for the first time a government body, in this case the American one together with the Israeli one, has created a computer weapon capable of causing damage to people and things. Something like this had not yet been seen and of this magnitude, hackers and malwares had so far the objective of extorting money, stealing information or breaking political barriers, but none had exceeded the threshold of tangible damage.</p>
 <h2 id="hacking-a-plc">Hacking a PLC</h2>
 <p>Part of Stuxnet was to use target PLCs as a hacking tool by using a PLC rootkit and manipulating the communication between the controlling computer (SCADA) and the PLC itself. By targeting both of these devices Stuxnet managed to achieve its goal and at the same time fooled the operators, thus having enough time to destroy the centrifuges. Stuxnet like APT is a sophisticated attack that requires significant information and resource gathering to execute. It is also necessary to have in-depth knowledge of the proprietary communication protocols in use and the architecture of the target PLCs, especially for implementing the rootkit. Its code is now publicly available and can be studied extensively.</p>
-<p>An industrial control system (ICS) and a PLC make use of multiple communication protocols. Among the most used we find <a href="hacking-profibus-profinet.md">Profinet, Profibus</a> and <a href="hacking-modbus.md">Modbus</a>. Most of them were originally designed without built-in security measures, resulting in allowing remote code execution, packet sniffing, and replay attacks due to lack of authentication and encryption.</p>
+<p>An industrial control system (ICS) and a PLC make use of multiple communication protocols. Among the most used we find Profinet, Profibus and Modbus. Most of them were originally designed without built-in security measures, resulting in allowing remote code execution, packet sniffing, and replay attacks due to lack of authentication and encryption.</p>
 <p>Profinet uses traditional Ethernet hardware, making it compatible with most equipment. Profinet is widely used in the automation industry and its design is based on the Open Systems Interconnection (OSI) model. Profinet allows bi-directional communication and is the preferred communication protocol for Siemens Simatic PLCs.</p>
 <p><img src="/images/2021/stuxnet_6.png" alt=""></p>
 <p>Profibus is an international communication standard for fieldbuses. It is used to connect multiple devices together and allows for two-way communication. There are two types of Profibus: Profibus Decentralized Peripherals (DP) and Profibus Process Automation (PA). One limitation with Profibus is that it is only able to communicate with one device at a time. The new version of Profibus is standardized in IEC 61158.</p>
@@ -579,7 +579,7 @@ The STEP 7 software uses a library called <strong>s7otbxdx.dll</strong> to commu
             <description>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</description>
             <content type="html"><![CDATA[<p>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a> protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</p>
 <p><img src="/images/2021/mod_sim_1.png" alt=""></p>
-<p>If you want to learn more about the topic, I suggest you read the guide I wrote &ldquo;<a href="hacking-modbus.md">Hacking: Modbus</a>&rdquo;.</p>
+<p>If you want to learn more about the topic, I suggest you read the guide I wrote &ldquo;Hacking: Modbus&rdquo;.</p>
 <p>In this tutorial we will simulate a Modbus master and slave configuration to illustrate how this now almost ubiquitous protocol in OT systems works in an industrial environment. The aim is to better understand how the protocol works and how it can be hacked, manipulated and protected.</p>
 <h2 id="installation">Installation</h2>
 <p>Modbus uses a master/slave (client/server) architecture where only one device can send requests. The slaves/servers provide the requested data to the master or perform the action requested by the master itself. A slave is any peripheral device (transducer, valve, network unit, etc.) that processes information and sends its output to the master via the Modbus protocol.</p>
@@ -682,14 +682,47 @@ The Modbus TCP protocol uses port 502 for TCP communication by default</p>
 </ul>
 <p>The byte order for values in Modbus data frames is the most significant byte of a multi-byte value sent first. All Modbus variants use one of the following frame formats.</p>
 <h4 id="modbus-rtu-frame-format">Modbus RTU frame format</h4>
-<p>| Name | Length (bits) | Function |
-| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;- |
-| start | 28 | At least 3½ characters to start frame (with sign condition) |
-| Address | 8 | Station address |
-| function | 8 | Function code, e.g. read coils/holding registers |
-| Date | n × 8 | Data + length will be filled according to message type |
-| CRC | 16 | Cyclic Redundancy Check |
-| End | 28 | At least 3½ characters of silence between frames |</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Length (bits)</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>28</td>
+<td>At least 3½ characters to start frame (with sign condition)</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>8</td>
+<td>Station address</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>8</td>
+<td>Function code, e.g. read coils/holding registers</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>n × 8</td>
+<td>Data + length will be filled according to message type</td>
+</tr>
+<tr>
+<td>CRC</td>
+<td>16</td>
+<td>Cyclic Redundancy Check</td>
+</tr>
+<tr>
+<td>End</td>
+<td>28</td>
+<td>At least 3½ characters of silence between frames</td>
+</tr>
+</tbody>
+</table>
 <p>Notes on calculating the CRC:</p>
 <ul>
 <li>Polynomial: x16 + x15 + x2 + 1 (CRC-16-ANSI also known as CRC-16-IBM, normal hexadecimal algebraic polynomial being <code>8005</code> and reversed <code>A001</code>).</li>
@@ -697,23 +730,97 @@ The Modbus TCP protocol uses port 502 for TCP communication by default</p>
 <li>Example of frame in hexadecimal: <code>01 04 02 FF FF B8 80</code> (CRC-16-ANSI computed from <code>01</code> to <code>FF</code> generates <code>80B8</code>, <strong>first</strong> the byte is transmitted** least** significant).</li>
 </ul>
 <h4 id="modbus-ascii-frame-format">Modbus ASCII frame format</h4>
-<p>| Name | Length (bytes) | Function |
-| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
-| start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Lung. (bytes)</th>
+<th>Funzione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>1</td>
+<td>Inizia con <code>:</code> (valore ASCII<code>3A</code>)</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>2</td>
+<td>Indirizzo della stazione</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>2</td>
+<td>Codice funzione, es. read coils</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>n × 2</td>
+<td>Dati + lunghezza verranno riempiti in base al tipo di messaggio</td>
+</tr>
+<tr>
+<td>LRC</td>
+<td>2</td>
+<td>Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>)</td>
+</tr>
+<tr>
+<td>End</td>
+<td>2</td>
+<td>&lt;CR&gt;&lt;LF&gt; insieme (valori ASCII <code>0D</code>, <code>0A</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>| Name     | Length (bytes)| Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- &mdash;&ndash; |
+| Start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
 | Address | 2 | Station address |
 | function | 2 | Function code, e.g. read coils |
 | Date | n × 2 | Data + length will be filled according to message type |
 | LRC | 2 | Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>) |
 | End | 2 | &lt;CR&gt;&lt;LF&gt; set (ASCII values <code>0D</code>, <code>0A</code>) |</p>
 <h4 id="modbus-tcp-frame-format">Modbus TCP frame format</h4>
-<p>| name | Length (bytes) | Function |
-| &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
-| Transaction identifier | 2 | For synchronizing between server and client messages |
-| Protocol identifier | 2 | 0 for Modbus/TCP |
-| Length field | 2 | Number of bytes remaining in this frame |
-| Unit identifier | 1 | Slave address (255 if not used) |
-| Function code | 1 | Function code |
-| Data bytes | n | Data as a response or commands |</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>Length (bytes)</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction identifier</td>
+<td>2</td>
+<td>For synchronizing between server and client messages</td>
+</tr>
+<tr>
+<td>Protocol identifier</td>
+<td>2</td>
+<td>0 for Modbus/TCP</td>
+</tr>
+<tr>
+<td>Length field</td>
+<td>2</td>
+<td>Number of bytes remaining in this frame</td>
+</tr>
+<tr>
+<td>Unit identifier</td>
+<td>1</td>
+<td>Slave address (255 if not used)</td>
+</tr>
+<tr>
+<td>Function code</td>
+<td>1</td>
+<td>Function code</td>
+</tr>
+<tr>
+<td>Data bytes</td>
+<td>n</td>
+<td>Data as a response or commands</td>
+</tr>
+</tbody>
+</table>
 <h2 id="modbus-protocol-security">Modbus protocol security</h2>
 <p>Modbus owes its widespread diffusion to the simplicity of the protocol and to its by now historic presence on the market. But precisely for these two factors it offers the side to different possibilities of attack, with numerous known vulnerabilities. Here&rsquo;s how some attacks could be performed by exploiting the simple functions that the protocol itself provides, without dedicated enumeration tools like <strong>nmap</strong>.</p>
 <blockquote>

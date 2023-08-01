@@ -41,7 +41,7 @@
 <meta itemprop="name" content="Hacking: Modbus">
 <meta itemprop="description" content="One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened."><meta itemprop="datePublished" content="2021-07-07T15:09:35+02:00" />
 <meta itemprop="dateModified" content="2021-07-07T15:09:35+02:00" />
-<meta itemprop="wordCount" content="1981"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="wordCount" content="1959"><meta itemprop="image" content="https://scadasploit.dev"/>
 <meta itemprop="keywords" content="hacking,ot,modbus," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://scadasploit.dev"/>
@@ -183,14 +183,47 @@
 </ul>
 <p>The byte order for values in Modbus data frames is the most significant byte of a multi-byte value sent first. All Modbus variants use one of the following frame formats.</p>
 <h4 id="modbus-rtu-frame-format">Modbus RTU frame format</h4>
-<p>| Name | Length (bits) | Function |
-| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;- |
-| start | 28 | At least 3½ characters to start frame (with sign condition) |
-| Address | 8 | Station address |
-| function | 8 | Function code, e.g. read coils/holding registers |
-| Date | n × 8 | Data + length will be filled according to message type |
-| CRC | 16 | Cyclic Redundancy Check |
-| End | 28 | At least 3½ characters of silence between frames |</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Length (bits)</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>28</td>
+<td>At least 3½ characters to start frame (with sign condition)</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>8</td>
+<td>Station address</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>8</td>
+<td>Function code, e.g. read coils/holding registers</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>n × 8</td>
+<td>Data + length will be filled according to message type</td>
+</tr>
+<tr>
+<td>CRC</td>
+<td>16</td>
+<td>Cyclic Redundancy Check</td>
+</tr>
+<tr>
+<td>End</td>
+<td>28</td>
+<td>At least 3½ characters of silence between frames</td>
+</tr>
+</tbody>
+</table>
 <p>Notes on calculating the CRC:</p>
 <ul>
 <li>Polynomial: x16 + x15 + x2 + 1 (CRC-16-ANSI also known as CRC-16-IBM, normal hexadecimal algebraic polynomial being <code>8005</code> and reversed <code>A001</code>).</li>
@@ -198,23 +231,97 @@
 <li>Example of frame in hexadecimal: <code>01 04 02 FF FF B8 80</code> (CRC-16-ANSI computed from <code>01</code> to <code>FF</code> generates <code>80B8</code>, <strong>first</strong> the byte is transmitted** least** significant).</li>
 </ul>
 <h4 id="modbus-ascii-frame-format">Modbus ASCII frame format</h4>
-<p>| Name | Length (bytes) | Function |
-| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
-| start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
+<table>
+<thead>
+<tr>
+<th>Nome</th>
+<th>Lung. (bytes)</th>
+<th>Funzione</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Start</td>
+<td>1</td>
+<td>Inizia con <code>:</code> (valore ASCII<code>3A</code>)</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>2</td>
+<td>Indirizzo della stazione</td>
+</tr>
+<tr>
+<td>Function</td>
+<td>2</td>
+<td>Codice funzione, es. read coils</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>n × 2</td>
+<td>Dati + lunghezza verranno riempiti in base al tipo di messaggio</td>
+</tr>
+<tr>
+<td>LRC</td>
+<td>2</td>
+<td>Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>)</td>
+</tr>
+<tr>
+<td>End</td>
+<td>2</td>
+<td>&lt;CR&gt;&lt;LF&gt; insieme (valori ASCII <code>0D</code>, <code>0A</code>)</td>
+</tr>
+</tbody>
+</table>
+<p>| Name     | Length (bytes)| Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- &mdash;&ndash; |
+| Start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
 | Address | 2 | Station address |
 | function | 2 | Function code, e.g. read coils |
 | Date | n × 2 | Data + length will be filled according to message type |
 | LRC | 2 | Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>) |
 | End | 2 | &lt;CR&gt;&lt;LF&gt; set (ASCII values <code>0D</code>, <code>0A</code>) |</p>
 <h4 id="modbus-tcp-frame-format">Modbus TCP frame format</h4>
-<p>| name | Length (bytes) | Function |
-| &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
-| Transaction identifier | 2 | For synchronizing between server and client messages |
-| Protocol identifier | 2 | 0 for Modbus/TCP |
-| Length field | 2 | Number of bytes remaining in this frame |
-| Unit identifier | 1 | Slave address (255 if not used) |
-| Function code | 1 | Function code |
-| Data bytes | n | Data as a response or commands |</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>Length (bytes)</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Transaction identifier</td>
+<td>2</td>
+<td>For synchronizing between server and client messages</td>
+</tr>
+<tr>
+<td>Protocol identifier</td>
+<td>2</td>
+<td>0 for Modbus/TCP</td>
+</tr>
+<tr>
+<td>Length field</td>
+<td>2</td>
+<td>Number of bytes remaining in this frame</td>
+</tr>
+<tr>
+<td>Unit identifier</td>
+<td>1</td>
+<td>Slave address (255 if not used)</td>
+</tr>
+<tr>
+<td>Function code</td>
+<td>1</td>
+<td>Function code</td>
+</tr>
+<tr>
+<td>Data bytes</td>
+<td>n</td>
+<td>Data as a response or commands</td>
+</tr>
+</tbody>
+</table>
 <h2 id="modbus-protocol-security">Modbus protocol security</h2>
 <p>Modbus owes its widespread diffusion to the simplicity of the protocol and to its by now historic presence on the market. But precisely for these two factors it offers the side to different possibilities of attack, with numerous known vulnerabilities. Here&rsquo;s how some attacks could be performed by exploiting the simple functions that the protocol itself provides, without dedicated enumeration tools like <strong>nmap</strong>.</p>
 <blockquote>
@@ -286,7 +393,7 @@ The simplest attack to use against Modbus is to sniff network traffic, find conn
           <line x1="16" y1="17" x2="8" y2="17"></line>
           <polyline points="10 9 9 9 8 9"></polyline>
         </svg>
-        1981 Words
+        1959 Words
       </p>
 
       <p>
