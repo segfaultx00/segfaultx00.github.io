@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened." />
+<meta name="keywords" content=", hacking, ot, modbus" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/1/01/hacking-modbus/" />
+
+
+    <title>
+        
+            Hacking: Modbus :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Modbus">
+<meta itemprop="description" content="One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.">
+
+<meta itemprop="wordCount" content="1981"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,ot,modbus," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: Modbus"/>
+<meta name="twitter:description" content="One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened."/>
+
+
+
+    <meta property="og:title" content="Hacking: Modbus" />
+<meta property="og:description" content="One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/1/01/hacking-modbus/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        10 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/1/01/hacking-modbus/">Hacking: Modbus</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. </p>
+<p>This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</p>
+<p>In this article we see the main characteristics of one of these protocols: the <strong>Modbus.</strong></p>
+<h2 id="the-modbus-standard">The Modbus standard</h2>
+<p>The Modbus protocol is mainly characterized by the physical connection medium, which can be on a serial port or on Ethernet. There are several variants of the protocol:</p>
+<ul>
+<li>Modbus RTU</li>
+<li>Modbus ASCII</li>
+<li>Modbus-TCP</li>
+<li>Modbus over TCP/IP or Modbus RTU/IP</li>
+<li>Modbus over UDP</li>
+<li>Modbus Plus (Modbus+)</li>
+<li>Secure Modbus</li>
+</ul>
+<p>In this article, I will cover the most popular ones: Modbus RTU and Modbus TCP. I will also mention Secure Modbus, a security-oriented version of the protocol that incorporates a data encryption layer.</p>
+<h3 id="modbus-rtu">Modbus RTU</h3>
+<p>Modbus RTU was first developed in 1979 by Modicon (now part of Schneider Electric) for their PLC and industrial automation systems. It has become the de facto industry standard. Modbus is a widely accepted public domain protocol, it is a simple and lightweight protocol intended for serial communication. It has a data limit of 253 bytes.</p>
+<p>Modbus operates at layer 7 of the OSI model. It is an efficient communication methodology between interconnected devices using a &ldquo;request/response&rdquo; model. Because it&rsquo;s simple and lightweight, it requires little processing power. Suffice it to say that there are communication libraries available for practically any embedded device, starting from a simple Arduino board up to the more sophisticated Raspberry.</p>
+<p>Modbus was initially implemented on the physical topology RS-232C (point-to-point) or RS-485 (multi-drop). It can have up to 32 devices communicating over a serial link with each device having a unique ID.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_1.png" alt=""></p>
+<p>Modbus uses a master/slave (client/server) architecture where only one device can send requests. The slaves/servers provide the requested data to the master or perform the action requested by the master itself. A slave is any peripheral device (transducer, valve, network unit, etc.) that processes information and sends its output to the master via the Modbus protocol.</p>
+<p>Masters can address individual slaves or broadcast a message to all slaves. Slaves return a response to all queries addressed to them individually, but do not respond to broadcast queries. Slaves do not generate messages, they can only reply to the master. A master&rsquo;s query will consist of the slave address (slave ID or unit ID), a function code, all required data, and a CRC error checking field.</p>
+<p>Modbus communicates using <strong>Function Codes</strong>, function codes that identify a wide range of commands.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_2.png" alt="Main Function Codes for data access and diagnostics"></p>
+<h3 id="modbus-tcp">Modbus TCP</h3>
+<p>Modbus TCP is the encapsulated Modbus protocol for use over TCP/IP using port 502. It uses the same request/response as Modbus RTU, the same function codes, and the same 253-byte data limit. The error checking field used in Modbus RTU is eliminated as the TCP/IP link layer uses its checksum methods.</p>
+<p>Modbus TCP adds an application layer (MBAP) to the Modbus RTU frame. It is 7 bytes long with 2 bytes for the header, 2 bytes for the protocol identifier, 2 bytes for the length and 1 byte for the address (unit ID).</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_3.png" alt=""></p>
+<p>The use of Ethernet allows the creation of more complex architectures, even of the hybrid type, making use of special gateways.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_4.png" alt="RTU / TCP hybrid architecture"></p>
+<h3 id="data-packet-format">Data packet format</h3>
+<p>A Modbus frame consists of an Application Data Unit (ADU) encapsulating a Protocol Data Unit (PDU), according to this scheme:</p>
+<ul>
+<li>ADU = Address + PDU + Error check</li>
+<li>PDU = Function code + Data</li>
+</ul>
+<p>The byte order for values in Modbus data frames is the most significant byte of a multi-byte value sent first. All Modbus variants use one of the following frame formats.</p>
+<h4 id="modbus-rtu-frame-format">Modbus RTU frame format</h4>
+<p>| Name | Length (bits) | Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;- |
+| start | 28 | At least 3½ characters to start frame (with sign condition) |
+| Address | 8 | Station address |
+| function | 8 | Function code, e.g. read coils/holding registers |
+| Date | n × 8 | Data + length will be filled according to message type |
+| CRC | 16 | Cyclic Redundancy Check |
+| End | 28 | At least 3½ characters of silence between frames |</p>
+<p>Notes on calculating the CRC:</p>
+<ul>
+<li>Polynomial: x16 + x15 + x2 + 1 (CRC-16-ANSI also known as CRC-16-IBM, normal hexadecimal algebraic polynomial being <code>8005</code> and reversed <code>A001</code>).</li>
+<li>Initial value: 65,535.</li>
+<li>Example of frame in hexadecimal: <code>01 04 02 FF FF B8 80</code> (CRC-16-ANSI computed from <code>01</code> to <code>FF</code> generates <code>80B8</code>, <strong>first</strong> the byte is transmitted** least** significant).</li>
+</ul>
+<h4 id="modbus-ascii-frame-format">Modbus ASCII frame format</h4>
+<p>| Name | Length (bytes) | Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
+| start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
+| Address | 2 | Station address |
+| function | 2 | Function code, e.g. read coils |
+| Date | n × 2 | Data + length will be filled according to message type |
+| LRC | 2 | Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>) |
+| End | 2 | &lt;CR&gt;&lt;LF&gt; set (ASCII values <code>0D</code>, <code>0A</code>) |</p>
+<h4 id="modbus-tcp-frame-format">Modbus TCP frame format</h4>
+<p>| name | Length (bytes) | Function |
+| &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
+| Transaction identifier | 2 | For synchronizing between server and client messages |
+| Protocol identifier | 2 | 0 for Modbus/TCP |
+| Length field | 2 | Number of bytes remaining in this frame |
+| Unit identifier | 1 | Slave address (255 if not used) |
+| Function code | 1 | Function code |
+| Data bytes | n | Data as a response or commands |</p>
+<h2 id="modbus-protocol-security">Modbus protocol security</h2>
+<p>Modbus owes its widespread diffusion to the simplicity of the protocol and to its by now historic presence on the market. But precisely for these two factors it offers the side to different possibilities of attack, with numerous known vulnerabilities. Here&rsquo;s how some attacks could be performed by exploiting the simple functions that the protocol itself provides, without dedicated enumeration tools like <strong>nmap</strong>.</p>
+<blockquote>
+<p>A hacker can initiate his reconnaissance attack by scanning the network for Modbus devices using the protocol diagnostic commands: <strong>Clear Counter</strong> and <strong>Diagnostic Register</strong>. A request sent to the PLC, with function code 8 (0x08) and sub-function code 10 (0x0A), will cause the target server to clear its counters and diagnostic register. This feature is typically only implemented in serial devices.</p>
+</blockquote>
+<blockquote>
+<p>Another diagnostic command that can be used is <strong>Read Device Identification</strong> as an attempt to gather Modbus device information: a request with Read Device Identification function code 43 will cause a Modbus server to return the vendor name , the product name and version number. Further information can also be provided in optional fields. An attacker sends the Modbus request packet with function code 43 to all systems on the network and collects information that could be useful for subsequent attacks.</p>
+</blockquote>
+<h3 id="modbus-protocol-vulnerability">Modbus protocol vulnerability</h3>
+<p>The Modbus TCP protocol implementation contains several vulnerabilities that could allow an attacker to perform enumeration tasks or send arbitrary commands.</p>
+<ol>
+<li><strong>Lack of Confidentiality</strong>: All Modbus messages are transmitted in the clear over the transmission medium.</li>
+<li><strong>Lack of Integrity</strong>: There are no integrity checks within the protocol, and as a result, it depends on lower-level protocols to preserve data integrity.</li>
+<li><strong>Lack of Authentication</strong>: There is no authentication at any level of the protocol, with the possible exception of some undocumented programming commands.</li>
+<li><strong>Simplistic Framing</strong>: Modbus TCP frames are sent over established TCP connections. While such connections are generally reliable, they have a significant drawback because of the next point.</li>
+<li><strong>Lack of session structure</strong>: Like many request/response protocols (e.g. SNMP, HTTP, etc.) Modbus TCP consists of short-lived transactions where the master sends a request to the slave which results in in a single action. When combined with the lack of authentication and poor TCP Initial Sequence Number (ISN) generation in many embedded devices, it becomes possible for attackers to issue commands without knowing the existing session.</li>
+</ol>
+<p><strong>&ldquo;Illegal Function Exception&rdquo; Vulnerability</strong><br>
+These vulnerabilities allow an attacker to perform reconnaissance on the target network. The first vulnerability exists because a Modbus slave device can return an <em>Illegal Function Exception</em> for queries that contain unsupported function code. An unauthenticated remote user could exploit this vulnerability by sending crafted short codes to perform reconnaissance on the target network.</p>
+<p><strong>&ldquo;Illegal Address Exception&rdquo; Vulnerability</strong><br>
+An additional reconnaissance vulnerability is due to the multiple <em>Illegal Address Exception</em> responses generated for queries that contain an illegal slave address. An unauthenticated attacker could exploit this vulnerability by sending queries that contain invalid addresses to the target network and gleaning information about network hosts from the returned messages.</p>
+<p><strong>Authentication Vulnerability</strong><br>
+Another vulnerability is due to the lack of security controls in the implementation of the Modbus TCP protocol. The protocol specification does not include an authentication mechanism for validating communication between master and slave devices. This flaw could allow an unauthenticated user to send arbitrary commands to any slave device via an attack master.</p>
+<p><strong>DoS Vulnerability</strong><br>
+The Modbus TCP protocol also contains vulnerabilities that could allow an attacker to cause a Denial of Service (DoS) condition on a target system. The vulnerability is due to an implementation error in the protocol itself when processing discrete input request and response messages.</p>
+<p><strong>Buffer overflow vulnerability</strong><br>
+Another attack on Modbus can be the data packet exceeding the maximum length. The protocol limits the PDU size to 253 bytes to allow the packet to be sent over a serial line, e.g. RS-485 interface. Modbus TCP prepends a 7 byte Modbus Application Protocol (MBAP) header to the PDU and the whole, MBAP+PDU, is encapsulated in a TCP packet. This puts an upper limit on the packet size.</p>
+<p>An attacker creates a specially crafted packet longer than 260 bytes and sends it to a client and server. If the client or server has been programmed incorrectly this could lead to a buffer overflow or denial-of-service attack.</p>
+<p><strong>Protocol Sniffing</strong><br>
+The simplest attack to use against Modbus is to sniff network traffic, find connected devices, and then send malicious commands to the devices.</p>
+<p>Having no security or encryption features, it&rsquo;s easy to use Wireshark to gather information from data packets going over the network to and from a Modbus port on a device and read the contents of those packets. Wireshark makes it easy to see what&rsquo;s in these packets, examine IP addresses, see request short codes, and alter devices to function properly.</p>
+<p><img src="https://scadasploit.dev/images/2021/mod_5.png" alt="Whireshark in action"></p>
+<h3 id="secure-modbus">Secure Modbus</h3>
+<p>The most common approach to securing OT protocols is to encapsulate them within a Transport Layer Security (TLS) protocol and use mutual authentication. Many standardization bodies publish guidelines for doing this depending on the protocol, for example:</p>
+<ul>
+<li>ODVA specifies how to apply TLS encryption to the EtherNet/IP protocol.</li>
+<li>Schneider Electric has recently worked to create a <strong>Secure Modbus</strong> version, which also includes the addition of the X.509 extension for defining permissions (read-only or read-write).</li>
+<li>IEC 62351-3 defines how to use TLS for the energy industry sector over TCP-based protocols.</li>
+</ul>
+<p><img src="https://scadasploit.dev/images/2021/mod_6.png" alt="Modbus TCP Security"></p>
+<p><img src="https://scadasploit.dev/images/2021/mod_7.png" alt=""></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/modbus/">modbus</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1981 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          0001-01-01 00:49
+        
+
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Metasploit SCADA modules</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-modbus-tcp-simulation-in-linux/">
+                    <span class="button__text">Hacking: Modbus TCP simulation in Linux</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

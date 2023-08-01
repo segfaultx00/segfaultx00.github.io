@@ -446,41 +446,6 @@ framework exclusively dedicated to vulnerabilities of SCADA, PLC and other ICS d
         </item>
         
         <item>
-            <title>Hacking: attacco tipo Stuxnet a un PLC Modicon</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</link>
-            <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</guid>
-            <description>I ricercatori di Airbus CyberSecurity hanno recentemente dimostrato che gli hacker potrebbero lanciare un attacco in stile Stuxnet contro i controllori logici programmabili (PLC) Modicon di Schneider Electric, ma si ritiene che anche i prodotti di altri fornitori potrebbero essere vulnerabili allo stesso tipo di attacco.
-Come funziona Il famigerato malware Stuxnet, che gli Stati Uniti e Israele usavano per danneggiare il programma nucleare iraniano, è stato progettato per colpire i PLC SIMATIC S7-300 e S7-400 prodotti da Siemens.</description>
-            <content type="html"><![CDATA[<p>I ricercatori di <a href="https://airbus-cyber-security.com/applying-a-stuxnet-type-attack-to-a-modicon-plc/">Airbus CyberSecurity</a> hanno recentemente dimostrato che gli hacker potrebbero lanciare un attacco in stile Stuxnet contro i controllori logici programmabili (PLC) Modicon di Schneider Electric, ma si ritiene che anche i prodotti di altri fornitori potrebbero essere vulnerabili allo stesso tipo di attacco.</p>
-<h2 id="come-funziona">Come funziona</h2>
-<p>Il famigerato malware <a href="https://blog.omarmorando.com/hacking/ot-ics-hacking/hacking-attaccare-un-plc-con-stuxnet">Stuxnet</a>, che gli Stati Uniti e Israele usavano per danneggiare il programma nucleare iraniano, è stato progettato per colpire i PLC SIMATIC S7-300 e S7-400 prodotti da Siemens. Stuxnet ha caricato codice dannoso su PLC mirati abusando del software STEP7 di Siemens, fornito dal colosso industriale tedesco per programmare i controller.</p>
-<p><img src="/uploads/2021/stuxnet_schneider_1.png" alt=""></p>
-<p>Come ho descritto nell&rsquo;articolo precedente, Stuxnet ha sostituito una libreria denominata s7otbxdx.dll, che STEP7 utilizza per accedere a un PLC, con una versione dannosa usando un metodo chiamato &ldquo;<strong>reflective DLL loading</strong>&rdquo;. Questa tecnica prevede di rinominare la DLL interessata (es. asmArm.dll) con un altro nome (es. asm_Arm.dll) e di creare una seconda DLL con il nome di quella originale (asmArm.dll) che, a sua volta, richiama le funzioni della prima. Ciò ha consentito agli aggressori di iniettare il loro codice dannoso nel controller di destinazione.</p>
-<p><img src="/uploads/2021/stuxnet_schneider_2.png" alt=""></p>
-<p>I ricercatori di Airbus CyberSecurity hanno analizzato il PLC Modicon M340 di Schneider Electric per determinare se è vulnerabile ad attacchi simili. L&rsquo;attacco ha preso di mira il controller tramite il software di ingegneria Schneider EcoStruxure Control Expert, precedentemente noto come Unity Pro.</p>
-<p>La loro analisi ha portato alla scoperta di una vulnerabilità che può essere sfruttata per caricare codice dannoso sui PLC Modicon M340 e M580 sostituendo uno dei file DLL associati al software di ingegneria, seguendo lo stesso schema di Stuxnet.</p>
-<p><img src="/uploads/2021/stuxnet_schneider_3.png" alt=""></p>
-<p>&ldquo;Un simile attacco potrebbe avere gravi conseguenze, tra cui l&rsquo;interruzione dei processi di produzione o altri tipi di danni&rdquo;, ha dichiarato Airbus CyberSecurity.</p>
-<p>&ldquo;Ancora più interessante dal punto di vista IT, l&rsquo;attaccante potrebbe trasformare il PLC in un proxy&rdquo;, hanno spiegato i ricercatori di Airbus. “Ciò gli consentirebbe di inviare richieste e comunicare con la rete a cui è collegato il PLC. Ad esempio, potrebbe accedere alla rete aziendale interna per rubare la proprietà intellettuale o lanciare attacchi per colpire altri sistemi connessi&quot;.</p>
-<p>&ldquo;Il legittimo software di automazione sarebbe in esecuzione senza mostrare alcun segno della presenza di un programma dannoso. La parte malware invia periodicamente richieste a un server di comando e controllo gestito dall&rsquo;aggressore via Internet&rdquo;, hanno spiegato.</p>
-<h2 id="come-portare-lattacco">Come portare l&rsquo;attacco</h2>
-<p>Mentre un simile attacco potrebbe essere altamente dannoso o dirompente - o potrebbe dare un vantaggio all&rsquo;attaccante - lo sfruttamento della vulnerabilità non è un compito facile. L&rsquo;hacker deve prima ottenere l&rsquo;accesso al perimetro ICS dell&rsquo;organizzazione target ed essere in grado di comunicare con il PLC target.</p>
-<p>&ldquo;Questa è già un&rsquo;operazione molto significativa che probabilmente implica l&rsquo;accesso privilegiato su un numero di macchine. Se gli aggressori hanno raggiunto questo punto, diverse misure di difesa di sicurezza non sono in atto o hanno fallito ”, hanno osservato i ricercatori di Airbus CyberSecurity.</p>
-<p>L&rsquo;utente malintenzionato deve quindi scaricare il programma di automazione dal PLC. Questo può essere fatto da una stazione di ingegneria compromessa o se il PLC è accessibile a qualsiasi macchina sulla rete senza autenticazione. L&rsquo;autore dell&rsquo;attacco deve quindi ricompilare il programma di automazione utilizzando le tecniche descritte dai ricercatori Airbus e creare un programma dannoso da incorporare nel legittimo software di automazione.</p>
-<p>Infine, l&rsquo;attaccante deve caricare il programma modificato sul PLC ed eseguirlo, ma ciò richiede l&rsquo;arresto e l&rsquo;avvio del software di automazione e gli esperti affermano che questa operazione potrebbe essere notata.</p>
-<h2 id="le-soluzioni-in-atto">Le soluzioni in atto</h2>
-<p>La vulnerabilità scoperta dai ricercatori Airbus nei prodotti Schneider Electric viene indicata come <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7475">CVE-2020-7475</a> e classificata come severa. È stata patchata dalla società con un aggiornamento rapido per EcoStruxure Control Expert e aggiornamenti del firmware per i controller Modicon M340 e M580, come indicato in <a href="https://www.se.com/ww/en/download/document/SEVD-2020-080-01/">questa nota</a>.</p>
-<p>Schneider Electric e Airbus incoraggiano tutte le aziende clienti a implementare le migliori pratiche di cybersicurezza in tutte le loro operazioni nel tentativo di ridurre il rischio di attacchi.</p>
-<p>&ldquo;Se necessario, ciò include la localizzazione di sistemi industriali e dispositivi accessibili in remoto dietro i firewall; installazione di controlli fisici per impedire accessi non autorizzati; impedire l&rsquo;accesso a sistemi e dispositivi mission-critical da reti esterne; applicazione sistematica di patch di sicurezza e attivazione di software antivirus; e l&rsquo;applicazione di soluzioni di whitelisting &ldquo;, ha detto Schneider.</p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
             <title>Hacking: Pentest on a PLC</title>
             <link>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</link>
             <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
@@ -509,489 +474,6 @@ perimeter protection, such as firewalls to reduce the risk of unwanted network t
 <p>Many of these vulnerabilities are reported and discussed in the National Vulnerability Database. By exploiting them, in many cases it is possible to crack the password, gain access to the PLC… and shut it down.</p>
 <h2 id="important-note"><strong>Important note</strong></h2>
 <p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: attaccare un PLC con Stuxnet</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</link>
-            <pubDate>Fri, 09 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</guid>
-            <description>Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&amp;rsquo;occhiata al worm Stuxnet.;
-Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs.</description>
-            <content type="html"><![CDATA[<p>Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&rsquo;occhiata al worm <a href="https://en.wikipedia.org/wiki/Stuxnet">Stuxnet</a>.;</p>
-<p><img src="/uploads/2021/stuxnet_1.jpg" alt=""></p>
-<h2 id="introduzione-a-stuxnet">Introduzione a Stuxnet</h2>
-<p>Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da <a href="https://eugene.kaspersky.com/2011/11/02/the-man-who-found-stuxnet-sergey-ulasen-in-the-spotlight/">Sergey Ulasen</a> di Kaspersky Labs. Una versione precedente di Stuxnet era già stata scoperta nel 2009. Tuttavia, il worm è stato sviluppato molto prima, probabilmente già nel 2005. Stuxnet è stato progettato principalmente per danneggiare una centrale nucleare situata a Natanz, in Iran. Sfortunatamente però Stuxnet si è diffuso in oltre 115 paesi, il che dimostra come anche un attacco mirato potrebbe diffondersi e causare danni al di fuori del suo scopo principale.</p>
-<p>Il worm è stato appositamente progettato per modificare la velocità del rotore delle centrifughe all&rsquo;interno della centrale nucleare di Natanz, causandone l&rsquo;esplosione. Ciò che è interessante con Stuxnet è che si trattava di un worm mirato, progettato con cura per causare danni solo se fossero stati soddisfatti determinati criteri, il che significa che la maggior parte degli impianti in cui si è successivamente diffuso non avrebbero dovuto subire danni. In effetti, Stuxnet aumenterebbe la velocità del rotore delle centrifughe solo se l&rsquo;architettura del sistema di controllo industriale corrispondesse all&rsquo;impianto nucleare di Natanz. Per la sua struttura e complessità, Stuxnet è stata definita come una minaccia persistente avanzata (APT). Un APT raccoglie i dati ed esegue i comandi continuamente per un lungo periodo di tempo senza essere rilevato. Questo è anche noto come attacco &ldquo;basso e lento&rdquo;.</p>
-<h2 id="come-funziona">Come funziona</h2>
-<p>Il worm Stuxnet è stato portato nella struttura di Natanz attraverso un&rsquo;unità flash USB, consentendogli di attaccare il sistema dall&rsquo;interno. Ciò era considerato uno dei prerequisiti per l&rsquo;attacco in quanto la struttura di Natanz non era direttamente accessibile da Internet ma potretto tramite air gap.</p>
-<p><img src="/uploads/2021/stuxnet_2.png" alt="Un PLC Simatic S7-300"></p>
-<p>Dopo l&rsquo;esecuzione, il worm si è diffuso su tutta la rete fino a quando non ha trovato un sistema operativo Windows con STEP 7. </p>
-<p><img src="/uploads/2021/stuxnet_3.png" alt="Siemens Step 7"></p>
-<p>STEP 7 è il software di programmazione Siemens progettato per i propri PLC. Il computer che esegue STEP 7 è noto come computer di controllo e interagisce direttamente con e invia comandi al PLC. Una volta arrivato con successo al computer di controllo STEP 7, Stuxnet ha manipolato i blocchi di codice inviati dal computer di controllo, eseguito comandi pericolosi sul PLC e fatto girare le centrifughe a una frequenza superiore rispetto a quanto inizialmente programmato. </p>
-<p>{% hint style=&ldquo;info&rdquo; %}
-Il software STEP 7 utilizza una libreria chiamata <strong>s7otbxdx.dll</strong> per eseguire la comunicazione con il PLC. Ad esempio, se un blocco di codice deve essere letto dal PLC viene chiamata la routine &ldquo;s7blk_read&rdquo;. Stuxnet usa una tecnica di DLL hijacking per intercettare tutti i comandi provenienti da STEP 7 e WinCC (il sistema SCADA di Siemens) e, a sua volta, li inoltra alla libreria originale dopo averne modificato il contenuto. In questo modo invia comandi imprevisti al PLC restituendo agli utenti un loop di valori di funzionamento normale.
-{% endhint %}</p>
-<p><img src="/uploads/2021/stuxnet_4.png" alt="L&rsquo;attacco di tipo DLL hijacking sulle librerie STEP 7"></p>
-<p>Gli attacchi al PLC sono stati eseguiti ogni 27 giorni circa per rendere l&rsquo;attacco furtivo e difficile da rilevare, che rappresenta una parte centrale di un APT. Stuxnet ha inoltre rilevato il computer di controllo e visualizzato un output falso sul software STEP 7. Questo passaggio dell&rsquo;attacco era una parte fondamentale nota come &ldquo;inganno&rdquo;. Gli ingegneri situati nella centrale nucleare non hanno ricevuto alcuna indicazione di errori, supponendo che le centrifughe stessero ruotando alla frequenza corretta. Ricevendo un output falso in STEP 7, essi presumevano che il tracollo fosse stato causato da un errore umano anzichè da un malware. Stuxnet ha anche nascosto il codice direttamente sul PLC dopo l&rsquo;infezione ed è stato quindi definito anche un rootkit del PLC.</p>
-<p><img src="/uploads/2021/stuxnet_5.png" alt="Un esempio di sistema SCADA basato su Siemens WinCC"></p>
-<p>Per la sua diffusione in rete Stuxnet ha sfruttato una delle vulnerabilità 0-day dei sistemi operativi Windows. Esso infatti si è diffuso attraverso il protocollo di condivisione dei file Server Message Block (SMB) come documentato nel rapporto sulla vulnerabilità <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2008-4250">CVE-2008-4250</a> nel National Vulnerability Database. La vulnerabilità ha consentito l&rsquo;esecuzione di codice in modalità remota, diffondendosi in modo aggressivo sulla rete locale. Il worm aveva diverse altre funzionalità, come l&rsquo;auto-replica, si aggiornava usando un centro di comando e controllo, conteneva un rootkit di Windows che nascondeva i suoi file binari e tentava di aggirare i sistemi di sicurezza presenti sui computer (anti-virus e anti-malware).</p>
-<h2 id="le-conseguenze-del-suo-attacco">Le conseguenze del suo attacco</h2>
-<p>Stuxnet è conosciuta come la prima arma digitale del mondo e ha distrutto circa 1.000 centrifughe all&rsquo;interno della centrale di Natanz. Gli attacchi informatici che causano danni fisici hanno rivoluzionato il modo in cui gli esperti di sicurezza informatica eseguono l&rsquo;analisi delle minacce, nonché il modo in cui i produttori di PLC li progettano.</p>
-<p>Se vogliamo trovargli un merito, Stuxnet ha spazzato via la convinzione che i sistemi ICS fossero inviolabili, sicuri perchè isolati e perchè così diversi dai tradizionali dispositivi presenti nel mondo IT.</p>
-<p>Ma la conseguenza più grande è determinata dal fatto che per la prima volta un ente governativo, in questo caso quello americano insieme a quello israeliano, ha creato un&rsquo;arma informatica in grado di causare danni a persone e cose. Non si era ancora visto qualcosa del genere e di questa entità, hackers e malwares avevano finora l&rsquo;obiettivo di estorcere denaro, rubare informazioni o infrangere barriere politiche, ma nessuno aveva superato la soglia del danno tangibile.</p>
-<h2 id="hacking-di-un-plc">Hacking di un PLC</h2>
-<p>Una parte di Stuxnet consisteva nell&rsquo;utilizzare i PLC di destinazione come strumento hacker mediante un rootkit del PLC e manipolando la comunicazione tra il computer di controllo (SCADA) e il PLC stesso. Mirando entrambi questi dispositivi Stuxnet è riuscito a raggiungere il suo obiettivo e allo stesso tempo ha ingannato gli operatori, avendo così abbastanza tempo per distruggere le centrifughe. Stuxnet come APT è un attacco sofisticato che richiede una significativa raccolta di informazioni e risorse per essere eseguito. È inoltre necessario disporre di conoscenze approfondite sui protocolli di comunicazione proprietari in uso e sull&rsquo;architettura dei PLC target, in particolare per la realizzazione del rootkit. Il suo codice è ora pubblicamente disponibile e può essere studiato in modo approfondito.</p>
-<p>Un sistema di controllo industriale (ICS) e un PLC fanno uso di più protocolli di comunicazione. Tra i più utilizzati troviamo <a href="hacking-profibus-profinet.md">Profinet, Profibus</a> e <a href="hacking-modbus.md">Modbus</a>. La maggior parte di essi sono stati concepiti all&rsquo;origine senza misure di sicurezza integrate, con la conseguenza di permettere l&rsquo;esecuzione di codice in modalità remota, lo sniffing dei pacchetti e gli attacchi replay a causa della mancanza di autenticazione e crittografia.</p>
-<p>Profinet utilizza l&rsquo;hardware Ethernet tradizionale, che lo rende compatibile con la maggior parte delle apparecchiature. Profinet è ampiamente utilizzato nel settore dell&rsquo;automazione e il suo design si basa sul modello Open Systems Interconnection (OSI). Profinet consente la comunicazione bidirezionale ed è il protocollo di comunicazione preferito per i PLC Siemens Simatic.</p>
-<p><img src="/uploads/2021/stuxnet_6.png" alt=""></p>
-<p>Profibus è uno standard di comunicazione internazionale per bus di campo. Viene utilizzato per collegare insieme più dispositivi e consente la comunicazione bidirezionale. Esistono due tipi di Profibus: Profibus Decentralized Peripherals (DP) e Profibus Process Automation (PA). Una limitazione con Profibus è che è in grado di comunicare solo con un dispositivo alla volta. La nuova versione di Profibus è standardizzata in IEC 61158.</p>
-<p>Modbus è un protocollo di comunicazione seriale progettato e pubblicato da Modicon (Schneider Electric) nel 1979. Modbus esegue una comunicazione di tipo master e slave, con un numero massimo di dispositivi fino a 247. Il computer di controllo - HMI o SCADA - normalmente funge da master, mentre i dispositivi di automazione, o i PLC, sono gli slave. È stato originariamente progettato come protocollo di comunicazione per PLC e successivamente è diventato uno standard internazionale per il collegamento di più dispositivi industriali. Modbus è facile da implementare, economico e ampiamente accettato come standard di comunicazione. Esistono almeno tre varianti del protocollo Modbus: American Standard Code for Information Interchange (ASCII), unità terminale remota (RTU) e TCP/IP.</p>
-<p><img src="/uploads/2021/stuxnet_7.png" alt=""></p>
-<p>Esistono diversi scanner <a href="hacking-metasploit-scada-modules.md">Metasploit</a> che consentono il rilevamento e lo sfruttamento di Modbus e Profinet. Scanner simili in Python sono disponibili anche su GitHub. Nel 2011 Dillon Beresford, ingegnere senior per la ricerca delle vulnerabilità presso Dell, ha lanciato exploit remoti verso la serie di PLC Simatic di Siemens attravero Profinet, che comunica utilizzando la porta TCP 102.</p>
-<p>Ciò che è interessante di questi exploit è che scaricano e visualizzano la memoria, e sono in grado di effettuare comandi ON/OFF sull&rsquo;unità centrale di elaborazione (CPU) del PLC. Un esempio è l&rsquo;exploit chiamato &ldquo;remote-memory-viewer&rdquo;, che esegue l&rsquo;autenticazione utilizzando una password backdoor codificata nel PLC Simatic S7-300 di Siemens. In questo exploit, il modulo di avvio/arresto della CPU esegue il codice shell verso il PLC e lo accende/spegne da remoto. Lo stesso exploit start/stop può essere trovato per la serie S7-1200. Inoltre, iniettando shellcode, è anche possibile ottenere l&rsquo;accesso remoto al PLC.</p>
-<p>A causa della mancanza di controlli di integrità, i PLC più vecchi eseguono comandi indipendentemente dal fatto che vengano ricevuti da una fonte legittima. La ragione di ciò è che non ci sono checksum sui pacchetti di rete. È stato dimostrato che una serie di attacchi replay funziona contro un gran numero di PLC, il che consente all&rsquo;attaccante di inviare comandi di esecuzione in remoto. Pertanto, lo sfruttamento dei PLC in remoto con strumenti open source costituisce una grave minaccia per i sistemi SCADA.;</p>
-<p>Durante il BlackHat USA nel 2011, Beresford ha presentato una demo live creata per le serie Siemens Simatic S7-300 e 1200. Gli exploit utilizzati durante la sua demo sono programmati in Ruby, reso compatibile con il Metasploit Framework.</p>
-<p>Gli exploit remoti su ICS erano una parte essenziale del worm Stuxnet. Tuttavia, Beresford ha dimostrato come sia possibile ottenere l&rsquo;accesso remoto a un PLC utilizzando la password hardcoded integrata nel software, e per certi versi rappresenta un passo avanti rispetto a quanto fatto in Stuxnet.</p>
-<h2 id="ma-succede-solo-con-siemens">Ma succede solo con Siemens?</h2>
-<p>Meglio precisarlo: questo non è esclusivamente un problema di Siemens. Rockwell Automation ha anche sperimentato un buffer overflow su stack che potrebbe consentire l&rsquo;accesso remoto al sistema iniettando codice arbitrario, secondo <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-0868">CVE-2016-0868</a> del National Vulnerability Database. La vulnerabilità è stata segnalata il 26 gennaio 2016 e riguardava il PLC MicroLogix 1100. Inoltre, ci sono molti altri exploit e scanner disponibili nel progetto Metasploit che possono essere utilizzati per eseguire comandi da remoto su diversi modelli di PLC.</p>
-<p>Il computer di controllo può anche essere utilizzato come strumento di hacker principalmente a causa di vari exploit software, alcuni dei quali garantiscono il controllo della workstation di un sistema SCADA o ICS. Ciò consente all&rsquo;attaccante di manipolare i dati inviati al PLC ed eseguire il pivoting all&rsquo;interno della rete. Un exploit creato da James Fitts, collaboratore del Exploit Database, consente a un utente malintenzionato remoto di immettere codice arbitrario nel software di programmazione PLC di Fatek, WinProladder, come documentato <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-8377">CVE-2016-8377</a> del National Vulnerability Database.</p>
-<p>Anche se l&rsquo;hacker può attivare l&rsquo;exploit in remoto, quest&rsquo;ultimo richiede comunque l&rsquo;interazione dell&rsquo;utente, come una visita a una pagina Web dannosa o l&rsquo;apertura di un file infetto, per sfruttarlo correttamente. L&rsquo;exploit è un buffer overflow su stack disponibile in Ruby per l&rsquo;importazione di Metasploit. Le applicazioni programmate in C sono spesso più vulnerabili agli overflow del buffer rispetto ad altri linguaggi di programmazione e ci sono molti pacchetti software basati su C in uso nei sistemi di controllo industriale. Ad esempio, l&rsquo;iniezione di shellcode attraverso una vulnerabilità di buffer overflow può consentire l&rsquo;accesso remoto al sistema o essere utilizzato per l&rsquo;escalation dei privilegi.</p>
-<h2 id="siamo-spacciati">Siamo spacciati?</h2>
-<p>La mancanza di sicurezza nei sistemi di controllo industriale è una delle principali preoccupazioni per la sicurezza. Un PLC è stato originariamente progettato per funzionare solo come operatore automatico in un sistema di controllo industriale e non per essere collegato a componenti esterni e raggiungibile da Internet. Tuttavia, l&rsquo;evoluzione nella progettazione di ICS ha iniziato a esporre i PLC a Internet, che può essere mostrato attraverso ricerche utilizzando strumenti come Shodan. I PLC si basano su reti con protezione &ldquo;air-gapped&rdquo; e accesso fisico limitato come misura di sicurezza.</p>
-<p>Le reti air-gapped hanno più volte dimostrato di essere un design imperfetto e non sono in alcun caso un legittimo argomento di sicurezza nei moderni ICS. Ciò è stato dimostrato dall&rsquo;attacco di Stuxnet, che si è diffuso in oltre 115 paesi, infettando le infrastrutture critiche in tutto il mondo anche se la maggior parte dei sistemi di controllo sono stati progettati in isolamento. Questo cambiamento negli ambienti ICS e nelle infrastrutture critiche implica che i PLC sono esposti a una maggiore minaccia alla sicurezza rispetto a prima.</p>
-<p><em>(Grazie al lavoro di Siv Hilde Houmb e Erik David Martin da cui è tratto questo articolo)</em></p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: simulazione Modbus TCP in Linux</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</link>
-            <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</guid>
-            <description>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</description>
-            <content type="html"><![CDATA[<p>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</p>
-<p><img src="/uploads/2021/mod_sim_1.png" alt=""></p>
-<p>Se vuoi approfondire l&rsquo;argomento ti suggerisco di leggere la guida che ho scritto &ldquo;<a href="hacking-modbus.md">Hacking: Modbus</a>&rdquo;.</p>
-<p>In questo tutorial simuleremo una configurazione master e slave Modbus per illustrare come questo protocollo ormai quasi onnipresente nei sistemi OT funzioni in un ambiente industriale. Lo scopo è di capire meglio come funziona il protocollo e come può essere hackerato, manipolato e protetto.</p>
-<h2 id="installazione">Installazione</h2>
-<p>Modbus utilizza un&rsquo;architettura master/slave (client/server) in cui solo un dispositivo può inviare le richieste. Gli slave/server forniscono i dati richiesti al master o eseguono l&rsquo;azione richiesta dal master stesso. Uno slave è qualsiasi dispositivo periferico (trasduttore, valvola, unità di rete o altro ancora) che elabora le informazioni e invia il suo output al master tramite il protocollo Modbus.</p>
-<p>Nel nostro caso useremo due software di simulazione disponibili in forma gratuita, uno con funzionalità di master chiamato <a href="https://sourceforge.net/projects/qmodmaster/">QModMaster</a> e l&rsquo;altro in versione slave, dal nome <a href="https://sourceforge.net/projects/modbuspal/">ModbusPal</a>.</p>
-<p><strong>QModMaster</strong> è un&rsquo;applicazione open source basata sul framework Qt che implementa le funzioni di un master Modbus. E&rsquo; dotata di una GUI che consente una facile configurazione delle modalità di comunicazione (RTU, TCP) e di un bus monitor per analizzare il traffico dei pacchetti di comunicazione. Nel caso si utilizzi Windows è disponibile la versione binaria pre-compilata. Nel nostro caso, faremo il download del codice sorgente e ne eseguiremo la compilazione su una macchina Linux.</p>
-<p><img src="/uploads/2021/mod_sim_2.png" alt="QModMuster in esecuzione su Linux"></p>
-<p><strong>ModbusPal</strong> è un&rsquo;applicazione scritta in Java, quindi non necessita di alcuna compilazione in quanto indipendente dall&rsquo;host di esecuzione. Simula un dispositivo slave Modbus, con alcune funzioni avanzate come gli scripts Python.</p>
-<p><img src="/uploads/2021/mod_sim_3.png" alt="ModbusPal con la tipica interfaccia &ldquo;Java style&rdquo;"></p>
-<p>Come detto, dobbiamo compilare QModBus in modo che possa essere eseguito su sistemi Linux, nel mio caso Kubuntu 19.10. Scarichiamo il coside sorgente <a href="https://sourceforge.net/projects/qmodmaster/files/qModMaster-code-0.5.2-3.zip/download">qModMaster-code-0.5.2-3.zip</a> e salviamolo in una cartella di lavoro, nel mio caso <code>~/Develop/Projects/Modbus/qModMaster-code-0.5.2-3</code>.</p>
-<p>Se listiamo i files presenti nella cartella vediamo che è presente il file <code>qModMaster.pro</code>, tipico di un progetto sviluppato con Qt. Per la compilazione è necessario disporre di una versione minima Qt 5.2.1 o superiore, scaricabile da <a href="http://www.qt.io/download/">questo link</a>.</p>
-<p><img src="/uploads/2021/mod_sim_4.png" alt=""></p>
-<p>A questo punto possiamo usare il comando <code>qmake</code> per convertire il file .pro in Makefile, compilabile con il più classico <code>make</code>.</p>
-<pre tabindex="0"><code>$ qmake -o Makefile qModMaster.pro 
-$ make
-</code></pre><p>Dopo alcuni secondi di elaborazione abbiamo il nostro eseguibile pronto!</p>
-<h2 id="utilizzo-del-simulatore">Utilizzo del simulatore</h2>
-<p>Per prima cosa dobbiamo configurare lo slave, in modo che metta a disposizione le proprie risorse da far leggere al master, in questo caso configuriamo dei registri &ldquo;Holding Registers&rdquo;.</p>
-<p>{% hint style=&ldquo;info&rdquo; %}
-Entrambe le applicazioni richiedono privilegi <code>sudo</code> per poter accedere alla porta 502/TCP, per cui occorre avviarle con <code>sudo ./ModbusPal</code> e <code>sudo ./qModMaster</code> nelle rispettive cartelle di lavoro.
-{% endhint %}</p>
-<h3 id="configurazione-del-modulo-slave-modbuspal"><strong>Configurazione del modulo slave ModbusPal</strong></h3>
-<p><strong>Link settings</strong><br>
-****Selezioniamo &ldquo;TCP Port 502&rdquo;.<br>
-Il protocollo Modbus TCP usa di default la porta 502 per la comunicazione TCP</p>
-<p><strong>Modbus slaves</strong><br>
-****Aggiungiamo un nodo slave premendo il pulsante &ldquo;Add&rdquo;, selezioniamo il numero dello slave e inseriamo un nome, nel nostro caso &ldquo;Slave1&rdquo;.</p>
-<p><img src="/uploads/2021/mod_sim_5.png" alt=""></p>
-<p>A questo punto dobbiamo configurare i parametri che rendiamo disponibili nel nostro slave. Click sull&rsquo;icona con l&rsquo;occhio per aprire la schermata delle proprietà. Successivamente, click su &ldquo;Add&rdquo; e inseriamo il numero di registri che vogliamo aggiungere, nel nostro caso da 1 a 8.</p>
-<p><img src="/uploads/2021/mod_sim_6.png" alt=""></p>
-<p>Ed ecco che compare la lista degli holding registers che abbiamo creato, con valori di default a 0. Possiamo già modificare il loro valore a piacimento, oppure farlo quando anche il master è attivo per vederne la lettura aggiornata in tempo reale.</p>
-<p><img src="/uploads/2021/mod_sim_7.png" alt=""></p>
-<p>Siamo pronti per avviare lo slave, premiamo il pulsante &ldquo;Run&rdquo; della schermata principale e passiamo a configurare il master.</p>
-<h3 id="configurazione-del-modulo-master-qmodmaster"><strong>Configurazione del modulo master QModMaster</strong></h3>
-<p>La configurazione del modulo master è altrettanto semplice, occorre tener presente alcuni parametri coerenti con lo slave che abbiamo creato:</p>
-<p><strong>Mobbus Mode:</strong> TCP<br>
-<strong>Unit ID:</strong> 1 (corrisponde al numero dello slave che abbiamo dichiarato prima)<br>
-<strong>Function Code:</strong> Read Holding Registers (0x03)<br>
-<strong>Number of Registers:</strong> 8</p>
-<p><img src="/uploads/2021/mod_sim_8.png" alt=""></p>
-<p>I &ldquo;Function Code&rdquo; e &ldquo;Mumber of Registers&rdquo; corrispondono al tipo e alla quantità di dati che abbiamo dichiarato nel modulo slave.</p>
-<p>Di fault l&rsquo;app master è configurata in modo che comunichi con indirizzp IP 127.0.0.1 e porta 502 (come anche lo slave). Possiamo cambiare questi valori selezionando la schermata dal menù &ldquo;Options&rdquo; e poi &ldquo;Modbus TCP&rdquo;.</p>
-<p><img src="/uploads/2021/mod_sim_9.png" alt=""></p>
-<p>A questo punto non ci resta che attivare la connessione e l&rsquo;aggiornamento continuo dei dati tramite i pulsanti &ldquo;Connect&rdquo; e &ldquo;Scan&rdquo;. Il tempo di aggiornamento continuo dei dati è determinano dal parametro &ldquo;Scan Rate (ms)&rdquo;, che nel nostro caso corrisponde a un intervallo di 1 secondo.</p>
-<h3 id="aggiornamento-dei-dati">Aggiornamento dei dati</h3>
-<p><img src="/uploads/2021/mod_sim_10.png" alt=""></p>
-<p>Ed ecco che se andiamo a modificare i dati dei registri del nostro slave avremo il corrispondente aggiornamento sul master.</p>
-<h3 id="proviamo-a-scrivere-col-master">Proviamo a scrivere col master</h3>
-<p>Ora che abbiamo visto come sia possibile leggere i dati dallo slave proviamo a modificare i valori dei registri dal master. Interrompiamo lo scan continuo e scegliamo &ldquo;Write Multiple Registers&rdquo; nel parametro &ldquo;Function Code&rdquo; della schermata principale di QModMaster.</p>
-<p><img src="/uploads/2021/mod_sim_11.png" alt="Selezioniamo Write Multiple Registers"></p>
-<p>Riattiviamo lo scan continuo, ora possiamo fare un doppio click su ciascun campo del registro per modificarne il valore, che vedremo aggiornarsi sul modulo slave.</p>
-<p><img src="/uploads/2021/mod_sim_12.png" alt=""></p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: Modbus</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-modbus/</link>
-            <pubDate>Wed, 07 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-modbus/</guid>
-            <description>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&amp;rsquo;IT. Le installazioni ICS utilizzano un&amp;rsquo;ampia varietà di protocolli che spesso hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &amp;ldquo;sicurezza per oscurità&amp;rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</description>
-            <content type="html"><![CDATA[<p>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso hanno ben poco in comune con gli standard Ethernet e TCP/IP. </p>
-<p>Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</p>
-<p>In questo articolo vediamo le principali caratteristiche di uno di questi protocolli: il <strong>Modbus.</strong></p>
-<h2 id="lo-standard-modbus">Lo standard Modbus</h2>
-<p>Il protocollo Modbus si caratterizza principalmente per il supporto fisico di connessione, che può essere su porta seriale o su Ethernet. Esistono diverse varianti del protocollo:</p>
-<ul>
-<li>Modbus RTU</li>
-<li>Modbus ASCII</li>
-<li>Modbus TCP</li>
-<li>Modbus over TCP/IP o Modbus RTU/IP</li>
-<li>Modbus over UDP</li>
-<li>Modbus Plus (Modbus+)</li>
-<li>Secure Modbus</li>
-</ul>
-<p>In questo articolo tratterò quelli più diffusi: Modbus RTU e Modbus TCP. Farò anche un cenno sul Secure Modbus, una versione del protocollo orientata alla sicurezza e che incorpora un layer per la cifratura dei dati.</p>
-<h3 id="modbus-rtu">Modbus RTU</h3>
-<p>Modbus RTU è stato sviluppato per la prima volta nel 1979 da Modicon (ora parte di Schneider Electric) per i propri sistemi di automazione industriale e PLC. È diventato lo standard de facto del settore. Modbus è un protocollo di dominio pubblico ampiamente accettato, è un protocollo semplice e leggero destinato alla comunicazione seriale. Ha un limite di dati di 253 byte.</p>
-<p>Modbus opera al livello 7 del modello OSI. È una metodologia di comunicazione efficiente tra dispositivi interconnessi utilizzando un modello di &ldquo;richiesta/risposta&rdquo;. Proprio perché è semplice e leggero richiede poca potenza di elaborazione. Basti pensare che esistono librerie di comunicazione disponibili per praticamente qualunque dispositivo embedded, a partire da una semplice scheda Arduino fino alla più sofisticata Raspberry.</p>
-<p>Modbus è stato inizialmente implementato sulla tipologia fisica RS-232C (punto-punto) o RS-485 (multi-drop). Può avere fino a 32 dispositivi che comunicano tramite un collegamento seriale con ciascun dispositivo con un ID univoco.</p>
-<p><img src="/uploads/2021/mod_1.png" alt=""></p>
-<p>Modbus utilizza un&rsquo;architettura master/slave (client/server) in cui solo un dispositivo può inviare le richieste. Gli slave/server forniscono i dati richiesti al master o eseguono l&rsquo;azione richiesta dal master stesso. Uno slave è qualsiasi dispositivo periferico (trasduttore, valvola, unità di rete o altro ancora) che elabora le informazioni e invia il suo output al master tramite il protocollo Modbus.</p>
-<p>I master possono rivolgersi a singoli slave o inviare un messaggio in broadcast a tutti gli slave. Gli slave restituiscono una risposta a tutte le query indirizzate a loro individualmente, ma non rispondono alle query broadcast. Gli slave non generano messaggi, possono solo rispondere al master. La query di un master sarà composta dall&rsquo;indirizzo slave (ID slave o ID unità), un codice funzione, tutti i dati richiesti e un campo di controllo degli errori CRC.</p>
-<p>Modbus comunica utilizzando i <strong>Function Codes</strong>, codici funzione che identificano un&rsquo;ampia gamma di comandi.</p>
-<p><img src="/uploads/2021/mod_2.png" alt="Principali Function Codes per accesso dati e diagnostica"></p>
-<h3 id="modbus-tcp">Modbus TCP</h3>
-<p>Modbus TCP è il protocollo Modbus incapsulato per l&rsquo;uso su TCP/IP usando la porta 502. Utilizza la stessa richiesta/risposta di Modbus RTU, gli stessi codici funzione e lo stesso limite di dati di 253 byte. Il campo di controllo degli errori utilizzato in Modbus RTU viene eliminato poiché il livello di collegamento TCP/IP utilizza i suoi metodi di checksum.</p>
-<p>Modbus TCP aggiunge un livello applicazione (MBAP) al frame Modbus RTU. È lungo 7 byte con 2 byte per l&rsquo;intestazione, 2 byte per l&rsquo;identificatore del protocollo, 2 byte per la lunghezza e 1 byte per l&rsquo;indirizzo (ID unità).</p>
-<p><img src="/uploads/2021/mod_3.png" alt=""></p>
-<p>L&rsquo;utilizzo di Ethernet consente di realizzare architetture più complesse, anche di tipo ibrido facendo uso di appositi gateway.</p>
-<p><img src="/uploads/2021/mod_4.png" alt="Architettura ibrida RTU / TCP"></p>
-<h3 id="formato-del-pacchetto-dati">Formato del pacchetto dati</h3>
-<p>Un frame Modbus consiste in un Application Data Unit (ADU) che incapsula un Protocol Data Unit (PDU), secondo questo schema:</p>
-<ul>
-<li>ADU = Address + PDU + Error check</li>
-<li>PDU = Function code + Data</li>
-</ul>
-<p>L&rsquo;ordine dei byte per i valori nei frame di dati Modbus è il byte più significativo di un valore multi-byte inviato prima degli altri. Tutte le varianti Modbus utilizzano uno dei seguenti formati di frame.</p>
-<h4 id="formato-del-frame-modbus-rtu">Formato del frame Modbus RTU</h4>
-<table>
-<thead>
-<tr>
-<th>Nome</th>
-<th>Lung. (bits)</th>
-<th>Funzione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Start</td>
-<td>28</td>
-<td>Almeno 3½ caratteri di inizio frame (con condizione del segno)</td>
-</tr>
-<tr>
-<td>Address</td>
-<td>8</td>
-<td>Indirizzo della stazione</td>
-</tr>
-<tr>
-<td>Function</td>
-<td>8</td>
-<td>Codice funzione, es. read coils/holding registers</td>
-</tr>
-<tr>
-<td>Data</td>
-<td>n × 8</td>
-<td>Dati + lunghezza verranno riempiti in base al tipo di messaggio</td>
-</tr>
-<tr>
-<td>CRC</td>
-<td>16</td>
-<td>Cyclic Redundancy Check</td>
-</tr>
-<tr>
-<td>End</td>
-<td>28</td>
-<td>Almeno 3½ caratteri di silenzio tra i frames</td>
-</tr>
-</tbody>
-</table>
-<p>Note sul calcolo del CRC:</p>
-<ul>
-<li>Polinomiale: x16 + x15 + x2 + 1 (CRC-16-ANSI anche noto come CRC-16-IBM, polinomio algebrico esadecimale normale essendo <code>8005</code> e invertito <code>A001</code>).</li>
-<li>Valore iniziale: 65.535.</li>
-<li>Esempio di frame in esadecimale: <code>01 04 02 FF FF B8 80</code> (CRC-16-ANSI calcolato a partire da <code>01</code> fino a <code>FF</code> genera <code>80B8</code>, viene <strong>prima</strong> trasmesso il byte <strong>meno</strong> significativo).</li>
-</ul>
-<h4 id="formato-del-frame-modbus-ascii">Formato del frame Modbus ASCII</h4>
-<table>
-<thead>
-<tr>
-<th>Nome</th>
-<th>Lung. (bytes)</th>
-<th>Funzione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Start</td>
-<td>1</td>
-<td>Inizia con <code>:</code> (valore ASCII<code>3A</code>)</td>
-</tr>
-<tr>
-<td>Address</td>
-<td>2</td>
-<td>Indirizzo della stazione</td>
-</tr>
-<tr>
-<td>Function</td>
-<td>2</td>
-<td>Codice funzione, es. read coils</td>
-</tr>
-<tr>
-<td>Data</td>
-<td>n × 2</td>
-<td>Dati + lunghezza verranno riempiti in base al tipo di messaggio</td>
-</tr>
-<tr>
-<td>LRC</td>
-<td>2</td>
-<td>Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>)</td>
-</tr>
-<tr>
-<td>End</td>
-<td>2</td>
-<td>&lt;CR&gt;&lt;LF&gt; insieme (valori ASCII <code>0D</code>, <code>0A</code>)</td>
-</tr>
-</tbody>
-</table>
-<h4 id="formato-del-frame-modbus-tcp">Formato del frame Modbus TCP</h4>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Lung. (bytes)</th>
-<th>Funzione</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Transaction identifier</td>
-<td>2</td>
-<td>Per la sincronizzazione tra messaggi di server e client</td>
-</tr>
-<tr>
-<td>Protocol identifier</td>
-<td>2</td>
-<td>0 per Modbus/TCP</td>
-</tr>
-<tr>
-<td>Length field</td>
-<td>2</td>
-<td>Numero di byte rimanenti in questo frame</td>
-</tr>
-<tr>
-<td>Unit identifier</td>
-<td>1</td>
-<td>Indirizzo slave (255 se non usato)</td>
-</tr>
-<tr>
-<td>Function code</td>
-<td>1</td>
-<td>Codice funzione</td>
-</tr>
-<tr>
-<td>Data bytes</td>
-<td>n</td>
-<td>Dati come risposta o comandi</td>
-</tr>
-</tbody>
-</table>
-<h2 id="sicurezza-del-protocollo-modbus">Sicurezza del protocollo Modbus</h2>
-<p>Modbus deve la sua larghissima diffusione alla semplicità del protocollo e alla sua ormai storica presenza sul mercato. Ma proprio per questi due fattori offre il fianco a diverse possibilità di attacco, con numerose vulnerabilità note. Ecco come potrebbero essere eseguiti alcuni attacchi sfruttando le semplici funzioni che il protocollo stesso mette a disposizione, senza strumenti dedicati all&rsquo;enumeration come <strong>nmap</strong>.</p>
-<blockquote>
-<p>Un hacker può iniziare il suo attacco in fase di reconnaissance eseguendo lo scanning della rete per individuare i dispositivi Modbus usando i comandi di diagnostica del protocollo: <strong>Clear Counter</strong> e <strong>Diagnostic Register</strong>. Una richiesta inviata al PLC, con codice funzione 8 (0x08) e codice funzione secondaria 10 (0x0A), farà in modo che il server di destinazione cancelli i suoi contatori e il registro diagnostico. Questa funzione è in genere implementata solo nei dispositivi seriali.</p>
-</blockquote>
-<blockquote>
-<p>Un altro comando di diagnostica che può essere utilizzato è il <strong>Read Device Identification</strong> come tentativo di raccogliere informazioni sul dispositivo Modbus: una richiesta con il codice funzione 43 di Read Device Identification farà sì che un server Modbus restituisca il nome del fornitore, il nome del prodotto e il numero di versione. Ulteriori informazioni possono essere fornite anche in campi opzionali. Un utente malintenzionato invia il pacchetto di richiesta Modbus con il codice funzione 43 a tutti i sistemi della rete e raccoglie informazioni che potrebbero essere utili per successivi attacchi.</p>
-</blockquote>
-<h3 id="vulnerabilità-del-protocollo-modbus">Vulnerabilità del protocollo Modbus</h3>
-<p>L&rsquo;implementazione del protocollo Modbus TCP contiene diverse vulnerabilità che potrebbero consentire a un utente malintenzionato di eseguire attività di enumeration o di inviare comandi arbitrari.</p>
-<ol>
-<li><strong>Mancanza di riservatezza</strong>: tutti i messaggi Modbus vengono trasmessi in chiaro attraverso il supporto di trasmissione.</li>
-<li><strong>Mancanza di integrità</strong>: non esistono controlli di integrità all&rsquo;interno del protocollo e, di conseguenza, dipende da protocolli di livello inferiore preservare l&rsquo;integrità dei dati.</li>
-<li><strong>Mancanza di autenticazione</strong>: non esiste autenticazione a nessun livello del protocollo, con la possibile eccezione di alcuni comandi di programmazione non documentati.</li>
-<li><strong>Framing semplicistico</strong>: i frame Modbus TCP vengono inviati tramite connessioni TCP stabilite. Sebbene tali connessioni siano generalmente affidabili, presentano un significativo svantaggio per via del punto successivo.</li>
-<li><strong>Mancanza di struttura della sessione</strong>: come molti protocolli di richiesta/risposta (es. SNMP, HTTP, ecc.) Modbus TCP è costituito da transazioni di breve durata in cui il master invia una richiesta allo slave che si traduce in una singola azione. Se combinato con la mancanza di autenticazione e la scarsa generazione del TCP Initial Sequence Number (ISN) in molti dispositivi embedded, diventa possibile per gli aggressori immettere comandi senza conoscere la sessione esistente.</li>
-</ol>
-<p><strong>Vulnerabilità &ldquo;Illegal Function Exception&rdquo;</strong><br>
-Queste vulnerabilità consentono a un utente malintenzionato di svolgere attività di ricognizione sulla rete di destinazione. La prima vulnerabilità esiste perché un dispositivo slave Modbus può restituire una <em>Illegal Function Exception</em> per le query che contengono un codice funzione non supportato. Un utente remoto non autenticato può sfruttare questa vulnerabilità inviando codici funzione predisposti per effettuare ricognizioni sulla rete di destinazione.</p>
-<p><strong>Vulnerabilità &ldquo;Illegal Address Exception&rdquo;</strong><br>
-Un&rsquo;ulteriore vulnerabilità di ricognizione è dovuta alle molteplici risposte di <em>Illegal Address Exception</em> generate per le query che contengono un indirizzo slave illegale. Un utente malintenzionato non autenticato può sfruttare questa vulnerabilità inviando query che contengono indirizzi non validi alla rete di destinazione e raccogliere informazioni sugli host di rete dai messaggi restituiti.</p>
-<p><strong>Vulnerabilità sull&rsquo;autenticazione</strong><br>
-Un&rsquo;altra vulnerabilità è dovuta alla mancanza di controlli di sicurezza nell&rsquo;implementazione del protocollo Modbus TCP. Le specifiche del protocollo non includono un meccanismo di autenticazione per la convalida della comunicazione tra i dispositivi master e slave. Questo difetto potrebbe consentire a un utente non autenticato di inviare comandi arbitrari a qualsiasi dispositivo slave tramite un master di attacco.</p>
-<p><strong>Vulnerabilità DoS</strong><br>
-Il protocollo Modbus TCP contiene anche vulnerabilità che potrebbero consentire a un utente malintenzionato di causare una condizione di Denial of Service (DoS) su un sistema di destinazione. La vulnerabilità è dovuta a un errore di implementazione nel protocollo stesso durante l&rsquo;elaborazione dei messaggi di richiesta e risposta di input discreti.</p>
-<p><strong>Vulnerabilità di buffer overfllow</strong><br>
-Un altro attacco a Modbus può essere il pacchetto dati che supera la lunghezza massima. Il protocollo limita la dimensione della PDU a 253 byte per consentire l&rsquo;invio del pacchetto su una linea seriale, es. interfaccia RS-485. Modbus TCP antepone alla PDU un&rsquo;intestazione Modbus Application Protocol (MBAP) di 7 byte e il tutto, MBAP+PDU, viene incapsulato in un pacchetto TCP. Ciò pone un limite massimo alla dimensione del pacchetto.</p>
-<p>Un utente malintenzionato crea un pacchetto appositamente predisposto di lunghezza superiore a 260 byte e lo invia a un client e server. Se il client o server sono stati programmati in modo errato ciò potrebbe provocare un overflow del buffer o un attacco denial-of-service.</p>
-<p><strong>Sniffing del protocollo</strong><br>
-L&rsquo;attacco più semplice da usare contro Modbus è lo sniffing del traffico di rete, trovare i dispositivi connessi e quindi inviare comandi dannosi ai dispositivi.</p>
-<p>Non avendo funzionalità di sicurezza o crittografia, è facile utilizzare Wireshark per raccogliere informazioni da pacchetti di dati che sulla rete da e verso una porta Modbus su un dispositivo e leggere il contenuto di tali pacchetti. Wireshark consente di vedere facilmente cosa è contenuto in questi pacchetti, esaminare gli indirizzi IP, vedere i codici funzione delle richieste e alterare il corretto funzionamento dei dispositivi.</p>
-<p><img src="/uploads/2021/mod_5.png" alt="Whireshark in azione"></p>
-<h3 id="secure-modbus">Secure Modbus</h3>
-<p>L’approccio più comune alla protezione dei protocolli OT è quello di incapsularli all’interno di un protocollo TLS (Transport Layer Security) e utilizzare l’autenticazione reciproca. Molti organismi di standardizzazione pubblicano linee guida per farlo a seconda dei protocollo, ad esempio:</p>
-<ul>
-<li>ODVA specifica come applicare la crittografia TLS al protocollo EtherNet/IP.</li>
-<li>Schneider Electric ha recentemente lavorato per creare una versione <strong>Secure Modbus</strong>, che prevede anche l’aggiunta dell’estensione X.509 per la definizione delle autorizzazioni (read-only o read-write).</li>
-<li>IEC 62351-3 definisce come utilizzare TLS per il settore dell’industria energetica sui protocolli basati su TCP.</li>
-</ul>
-<p><img src="/uploads/2021/mod_6.png" alt="Modbus TCP Security"></p>
-<p><img src="/uploads/2021/mod_7.png" alt=""></p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: Profibus/Profinet</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</link>
-            <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</guid>
-            <description>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&amp;rsquo;IT. Le installazioni ICS utilizzano un&amp;rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &amp;ldquo;sicurezza per oscurità&amp;rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</description>
-            <content type="html"><![CDATA[<p>Una delle sfide del pentesting in ambito OT/ICS è data dai protocolli impiegati che possono essere anche molto diversi da quelli dell&rsquo;IT. Le installazioni ICS utilizzano un&rsquo;ampia varietà di protocolli che spesso condividono hanno ben poco in comune con gli standard Ethernet e TCP/IP. </p>
-<p>Questa differenza è stata per anni il punto di forza delle installazioni OT, proteggendole attraverso il meccanismo della &ldquo;sicurezza per oscurità&rdquo;. Ora che questi protocolli stanno diventando sempre più conosciuti e compresi, le preoccupazioni di sicurezza in queste strutture sono state accentuate.</p>
-<p>In questo articolo vediamo le principali caratteristiche di uno di questi protocolli: il <strong>Profibus.</strong></p>
-<h2 id="lo-standard-profibus">Lo standard Profibus</h2>
-<p><strong>Profibus</strong> (<strong>Pro</strong>cess <strong>Fi</strong>eld<strong>bus</strong>) è uno standard aperto per la comunicazione industriale originariamente sviluppato in Germania. È iniziato da un gruppo di 21 aziende e istituzioni denominate &ldquo;Central Association for Electrical Industry&rdquo; (ZVEI), guidato dal gigante industriale Siemens. Per questa ragione Profibus è ampiamente utilizzato nei prodotti Siemens ed è il bus di comunicazione sfruttato dal malware Stuxnet nella centrale nucleare iraniana di Natanz durante il famoso attacco informatico.</p>
-<p>Profibus è un protocollo intelligente e bidirezionale multipunto, in cui tutti i dispositivi Profibus sono interoperabili. I dati possono rappresentare valori analogici o digitali.  È un protocollo economico, semplice e ad alta velocità. Profibus utilizza una connessione a due fili per alimentazione e dati.</p>
-<p>La tipologia del protocollo è master-slave, come molti altri protocolli SCADA/ICS, che supporta i nodi master mediante l&rsquo;uso della condivisione di un token. Simile al protocollo token-ring di IBM, solo quando il master ha il token può comunicare con gli slave. Lo slave Profibus può comunicare solo con un master. Il nodo Profibus master è in genere un PLC o RTU e gli slave sono sensori, motori o altri dispositivi di controllo.</p>
-<p><img src="/uploads/2021/profi_1.png" alt=""></p>
-<h3 id="tipi-di-profibus">Tipi di Profibus</h3>
-<p>La famiglia dei protocolli Profibus si divide principalmente in due due categorie: Profibus DP e ProfiNet. Gli impieghi cambiano sensibilmente: mentre il primo è un tradizionale fieldbus master-slave con trasmissione seriale con rete ad anello, il secondo ne è la sua evoluzione e permette la comunicazione tra segmenti diversi di bus utilizzando Ethernet.</p>
-<p><img src="/uploads/2021/profi_2.png" alt=""></p>
-<h4 id="profibus-fms">Profibus FMS</h4>
-<p>Questo era il protocollo Profibus iniziale. È stato progettato per comunicare tra PLC e PC. Sfortunatamente questo semplice protocollo non era molto flessibile e, di conseguenza, non poteva funzionare in una rete più complessa e complicata. Sebbene sia ancora in uso, la stragrande maggioranza delle reti Profibus utilizza una delle versioni più recenti.</p>
-<h4 id="profibus-dp-decentralized-periphery">Profibus DP (Decentralized Periphery)</h4>
-<p>Profibus DP è probabilmente il più comune dei protocolli Profibus. È più semplice e veloce rispetto agli altri tipi. È disponibile in tre versioni separate: DP-V0 (scambio ciclico di dati), DP-V1 (scambio aciclico di dati) e DP-V2 (modalità slave-to-slave isocrono e scambio di dati) con ogni nuova versione che offre funzionalità aggiuntive.</p>
-<h4 id="profibus-pa-process-automation">Profibus PA (Process Automation)</h4>
-<p>Profibus PA, come suggerisce il nome, è stato sviluppato per Process Automation. Questa versione del protocollo standardizza il processo di trasmissione dei dati misurati. Inoltre, è stato progettato per l&rsquo;uso in ambienti pericolosi utilizzando la tecnologia Manchester Bus Powered (MBS) che utilizza una potenza inferiore e quindi riduce la possibilità di scintille ed esplosioni.</p>
-<h3 id="prifinet-process-field-net">PrifiNet (Process Field Net)</h3>
-<p>ProfiNet (<strong>Pro</strong>cess <strong>Fi</strong>eld <strong>Net</strong>) è un altro standard aperto per l&rsquo;automazione industriale progettato per la scalabilità. Invece di scambiare dati utilizzando il bus di campo (seriale), utilizza Ethernet (IEEE802.3) come supporto. È incluso come parte di IEC-61158 e IEC-61784. Inizialmente utilizzava pacchetti TCP/IP standard.</p>
-<p>ProfiNet ha come punto di forza il fornire dati con vincoli di tempo ristretti. Esso utilizza standard IT come TCP/IP e XML per comunicare, configurare e diagnosticare macchine e dispositivi. Può funzionare fino a 100 Mbit/s su cavi a doppino intrecciato o fibra ottica.</p>
-<p>ProfiNet NON è Profibus su Ethernet, ma sono compatibili con l&rsquo;uso di specifici proxy per collegarli.</p>
-<p>ProfiNet ha due classi di funzioni:</p>
-<ol>
-<li>ProfiNet I/O (input/output)</li>
-<li>ProfiNet CBA (automazione basata su componenti)</li>
-</ol>
-<h4 id="profinet-io">ProfiNet I/O</h4>
-<p>Collega i dispositivi di campo distribuiti e utilizza comunicazioni real-time (RT) e standard (TCP/IP).</p>
-<p>Il canale real-time (RT) viene utilizzato per dati critici che richiedono tempi di scambio ridottissimi, come dati di processo ciclici, allarmi e monitoraggio delle comunicazioni ed è in grado di eseguire cicli di 10 ms.</p>
-<p>Il canale standard viene utilizzato per il download di configurazione e parametri, diagnostica, informazioni sulla gestione del dispositivo e altre comunicazioni non critiche con tempi di scambio nell&rsquo;intervallo di 100 ms.</p>
-<p>Appartenente sempre alla famiglia I/O esiste poi il ProfiNet IRT (Isochronous Real-Time), che viene utilizzato nei sistemi di azionamento con tempi di ciclo inferiori a 1 ms. Poiché ProfiNet IRT è una tecnologia Layer 2 basata su hardware non è instradabile.</p>
-<p>Profibus I/O utilizza le porte TCP/UDP numero 34962, 34963 e 34964.</p>
-<h4 id="profinet-cba">ProfiNet CBA</h4>
-<p>E&rsquo; progettato per applicazioni di automazione industriale distribuita. ProfiNet CBA è basato sullo standard DCOM (Distributed Component Model) e RPC (Remote procedure Call). Questo significa anche che ne eredita quindi le vulnerabilità di DCOM e RPC.</p>
-<p>ProfiNet CBA utilizza la porta standard TCP numero 135.</p>
-<h2 id="la-sicurezza-dei-protocolli">La sicurezza dei protocolli</h2>
-<p>Come molti protocolli OT/ICS, anche Profibus DP manca di autenticazione. Ciò significa che qualsiasi nodo può falsificare un nodo master. Poiché solo quest&rsquo;ultimo può controllare gli slave, questa è una delle maggiori vulnerabilità del sistema. Un nodo master contraffatto sarebbe in grado di acquisire il token, interrompere le funzioni del nodo e persino causare un Denial of Service (DoS). Dal momento che la maggior parte dei nodi master in una rete Profibus DP sono collegati a una rete Ethernet, questo li rende sensibili a quasi tipo di attacco basato su Ethernet.</p>
-<p>La stessa cosa vale per ProfiNet. Poiché esistono diverse tecnologie in questa suite il rischio dipende da quella utilizzata. Fa eccezione, almeno in parte, il protocollo ProfiNet IRT che utilizza indirizzi non instradabili e quindi risulta immune alle vulnerabilità IP.</p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far com‌prendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: Metasploit SCADA modules</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</link>
-            <pubDate>Mon, 05 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</guid>
-            <description>Come penetration tester abbiamo molte risorse a disposizione per testare il livello di sicurezza di un sistema IT. Uno dei più diffusi strumenti è Metasploit Framework, sviluppato da Rapid7. Si tratta di uno strumento in grado di coprire le fasi di enumeration, exploitation e privilege escalation, molto flessibile e modulare.
-Da diverso tempo ormai, vista l&amp;rsquo;attenzione che il mondo della cybersec sta dedicando alle infrastrutture ICS, possiamo trovare un lungo elenco di moduli Metasploit che hanno come target i sistemi SCADA, i PLC e i principali protocolli di comunicazione industriale.</description>
-            <content type="html"><![CDATA[<p>Come penetration tester abbiamo molte risorse a disposizione per testare il livello di sicurezza di un sistema IT. Uno dei più diffusi strumenti è <a href="https://www.metasploit.com/">Metasploit Framework</a>, sviluppato da Rapid7. Si tratta di uno strumento in grado di coprire le fasi di enumeration, exploitation e privilege escalation, molto flessibile e modulare.</p>
-<p>Da diverso tempo ormai, vista l&rsquo;attenzione che il mondo della cybersec sta dedicando alle infrastrutture ICS, possiamo trovare un lungo elenco di moduli Metasploit che hanno come target i sistemi SCADA, i PLC e i principali protocolli di comunicazione industriale.</p>
-<p>Ed è proprio per via del fatto che i siti ICS utilizzano hardware e protocolli diversi occorre svolgere una fase di reconnaissance molto attenta per portare un attacco di successo. Serve conoscere il produttore e il protocollo per trovare il modulo appropriato.</p>
-<p>Di seguito ho riassunto l&rsquo;elenco dei moduli presenti al momento della scrittura di questo articolo, suddivisi tra ausiliari (reconnaissance e commands) e di exploitation.</p>
-<p><img src="/uploads/2021/metasploit_ot_1.png" alt="Auxiliary modules"></p>
-<p><img src="/uploads/2021/metasploit_ot_2.png" alt="Exploit modules"></p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far comprendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Hacking: Schneider Electric Building Automation</title>
-            <link>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</link>
-            <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</guid>
-            <description>I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30.</description>
-            <content type="html"><![CDATA[<p>I sistemi ICS controllano i processi industriali in tutto il mondo. Tutto, dalle ferrovie, ai semafori, alle raffinerie di petrolio, agli edifici commerciali, è controllato da almeno un PLC connesso a un terminale operatore HMI o a un software di controllo SCADA. Alcune delle recenti preoccupazioni legate ad essi è la possibile violazione da parte di cyber criminali o di enti governativi. In entrambi i casi i risultati potrebbero essere devastanti (il disastro di Bhopal nello stabilimento di Union Carbide è costato oltre 30.000 vite). Nonostante ciò, questi sistemi sono insolitamente vulnerabili all&rsquo;hacking e alle attività dannose.</p>
-<p>In questo tutorial mostrerò come hackerare un sistema di controllo industriale di Schneider Electric, uno dei maggiori produttori al mondo di sistemi ICS e per la Buinding Automation. A causa della debole sicurezza integrata in fase di sviluppo, problema molto diffuso nei prodotti IIoT, alcuni di questi sistemi sono incredibilmente facili da violare e prenderne il controllo.</p>
-<h3 id="conosciamo-meglio-il-nostro-target">Conosciamo meglio il nostro target</h3>
-<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> è una società con sede a Parigi, leader mondiale nel settore del controllo industriale. Sono stati tra i pionieri in questo campo introducendo molti concetti innovativi poi replicati dai concorrenti, e hanno anche il merito di aver sviluppato il protocollo di comunicazione più utilizzato nei sistemi di controllo industriale: il <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>.</p>
-<p>Schneider Electric all&rsquo;interno del proprio vasto catalogo conta anche una gamma di PLC dedicati all&rsquo;automazione degli edifici.</p>
-<p><img src="/uploads/2021/building_1.png" alt="Un server della famiglia SmartStruxure"></p>
-<p>Uno dei loro prodotti, lo SmartStruxure Automation Server, viene utilizzato negli edifici commerciali per controllare e automatizzare i numerosi sistemi tra cui riscaldamento e raffreddamento, illuminazione, sicurezza, ecc. Nel 2016, il ricercatore indipendente Karn Ganeshen ha individuato una vulnerabilità 0-day, oggetto poi di una patch da parte di Schneider, che permetteva di entrare nel server con una shell e acquisire i privilegi di root.</p>
-<p>Ma andiamo con ordine.</p>
-<h3 id="trovare-i-server-schneider-automation-con-shodan">Trovare i server Schneider Automation con Shodan</h3>
-<p>Possiamo trovare questi server di automazione su Shodan cercando:</p>
-<p><code>&quot;schneider electric&quot; automation</code></p>
-<p><img src="/uploads/2021/building_2.png" alt="I risultati su Shodan"></p>
-<p>Come possiamo notare, compare un lungo elenco di dispositivi direttamente connessi a Internet, con il relativo indirizzo IP pubblico. Nel nostro caso userò un prodotto dimostrativo all&rsquo;interno della rete locale.</p>
-<h2 id="la-vulnerabilità">La vulnerabilità</h2>
-<p>La vulnerabilità in oggetto consente all&rsquo;autore dell&rsquo;attacco di connettersi al server di automazione con una shell SSH utilizzando le credenziali predefinite e di ottenere facilmente i privilegi di &ldquo;root&rdquo;. Così facendo, l&rsquo;attaccante non possiede solo la &ldquo;scatola&rdquo;, ma l&rsquo;intero edificio!</p>
-<h3 id="connessione-al-building-automation-server">Connessione al Building Automation Server</h3>
-<p>Innanzitutto, colleghiamoci al nostro server con una shell SSH. Userò Kali Linux, ma dal momento che questo hack è molto semplice può essere eseguito usando qualsiasi distribuzione, senza l&rsquo;ausilio di strumenti di hacking particolari come ad es. Metasploit.</p>
-<pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
-</code></pre><p>Dopo che ci siamo connessi il server ci chiederà una password. Utilizziamo la password predefinita &ldquo;<strong>admin</strong>&rdquo;.</p>
-<p><img src="/uploads/2021/root_1.png" alt=""></p>
-<p>A questo punto siamo all&rsquo;interno dell&rsquo;account amministratore di Automation Server. Possiamo digitare <code>help</code> per vedere quali comandi possiamo usare con questo account.</p>
-<p><img src="/uploads/2021/root_2.png" alt=""></p>
-<p>Ad esempio, digitiamo <code>release</code>. Il sistema risponde con le informazioni sulla versione del server. Inoltre, va notato che uno dei comandi è <code>reboot</code>, che potrebbe essere utile nel caso di un attacco DoS.</p>
-<p><img src="/uploads/2021/root_3.png" alt=""></p>
-<p>Possiamo inoltre vedere il tempo trascorso dall&rsquo;ultimo avvio digitando il comando <code>uptime</code>. Questa informazione è sempre molto utile in fase di attacco perchè può indicare, normalmente, il tempo trascorso da quando il sistema ha subito una patch di aggiornamento.</p>
-<pre tabindex="0"><code>admin:&gt; uptime
-</code></pre><p><img src="/uploads/2021/root_4.png" alt=""></p>
-<p>Uno dei punti deboli di questo sistema è che possiamo usare il comando Linux pipe &ldquo;|&rdquo; per inoltrare ulteriori comandi al server sottostante. Facendo un esempio pratico, possiamo vedere il file &ldquo;passwd&rdquo; sul server digitando:</p>
-<pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
-</code></pre><p><img src="/uploads/2021/root_5.png" alt=""></p>
-<p>In questo modo abbiamo elencato tutti gli account presenti sul server. Naturalmente questo file contiene solo gli account e non le password, che invece si trovano nel file <strong>/etc/shadow</strong> accessibile unicamente con i diritti di <strong>root</strong>.</p>
-<h3 id="privilege-escalation">Privilege escalation</h3>
-<p>La fase di privilege escalation, nella maggior parte dei casi in campo IT, richiede procedure a volte lunghe e complesse, indipendentemente che si stia attaccando una macchina Windows o Linux. Ma come ho detto, nel campo OT non sempre i livelli di sicurezza sono (in questo caso, &ldquo;erano&rdquo;) adeguati. Possiamo ottenere il livello di root semplicemente digitando:</p>
-<pre tabindex="0"><code>admin:&gt; sudo -i
-</code></pre><p><img src="/uploads/2021/root_6.png" alt=""></p>
-<p><strong>Boom!</strong> La configurazione predefinita di questo server di automazione dell&rsquo;edificio non ha password per l&rsquo;account &ldquo;root&rdquo;, quindi è sufficiente premere Invio quando viene richiesta una password.</p>
-<p>Come possiamo vedere, il prompt diventa verde e indica che siamo root!</p>
-<p>Dato che ora abbiamo i privilegi di root siamo in grado di fare praticamente qualsiasi cosa. Digitiamo <code>cat /etc/shadow</code> per vedere se riusciamo a recuperare gli hash delle password nella cartella <strong>/etc/shadow</strong>.</p>
-<p><img src="/uploads/2021/root_7.png" alt=""></p>
-<p>Ed ecco che siamo riusciti a ottenere tutti gli account e i loro hash delle password! Se necessario, potremmo scoprirle attraverso un attacco brute-force come <strong>hashcat</strong> per recuperare le password in chiaro.</p>
-<p>È probabile che il file di configurazione per Automation Server sia nella directory <strong>/etc</strong>. Entriamo in questa cartella ed elenchiamo tutti i file e le directory.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root:&gt; cd /etc
-</span></span><span style="display:flex;"><span>root:&gt; ls -l
-</span></span></code></pre></div><p><img src="/uploads/2021/root_8.png" alt=""></p>
-<p>Se scorriamo questo elenco troviamo un file chiamato &ldquo;whitelist.rules&rdquo;, che probabilmente contiene le regole per la connessione al server. Apriamolo.</p>
-<pre tabindex="0"><code>root:&gt; cat whitelist.rules
-</code></pre><p><img src="/uploads/2021/root_9.png" alt=""></p>
-<p>L&rsquo;amministratore di sistema non ha mai impostato &ldquo;whitelist.rules&rdquo; su questo server e, di conseguenza, chiunque può connettersi.</p>
-<p>Infine, poiché abbiamo i privilegi di root possiamo aggiungere un nuovo utente che possano fare da backdoor. Prima di partire, posso aggiungermi agli utenti, concedermi i privilegi di root e aggiungermi a whitelist.rules, in modo che anche se l&rsquo;amministratore dovesse correggere questa vulnerabilità avrò comunque un account e potrò accedere ancora a questo server.</p>
-<pre tabindex="0"><code>root:&gt; useradd cyberhood
-</code></pre><p>Questo esempio risale alle vulnerabilità scoperte nel 2016 e riconosciute da Schneider Electric, che successivamente ha aggiornato i propri sistemi al fine di impedire un accesso così facile al server. Maggiori informazioni le puoi <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">trovare qui</a>.</p>
-<p><strong>N.B.</strong> Lo scopo di questa guida non è certo quello di screditare un produttore a discapito di un altro, ma vuole unicamente evidenziare quanto lavoro ci sia da fare sui <strong>prodotti OT di tutti i principali produttori</strong> al fine di renderli &ldquo;<strong>secure by design</strong>&rdquo;, progettati e costruiti con criteri di sicurezza intrinseca.</p>
-<h2 id="nota-importante"><strong>Nota importante</strong></h2>
-<p>Lo scopo di questo articolo è unicamente didattico e informativo. <strong>Ogni azione non autorizzata</strong> verso qualunque sistema di controllo presente su una rete pubblica o privata <strong>è illegale</strong>! Le informazioni contenute in questo ed altri articoli hanno lo scopo di far comprendere quanto sia necessario migliorare i sistemi di difesa, e non di fornire strumenti per effettuarne l&rsquo;attacco. Violare un sistema informatico è perseguibile penalmente e può causare gravi danni a cose e persone, in modo particolare se si parla di ICS. Tutti i test che vengono illustrati nei tutorials sono stati effettuati in laboratori isolati, sicuri, o autorizzati dal produttore.</p>
 <p>Stay safe, stay free.</p>
 ]]></content>
         </item>
@@ -1157,35 +639,6 @@ Moreover, it is assumed that 60+ thousand searches are conducted through Google&
         </item>
         
         <item>
-            <title>La sicurezza industriale</title>
-            <link>https://scadasploit.dev/posts/2021/07/la-sicurezza-industriale/</link>
-            <pubDate>Fri, 02 Jul 2021 15:09:35 +0200</pubDate>
-            
-            <guid>https://scadasploit.dev/posts/2021/07/la-sicurezza-industriale/</guid>
-            <description>La sicurezza informatica industriale è sempre stata una sfida. Per quanto già complessa in sè, la pandemia che stiamo affrontando nel 2020 complicato ulteriomente le cose. Secondo il recente rapporto dell&amp;rsquo;ARC Advisory Group, il numero di lavoratori remoti tra le organizzazioni industriali è aumentato del 53%, creando attività aggiuntive per i professionisti IT e OT. Allo stesso tempo, solo circa un quarto delle società industriali ha sviluppato un piano strategico di risposta agli incidenti.</description>
-            <content type="html"><![CDATA[<p><img src="/uploads/2021/sicurezza_ot_1.png" alt=""></p>
-<p>La sicurezza informatica industriale è sempre stata una sfida. Per quanto già complessa in sè, la pandemia che stiamo affrontando nel 2020 complicato ulteriomente le cose. Secondo il recente rapporto dell&rsquo;ARC Advisory Group, il numero di lavoratori remoti tra le organizzazioni industriali è aumentato del 53%, creando attività aggiuntive per i professionisti IT e OT. Allo stesso tempo, solo circa un quarto delle società industriali ha sviluppato un piano strategico di risposta agli incidenti.</p>
-<p><img src="/uploads/2021/sicurezza_ot_2.png" alt=""></p>
-<p>Mentre alcune delle grandi imprese industriali possono avere budget sufficienti e professionisti competenti per affrontare in modo efficacie un progetto di sicurezza OT, altre sperimentano la mancanza di risorse. Secondo lo stesso rapporto, il 24% delle organizzazioni industriali ha riscontrato una riduzione del budget ICS. Il paradosso è che crescono le esigenze di accesso, che richiedono la visibilità da remoto delle aree più critiche delle loro infrastrutture industriali.</p>
-<p><img src="/uploads/2021/sicurezza_ot_3.png" alt=""></p>
-<h2 id="approccio-strutturato-alla-sicurezza-ot">Approccio strutturato alla sicurezza OT</h2>
-<p>Ci sono buone notizie per le aziende, che stanno pensando a come affrontare il loro programma di sicurezza OT. Seguendo i 5 passaggi universali descritti di seguito, qualsiasi organizzazione industriale può riconoscere, strutturare e assegnare priorità alle proprie reali esigenze di sicurezza. Inoltre, può identificare le azioni più richieste con i budget e le risorse disponibili.</p>
-<p><img src="/uploads/2021/sicurezza_ot_4.png" alt=""></p>
-<h3 id="fase-1-conduzione-dellaudit-di-sicurezza">FASE 1. Conduzione dell&rsquo;audit di sicurezza</h3>
-<p>Le aziende spesso sottovalutano l&rsquo;importanza della diagnostica della sicurezza informatica. Tuttavia, questo passaggio è fondamentale per le reti OT sensibili, poiché consente di ottenere visibilità attraverso i processi di sicurezza esistenti. Aiuta anche a identificare i problemi, impostare obiettivi di sicurezza adeguati e pianificare i passaggi successivi con fiducia. Acquisendo la comprensione di quali tecnologie sono realmente necessarie, è possibile spendere saggiamente il budget disponibile.</p>
-<h3 id="fase-2-trovare-le-tecnologie-per-la-sicurezza">FASE 2. Trovare le tecnologie per la sicurezza</h3>
-<p>Con l&rsquo;elevata diversità degli ambienti OT su più verticali industriali, potrebbe essere difficile trovare una singola tecnologia o un fornitore in grado di soddisfare tutti i requisiti di sicurezza OT del cliente. È più comune trovare una combinazione di tecnologie compatibili scalabili per le esigenze dell&rsquo;organizzazione industriale. Se non è disponibile una soluzione adeguata sul mercato, l&rsquo;opzione migliore può essere quella di cercare una tecnologia adatta tra grandi o piccoli fornitori di sicurezza o persino svilupparla da zero.</p>
-<h3 id="fase-3-implementare-in-modo-adeguato-la-sicurezza">FASE 3. Implementare in modo adeguato la sicurezza</h3>
-<p>La continuità dei processi industriali e la sicurezza umana e ambientale sono le massime priorità per le reti OT. Pertanto, le soluzioni di sicurezza OT devono essere attentamente implementate e configurate secondo gli standard di conformità locali e internazionali, che includono ISO/IEC 27001, NIST SP, ISA/IEC 62443, NERC CIP e altri standard di riferimento.</p>
-<h3 id="fase-4-gestione-professionale-della-sicurezza">FASE 4. Gestione professionale della sicurezza</h3>
-<p>La gestione della sicurezza OT può essere complessa, poiché copre più aree e richiede competenze di gestione della sicurezza diverse. Inoltre, l&rsquo;approccio alla sicurezza informatica delle reti IT e OT è diverso, portando alla carenza di professionisti della sicurezza tra le organizzazioni industriali. Le imprese industriali possono superare questa sfida ricoprendo ruoli di gestione della sicurezza e governando i progetti di sicurezza, internamente o con i servizi SOC in outsourcing. Il monitoraggio costante della sicurezza aiuta a riconoscere i modelli sospetti e rilevare incidenti di sicurezza e attacchi informatici nelle loro fasi iniziali.</p>
-<h3 id="fase-5-formazione-continua-sulla-sicurezza">FASE 5. Formazione continua sulla sicurezza</h3>
-<p>La sicurezza informatica è un&rsquo;area in costante sviluppo, che richiede il contributo di ogni dipendente all&rsquo;interno di un&rsquo;organizzazione industriale. La formazione sulla consapevolezza della sicurezza comune viene utilizzata per sviluppare capacità di sicurezza e sane abitudini quotidiane tra i team non IT e i manager di livello C. Allo stesso tempo, la formazione avanzata, che include la sicurezza OT dedicata, la Threat Intelligence e altri corsi avanzati, viene utilizzata per migliorare le competenze dei professionisti IT e della sicurezza OT, responsabili della protezione delle infrastrutture OT contro gli attacchi informatici.</p>
-<p>Stay safe, stay free.</p>
-]]></content>
-        </item>
-        
-        <item>
             <title>Differences between IT and OT</title>
             <link>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</link>
             <pubDate>Thu, 01 Jul 2021 15:09:35 +0200</pubDate>
@@ -1209,11 +662,461 @@ Data protection vs. process protection When securing IT systems, the main focus 
 <p>With a few exceptions, in traditional IT security, the technical team has direct physical access to system components. In ICS systems, these components may be spread over hundreds or thousands of metres (e.g. pipelines, power grid, etc.), thus making the implementation of security controls even more complicated . For example, remote field stations can become an access point to the entire ICS system.</p>
 <h3 id="sicurezza-attraverso-loscurità">Sicurezza attraverso l&rsquo;oscurità</h3>
 <p>Recently, especially with the advent of Industry 4.0, many ICS systems have been progressively connected to the Internet via a direct TCP/IP connection. While the internal communication can still be managed with proprietary networks, remote access allows continuous monitoring by plant managers. However, there are still exceptions, such as some dams and other public infrastructure systems which are still  off-line to protect them from the clutches of cyber attackers.</p>
-<p><img src="/images/2021/differenze_3.png" alt="Sicurezza ottenuta tramite una protezione &ldquo;air gap&rdquo;"></p>
+<p><img src="/images/2021/differenze_3.png" alt="Sicurezza ottenuta tramite una protezione &amp;ldquo;air gap&amp;rdquo;"></p>
 <p>For years, these systems benefited from <strong>security through obscurity</strong>. What does it mean?  They were somehow safe because few people knew of their existence and even fewer understood their technologies: the protocols used were only known to technicians in the industry who had gained first-hand experience with SCADA, PLCs and HMI terminals.</p>
 <p>This is turning out to be a weak point, as they are being exposed on the network without having the most basic security measures implemented. An example is what happened in 2016, when the independent researcher Karn Ganeshen managed to break into a <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">Schneider Electric Building Automation system</a> by exploiting a 0-day vulnerability and gaining <strong>root</strong> access to the server.</p>
 <p>With the advent of reconnaissance tools like <a href="https://www.shodan.io/">Shodan</a>,  these systems will no longer rely on security through obscurity. The industry is only now beginning to implement modest security measures, but one of the biggest challenges that it’s facing is that many standard IT security products do not provide the same level of protection when it comes to industrial protocols. In most cases, firewalls and IDSs have to be customised to make them compatible and applicable to OT.</p>
 <p>Cyber terrorism and cyber warfare have never been more crucial than in recent times, the protection of ICS systems is crucial. Since 2010 they have become the first targets targeted not only by criminal hackers but also by governments, as in the case of <a href="https://it.wikipedia.org/wiki/Stuxnet">Stuxnet</a> or the Russian targeting of the system electric Ukrainian during their conflict.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: attacking a PLC with Stuxnet</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-attacking-a-plc-with-stuxnet/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-attacking-a-plc-with-stuxnet/</guid>
+            <description>To illustrate how a PLC can be attacked and what the consequences might be, let&amp;rsquo;s look at the Stuxnet worm.;
+Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemens Supervisory Control and Data Acquisition (SCADA) systems. The worm was designed to attack specific Siemens PLCs and exploited four 0-day vulnerabilities. The final version of Stuxnet was first discovered in Belarus in June 2010 by Sergey Ulasen from Kaspersky Labs.</description>
+            <content type="html"><![CDATA[<p>To illustrate how a PLC can be attacked and what the consequences might be, let&rsquo;s look at the <a href="https://en.wikipedia.org/wiki/Stuxnet">Stuxnet</a> worm.;</p>
+<p><img src="/images/2021/stuxnet_1.jpg" alt=""></p>
+<h2 id="introduction-to-stuxnet">Introduction to Stuxnet</h2>
+<p>Stuxnet is an independent worm, intended only for Siemens Supervisory Control and Data Acquisition (SCADA) systems. The worm was designed to attack specific Siemens PLCs and exploited four 0-day vulnerabilities. The final version of Stuxnet was first discovered in Belarus in June 2010 by <a href="https://eugene.kaspersky.com/2011/11/02/the-man-who-found-stuxnet-sergey-ulasen-in-the-spotlight/">Sergey Ulasen</a> from Kaspersky Labs. An earlier version of Stuxnet was already discovered in 2009. However, the worm was developed much earlier, possibly as early as 2005. Stuxnet was primarily designed to damage a nuclear power plant located in Natanz, Iran. Unfortunately, however, Stuxnet has spread to over 115 countries, which shows that even a targeted attack could spread and cause damage outside of its primary purpose.</p>
+<p>The worm was specially designed to change the rotor speed of the centrifuges inside the Natanz nuclear power plant, causing them to explode. What&rsquo;s interesting with Stuxnet is that it was a targeted worm, carefully designed to cause damage only if certain criteria were met, meaning that most of the plants it subsequently spread to shouldn&rsquo;t have suffered any damage. Indeed, Stuxnet would only increase the rotor speed of centrifuges if the industrial control system architecture matched the Natanz nuclear plant. Due to its structure and complexity, Stuxnet has been defined as an advanced persistent threat (APT). An APT collects data and executes commands continuously for an extended period of time undetected. This is also known as a &ldquo;low and slow&rdquo; attack.</p>
+<h2 id="how-does-it-work">How does it work</h2>
+<p>The Stuxnet worm was brought into Natanz&rsquo;s facility via a USB flash drive, allowing it to attack the system from the inside. This was considered one of the prerequisites for the attack as the Natanz facility was not directly accessible from the Internet but could be accessed via an air gap.</p>
+<p><img src="/images/2021/stuxnet_2.png" alt="A Simatic S7-300 PLC"></p>
+<p>After execution, the worm spread throughout the network until it found a Windows operating system with STEP 7. </p>
+<p><img src="/images/2021/stuxnet_3.png" alt="Siemens Step 7"></p>
+<p>STEP 7 is Siemens programming software designed for their PLCs. The computer running STEP 7 is known as the controlling computer and interacts directly with and sends commands to the PLC. Once successfully arriving at the STEP 7 controlling computer, Stuxnet manipulated code blocks sent from the controlling computer, executed dangerous commands on the PLC, and spun the centrifuges at a higher frequency than originally programmed. </p>
+<p>{% hint style=&ldquo;info&rdquo; %}
+The STEP 7 software uses a library called <strong>s7otbxdx.dll</strong> to communicate with the PLC. For example, if a block of code is to be read by the PLC, the &ldquo;s7blk_read&rdquo; routine is called. Stuxnet uses a DLL hijacking technique to intercept all commands coming from STEP 7 and WinCC (Siemens&rsquo; SCADA system) and, in turn, forwards them to the original library after modifying their contents. In this way it sends unexpected commands to the PLC returning a loop of normal operating values to the users.
+{% endhint %}</p>
+<p><img src="/images/2021/stuxnet_4.png" alt="DLL hijacking attack on STEP 7 libraries"></p>
+<p>Attacks on the PLC were performed approximately every 27 days to make the attack stealthy and hard to detect, which is a central part of an APT. Stuxnet also took over the controlling computer and displayed fake output on the STEP 7 software. This step of the attack was a key part known as &ldquo;deception&rdquo;. Engineers located at the nuclear power plant received no indication of errors, assuming the centrifuges were spinning at the correct frequency. Receiving false output in STEP 7, they assumed that the crash was caused by human error rather than malware. Stuxnet also hid the code directly on the PLC after the infection and was therefore also referred to as a PLC rootkit.</p>
+<p><img src="/images/2021/stuxnet_5.png" alt="An example of a SCADA system based on Siemens WinCC"></p>
+<p>For its diffusion on the net Stuxnet has exploited one of the 0-day vulnerabilities of the Windows operating systems. In fact, it spread through the Server Message Block (SMB) file sharing protocol as documented in the vulnerability report [CVE-2008-4250](<a href="https://cve.mitre.org/cgi-bin/cvename.cgi">https://cve.mitre.org/cgi-bin/cvename.cgi</a>? name=CVE-2008-4250) in the National Vulnerability Database. The vulnerability allowed remote code execution by aggressively spreading on the local network. The worm had several other features, such as self-replication, updated itself using a command and control center, contained a Windows rootkit that hid its binaries, and attempted to bypass computer security systems (anti-virus and anti-malware).</p>
+<h2 id="the-aftermath-of-his-attack">The aftermath of his attack</h2>
+<p>Stuxnet is known as the world&rsquo;s first digital weapon and destroyed about 1,000 centrifuges inside the Natanz plant. Cyberattacks that cause physical damage have revolutionized the way cybersecurity experts perform threat analysis, as well as the way PLC manufacturers design them.</p>
+<p>If we want to find merit, Stuxnet swept away the belief that ICS systems were inviolable, secure because they were isolated and because they were so different from the traditional devices present in the IT world.</p>
+<p>But the greatest consequence is determined by the fact that for the first time a government body, in this case the American one together with the Israeli one, has created a computer weapon capable of causing damage to people and things. Something like this had not yet been seen and of this magnitude, hackers and malwares had so far the objective of extorting money, stealing information or breaking political barriers, but none had exceeded the threshold of tangible damage.</p>
+<h2 id="hacking-a-plc">Hacking a PLC</h2>
+<p>Part of Stuxnet was to use target PLCs as a hacking tool by using a PLC rootkit and manipulating the communication between the controlling computer (SCADA) and the PLC itself. By targeting both of these devices Stuxnet managed to achieve its goal and at the same time fooled the operators, thus having enough time to destroy the centrifuges. Stuxnet like APT is a sophisticated attack that requires significant information and resource gathering to execute. It is also necessary to have in-depth knowledge of the proprietary communication protocols in use and the architecture of the target PLCs, especially for implementing the rootkit. Its code is now publicly available and can be studied extensively.</p>
+<p>An industrial control system (ICS) and a PLC make use of multiple communication protocols. Among the most used we find <a href="hacking-profibus-profinet.md">Profinet, Profibus</a> and <a href="hacking-modbus.md">Modbus</a>. Most of them were originally designed without built-in security measures, resulting in allowing remote code execution, packet sniffing, and replay attacks due to lack of authentication and encryption.</p>
+<p>Profinet uses traditional Ethernet hardware, making it compatible with most equipment. Profinet is widely used in the automation industry and its design is based on the Open Systems Interconnection (OSI) model. Profinet allows bi-directional communication and is the preferred communication protocol for Siemens Simatic PLCs.</p>
+<p><img src="/images/2021/stuxnet_6.png" alt=""></p>
+<p>Profibus is an international communication standard for fieldbuses. It is used to connect multiple devices together and allows for two-way communication. There are two types of Profibus: Profibus Decentralized Peripherals (DP) and Profibus Process Automation (PA). One limitation with Profibus is that it is only able to communicate with one device at a time. The new version of Profibus is standardized in IEC 61158.</p>
+<p>Modbus is a serial communication protocol designed and published by Modicon (Schneider Electric) in 1979. Modbus performs master and slave type communication, with a maximum number of devices up to 247. The control computer - HMI or SCADA - normally acts as master, while automation devices, or PLCs, are slaves. It was originally designed as a communication protocol for PLCs and later became an international standard for connecting multiple industrial devices. Modbus is easy to implement, inexpensive, and widely accepted as a communications standard. There are at least three variants of the Modbus protocol: American Standard Code for Information Interchange (ASCII), Remote Terminal Unit (RTU), and TCP/IP.</p>
+<p><img src="/images/2021/stuxnet_7.png" alt=""></p>
+<p>There are several Metasploit scanners that allow the detection and exploitation of Modbus and Profinet. Similar scanners in Python are also available on GitHub. In 2011 Dillon Beresford, senior vulnerability research engineer at Dell, launched remote exploits against Siemens&rsquo; Simatic PLC series via Profinet, which communicates using TCP port 102.</p>
+<p>What is interesting about these exploits is that they dump and display memory, and are able to perform ON/OFF commands on the PLC&rsquo;s central processing unit (CPU). One example is the exploit called &ldquo;remote-memory-viewer&rdquo;, which authenticates using a backdoor password encoded in Siemens&rsquo; Simatic S7-300 PLC. In this exploit, the start/stop module of the CPU runs shell code to the PLC and turns it on/off remotely. The same start/stop exploit can be found for the S7-1200 series. Furthermore, by injecting shellcode, it is also possible to get remote access to the PLC.</p>
+<p>Due to the lack of sanity checks, older PLCs execute commands regardless of whether they are received from a legitimate source. The reason for this is that there are no checksums on the network packets. A number of replay attacks have been shown to work against a large number of PLCs, which allows the attacker to issue execution commands remotely. Therefore, exploiting PLCs remotely with open source tools poses a major threat to SCADA systems.;</p>
+<p>During BlackHat USA in 2011, Beresford presented a live demo created for the Siemens Simatic S7-300 and 1200 series. The exploits used during his demo are programmed in Ruby, made compatible with the Metasploit Framework.</p>
+<p>Remote exploits on ICS were an essential part of the Stuxnet worm. However, Beresford demonstrated how it is possible to gain remote access to a PLC using the hard-coded password built into the software, and in some ways it&rsquo;s a step up from what was done at Stuxnet.</p>
+<h2 id="but-does-it-only-happen-with-siemens">But does it only happen with Siemens?</h2>
+<p>Better to clarify: this is not exclusively a problem of Siemens. Rockwell Automation also experimented with a stack buffer overflow that could allow remote access to the system by injecting arbitrary code, according to <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-0868">CVE-2016-0868</a> of the National Vulnerability Database. The vulnerability was reported on January 26, 2016 and affected the MicroLogix 1100 PLC. Additionally, there are several other exploits and scanners available in the Metasploit project that can be used to remotely execute commands on different PLC models.</p>
+<p>The controlling computer can also be used as a hacking tool mainly due to various software exploits, some of which grant workstation control of a SCADA or ICS system. This allows the attacker to manipulate the data sent to the PLC and pivot within the network. An exploit created by Exploit Database contributor James Fitts allows a remote attacker to enter arbitrary code into Fatek&rsquo;s PLC programming software, WinProladder, as documented <a href="https://nvd.nist.gov/vuln/detail/CVE-2016-8377">CVE-2016-8377</a> of the National Vulnerability Database.</p>
+<p>While the attacker can activate the exploit remotely, it still requires user interaction, such as visiting a malicious web page or opening an infected file, to successfully exploit it. The exploit is a stack buffer overflow available in Ruby for Metasploit import. Applications programmed in C are often more vulnerable to buffer overflows than other programming languages, and there are many C-based software packages in use in industrial control systems. For example, shellcode injection through a buffer overflow vulnerability could allow remote access to the system or be used for privilege escalation.</p>
+<h2 id="we-are-doomed">We are doomed?</h2>
+<p>Lack of security in industrial control systems is a major security concern. A PLC was originally designed to function only as an auto operator in an industrial control system and not to be connected to external components and reachable from the internet. However, the evolution in ICS design has started to expose PLCs to the internet, which can be shown through research using tools like Shodan. PLCs rely on networks with &ldquo;air-gapped&rdquo; protection and limited physical access as a safety measure.</p>
+<p>Air-gapped networks have repeatedly been shown to be a flawed design and are by no means a legitimate security argument in modern ICS. This was demonstrated by the Stuxnet attack, which spread to over 115 countries, infecting critical infrastructure around the world even though most control systems were designed in isolation. This change in ICS environments and critical infrastructure means that PLCs are exposed to a greater security threat than before.</p>
+<p><em>(Thanks to the work of Siv Hilde Houmb and Erik David Martin from which this article is based)</em></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Metasploit SCADA modules</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/</guid>
+            <description>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
+For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</description>
+            <content type="html"><![CDATA[<p>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is <a href="https://www.metasploit.com/">Metasploit Framework</a>, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.</p>
+<p>For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</p>
+<p>And it is precisely due to the fact that ICS sites use different hardware and protocols that a very careful reconnaissance phase must be carried out in order to carry out a successful attack. You need to know the manufacturer and the protocol to find the appropriate module.</p>
+<p>Below I have summarized the list of modules present at the time of writing this article, divided into auxiliaries (reconnaissance and commands) and exploitation ones.</p>
+<p><img src="/images/2021/metasploit_ot_1.png" alt="Auxiliary modules"></p>
+<p><img src="/images/2021/metasploit_ot_2.png" alt="Exploit modules"></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Modbus</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-modbus/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-modbus/</guid>
+            <description>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</description>
+            <content type="html"><![CDATA[<p>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. </p>
+<p>This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</p>
+<p>In this article we see the main characteristics of one of these protocols: the <strong>Modbus.</strong></p>
+<h2 id="the-modbus-standard">The Modbus standard</h2>
+<p>The Modbus protocol is mainly characterized by the physical connection medium, which can be on a serial port or on Ethernet. There are several variants of the protocol:</p>
+<ul>
+<li>Modbus RTU</li>
+<li>Modbus ASCII</li>
+<li>Modbus-TCP</li>
+<li>Modbus over TCP/IP or Modbus RTU/IP</li>
+<li>Modbus over UDP</li>
+<li>Modbus Plus (Modbus+)</li>
+<li>Secure Modbus</li>
+</ul>
+<p>In this article, I will cover the most popular ones: Modbus RTU and Modbus TCP. I will also mention Secure Modbus, a security-oriented version of the protocol that incorporates a data encryption layer.</p>
+<h3 id="modbus-rtu">Modbus RTU</h3>
+<p>Modbus RTU was first developed in 1979 by Modicon (now part of Schneider Electric) for their PLC and industrial automation systems. It has become the de facto industry standard. Modbus is a widely accepted public domain protocol, it is a simple and lightweight protocol intended for serial communication. It has a data limit of 253 bytes.</p>
+<p>Modbus operates at layer 7 of the OSI model. It is an efficient communication methodology between interconnected devices using a &ldquo;request/response&rdquo; model. Because it&rsquo;s simple and lightweight, it requires little processing power. Suffice it to say that there are communication libraries available for practically any embedded device, starting from a simple Arduino board up to the more sophisticated Raspberry.</p>
+<p>Modbus was initially implemented on the physical topology RS-232C (point-to-point) or RS-485 (multi-drop). It can have up to 32 devices communicating over a serial link with each device having a unique ID.</p>
+<p><img src="/images/2021/mod_1.png" alt=""></p>
+<p>Modbus uses a master/slave (client/server) architecture where only one device can send requests. The slaves/servers provide the requested data to the master or perform the action requested by the master itself. A slave is any peripheral device (transducer, valve, network unit, etc.) that processes information and sends its output to the master via the Modbus protocol.</p>
+<p>Masters can address individual slaves or broadcast a message to all slaves. Slaves return a response to all queries addressed to them individually, but do not respond to broadcast queries. Slaves do not generate messages, they can only reply to the master. A master&rsquo;s query will consist of the slave address (slave ID or unit ID), a function code, all required data, and a CRC error checking field.</p>
+<p>Modbus communicates using <strong>Function Codes</strong>, function codes that identify a wide range of commands.</p>
+<p><img src="/images/2021/mod_2.png" alt="Main Function Codes for data access and diagnostics"></p>
+<h3 id="modbus-tcp">Modbus TCP</h3>
+<p>Modbus TCP is the encapsulated Modbus protocol for use over TCP/IP using port 502. It uses the same request/response as Modbus RTU, the same function codes, and the same 253-byte data limit. The error checking field used in Modbus RTU is eliminated as the TCP/IP link layer uses its checksum methods.</p>
+<p>Modbus TCP adds an application layer (MBAP) to the Modbus RTU frame. It is 7 bytes long with 2 bytes for the header, 2 bytes for the protocol identifier, 2 bytes for the length and 1 byte for the address (unit ID).</p>
+<p><img src="/images/2021/mod_3.png" alt=""></p>
+<p>The use of Ethernet allows the creation of more complex architectures, even of the hybrid type, making use of special gateways.</p>
+<p><img src="/images/2021/mod_4.png" alt="RTU / TCP hybrid architecture"></p>
+<h3 id="data-packet-format">Data packet format</h3>
+<p>A Modbus frame consists of an Application Data Unit (ADU) encapsulating a Protocol Data Unit (PDU), according to this scheme:</p>
+<ul>
+<li>ADU = Address + PDU + Error check</li>
+<li>PDU = Function code + Data</li>
+</ul>
+<p>The byte order for values in Modbus data frames is the most significant byte of a multi-byte value sent first. All Modbus variants use one of the following frame formats.</p>
+<h4 id="modbus-rtu-frame-format">Modbus RTU frame format</h4>
+<p>| Name | Length (bits) | Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash; | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;- |
+| start | 28 | At least 3½ characters to start frame (with sign condition) |
+| Address | 8 | Station address |
+| function | 8 | Function code, e.g. read coils/holding registers |
+| Date | n × 8 | Data + length will be filled according to message type |
+| CRC | 16 | Cyclic Redundancy Check |
+| End | 28 | At least 3½ characters of silence between frames |</p>
+<p>Notes on calculating the CRC:</p>
+<ul>
+<li>Polynomial: x16 + x15 + x2 + 1 (CRC-16-ANSI also known as CRC-16-IBM, normal hexadecimal algebraic polynomial being <code>8005</code> and reversed <code>A001</code>).</li>
+<li>Initial value: 65,535.</li>
+<li>Example of frame in hexadecimal: <code>01 04 02 FF FF B8 80</code> (CRC-16-ANSI computed from <code>01</code> to <code>FF</code> generates <code>80B8</code>, <strong>first</strong> the byte is transmitted** least** significant).</li>
+</ul>
+<h4 id="modbus-ascii-frame-format">Modbus ASCII frame format</h4>
+<p>| Name | Length (bytes) | Function |
+| &mdash;&mdash;&ndash; | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
+| start | 1 | Start with <code>:</code> (ASCII value <code>3A</code>) |
+| Address | 2 | Station address |
+| function | 2 | Function code, e.g. read coils |
+| Date | n × 2 | Data + length will be filled according to message type |
+| LRC | 2 | Checksum (<a href="https://en.wikipedia.org/wiki/Longitudinal_redundancy_check">Longitudinal redundancy check</a>) |
+| End | 2 | &lt;CR&gt;&lt;LF&gt; set (ASCII values <code>0D</code>, <code>0A</code>) |</p>
+<h4 id="modbus-tcp-frame-format">Modbus TCP frame format</h4>
+<p>| name | Length (bytes) | Function |
+| &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;- | &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash; &mdash;&ndash; |
+| Transaction identifier | 2 | For synchronizing between server and client messages |
+| Protocol identifier | 2 | 0 for Modbus/TCP |
+| Length field | 2 | Number of bytes remaining in this frame |
+| Unit identifier | 1 | Slave address (255 if not used) |
+| Function code | 1 | Function code |
+| Data bytes | n | Data as a response or commands |</p>
+<h2 id="modbus-protocol-security">Modbus protocol security</h2>
+<p>Modbus owes its widespread diffusion to the simplicity of the protocol and to its by now historic presence on the market. But precisely for these two factors it offers the side to different possibilities of attack, with numerous known vulnerabilities. Here&rsquo;s how some attacks could be performed by exploiting the simple functions that the protocol itself provides, without dedicated enumeration tools like <strong>nmap</strong>.</p>
+<blockquote>
+<p>A hacker can initiate his reconnaissance attack by scanning the network for Modbus devices using the protocol diagnostic commands: <strong>Clear Counter</strong> and <strong>Diagnostic Register</strong>. A request sent to the PLC, with function code 8 (0x08) and sub-function code 10 (0x0A), will cause the target server to clear its counters and diagnostic register. This feature is typically only implemented in serial devices.</p>
+</blockquote>
+<blockquote>
+<p>Another diagnostic command that can be used is <strong>Read Device Identification</strong> as an attempt to gather Modbus device information: a request with Read Device Identification function code 43 will cause a Modbus server to return the vendor name , the product name and version number. Further information can also be provided in optional fields. An attacker sends the Modbus request packet with function code 43 to all systems on the network and collects information that could be useful for subsequent attacks.</p>
+</blockquote>
+<h3 id="modbus-protocol-vulnerability">Modbus protocol vulnerability</h3>
+<p>The Modbus TCP protocol implementation contains several vulnerabilities that could allow an attacker to perform enumeration tasks or send arbitrary commands.</p>
+<ol>
+<li><strong>Lack of Confidentiality</strong>: All Modbus messages are transmitted in the clear over the transmission medium.</li>
+<li><strong>Lack of Integrity</strong>: There are no integrity checks within the protocol, and as a result, it depends on lower-level protocols to preserve data integrity.</li>
+<li><strong>Lack of Authentication</strong>: There is no authentication at any level of the protocol, with the possible exception of some undocumented programming commands.</li>
+<li><strong>Simplistic Framing</strong>: Modbus TCP frames are sent over established TCP connections. While such connections are generally reliable, they have a significant drawback because of the next point.</li>
+<li><strong>Lack of session structure</strong>: Like many request/response protocols (e.g. SNMP, HTTP, etc.) Modbus TCP consists of short-lived transactions where the master sends a request to the slave which results in in a single action. When combined with the lack of authentication and poor TCP Initial Sequence Number (ISN) generation in many embedded devices, it becomes possible for attackers to issue commands without knowing the existing session.</li>
+</ol>
+<p><strong>&ldquo;Illegal Function Exception&rdquo; Vulnerability</strong><br>
+These vulnerabilities allow an attacker to perform reconnaissance on the target network. The first vulnerability exists because a Modbus slave device can return an <em>Illegal Function Exception</em> for queries that contain unsupported function code. An unauthenticated remote user could exploit this vulnerability by sending crafted short codes to perform reconnaissance on the target network.</p>
+<p><strong>&ldquo;Illegal Address Exception&rdquo; Vulnerability</strong><br>
+An additional reconnaissance vulnerability is due to the multiple <em>Illegal Address Exception</em> responses generated for queries that contain an illegal slave address. An unauthenticated attacker could exploit this vulnerability by sending queries that contain invalid addresses to the target network and gleaning information about network hosts from the returned messages.</p>
+<p><strong>Authentication Vulnerability</strong><br>
+Another vulnerability is due to the lack of security controls in the implementation of the Modbus TCP protocol. The protocol specification does not include an authentication mechanism for validating communication between master and slave devices. This flaw could allow an unauthenticated user to send arbitrary commands to any slave device via an attack master.</p>
+<p><strong>DoS Vulnerability</strong><br>
+The Modbus TCP protocol also contains vulnerabilities that could allow an attacker to cause a Denial of Service (DoS) condition on a target system. The vulnerability is due to an implementation error in the protocol itself when processing discrete input request and response messages.</p>
+<p><strong>Buffer overflow vulnerability</strong><br>
+Another attack on Modbus can be the data packet exceeding the maximum length. The protocol limits the PDU size to 253 bytes to allow the packet to be sent over a serial line, e.g. RS-485 interface. Modbus TCP prepends a 7 byte Modbus Application Protocol (MBAP) header to the PDU and the whole, MBAP+PDU, is encapsulated in a TCP packet. This puts an upper limit on the packet size.</p>
+<p>An attacker creates a specially crafted packet longer than 260 bytes and sends it to a client and server. If the client or server has been programmed incorrectly this could lead to a buffer overflow or denial-of-service attack.</p>
+<p><strong>Protocol Sniffing</strong><br>
+The simplest attack to use against Modbus is to sniff network traffic, find connected devices, and then send malicious commands to the devices.</p>
+<p>Having no security or encryption features, it&rsquo;s easy to use Wireshark to gather information from data packets going over the network to and from a Modbus port on a device and read the contents of those packets. Wireshark makes it easy to see what&rsquo;s in these packets, examine IP addresses, see request short codes, and alter devices to function properly.</p>
+<p><img src="/images/2021/mod_5.png" alt="Whireshark in action"></p>
+<h3 id="secure-modbus">Secure Modbus</h3>
+<p>The most common approach to securing OT protocols is to encapsulate them within a Transport Layer Security (TLS) protocol and use mutual authentication. Many standardization bodies publish guidelines for doing this depending on the protocol, for example:</p>
+<ul>
+<li>ODVA specifies how to apply TLS encryption to the EtherNet/IP protocol.</li>
+<li>Schneider Electric has recently worked to create a <strong>Secure Modbus</strong> version, which also includes the addition of the X.509 extension for defining permissions (read-only or read-write).</li>
+<li>IEC 62351-3 defines how to use TLS for the energy industry sector over TCP-based protocols.</li>
+</ul>
+<p><img src="/images/2021/mod_6.png" alt="Modbus TCP Security"></p>
+<p><img src="/images/2021/mod_7.png" alt=""></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Modbus TCP simulation in Linux</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-modbus-tcp-simulation-in-linux/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-modbus-tcp-simulation-in-linux/</guid>
+            <description>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</description>
+            <content type="html"><![CDATA[<p>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a> protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</p>
+<p><img src="/images/2021/mod_sim_1.png" alt=""></p>
+<p>If you want to learn more about the topic, I suggest you read the guide I wrote &ldquo;<a href="hacking-modbus.md">Hacking: Modbus</a>&rdquo;.</p>
+<p>In this tutorial we will simulate a Modbus master and slave configuration to illustrate how this now almost ubiquitous protocol in OT systems works in an industrial environment. The aim is to better understand how the protocol works and how it can be hacked, manipulated and protected.</p>
+<h2 id="installation">Installation</h2>
+<p>Modbus uses a master/slave (client/server) architecture where only one device can send requests. The slaves/servers provide the requested data to the master or perform the action requested by the master itself. A slave is any peripheral device (transducer, valve, network unit, etc.) that processes information and sends its output to the master via the Modbus protocol.</p>
+<p>In our case we will use two simulation software available for free, one with master functionality called <a href="https://sourceforge.net/projects/qmodmaster/">QModMaster</a> and the other in slave version, called <a href="https://sourceforge.net/projects/modbuspal/">ModbusPal</a>.</p>
+<p><strong>QModMaster</strong> is an open source application based on the Qt framework which implements the functions of a Modbus master. It is equipped with a GUI that allows easy configuration of the communication modes (RTU, TCP) and with a bus monitor to analyze the traffic of the communication packets. If you use Windows, the pre-compiled binary version is available. In our case, we will download the source code and compile it on a Linux machine.</p>
+<p><img src="/images/2021/mod_sim_2.png" alt="QModMuster running on Linux"></p>
+<p><strong>ModbusPal</strong> is an application written in Java, therefore it does not need any compilation as it is independent from the execution host. Simulate a Modbus slave device, with some advanced features like Python scripts.</p>
+<p><img src="/images/2021/mod_sim_3.png" alt="ModbusPal with the typical &amp;ldquo;Java style&amp;rdquo; interface"></p>
+<p>As mentioned, we need to compile QModBus so that it can run on Linux systems, in my case Kubuntu 19.10. Download the source file <a href="https://sourceforge.net/projects/qmodmaster/files/qModMaster-code-0.5.2-3.zip/download">qModMaster-code-0.5.2-3.zip</a> and save it in a working directory, in my case <code>~/Develop/Projects/Modbus/qModMaster-code-0.5.2-3</code>.</p>
+<p>If we list the files present in the folder we see that the <code>qModMaster.pro</code> file is present, typical of a project developed with Qt. To compile it is necessary to have a minimum version of Qt 5.2.1 or higher, which can be downloaded from <a href="http://www.qt.io/download/">this link</a>.</p>
+<p><img src="/images/2021/mod_sim_4.png" alt=""></p>
+<p>At this point we can use the <code>qmake</code> command to convert the .pro file into a Makefile, which can be compiled with the more classic <code>make</code>.</p>
+<pre tabindex="0"><code>$ qmake -o Makefile qModMaster.pro
+$make
+</code></pre><p>After a few seconds of processing we have our executable ready!</p>
+<h2 id="using-the-simulator">Using the simulator</h2>
+<p>First we have to configure the slave, so that it makes its resources available to be read by the master, in this case we configure the &ldquo;Holding Registers&rdquo;.</p>
+<p>{% hint style=&ldquo;info&rdquo; %}
+Both applications require <code>sudo</code> privileges to access port 502/TCP, so you need to start them with <code>sudo ./ModbusPal</code> and <code>sudo ./qModMaster</code> in their respective working directories.
+{% endhint %}</p>
+<h3 id="modbuspal-slave-module-configuration"><strong>ModbusPal Slave Module Configuration</strong></h3>
+<p><strong>Link settings</strong><br>
+****Select &ldquo;TCP Port 502&rdquo;.<br>
+The Modbus TCP protocol uses port 502 for TCP communication by default</p>
+<p><strong>Modbus slaves</strong><br>
+****We add a slave node by pressing the &ldquo;Add&rdquo; button, select the slave number and enter a name, in our case &ldquo;Slave1&rdquo;.</p>
+<p><img src="/images/2021/mod_sim_5.png" alt=""></p>
+<p>At this point we have to configure the parameters that we make available in our slave. Click on the eye icon to open the properties screen. Subsequently, click on &ldquo;Add&rdquo; and enter the number of registers we want to add, in our case from 1 to 8.</p>
+<p><img src="/images/2021/mod_sim_6.png" alt=""></p>
+<p>And here is the list of holding registers that we have created, with default values of 0. We can already modify their value at will, or do it when the master is also active to see their reading updated in real time.</p>
+<p><img src="/images/2021/mod_sim_7.png" alt=""></p>
+<p>We are ready to start the slave, press the &ldquo;Run&rdquo; button on the main screen and go on to configure the master.</p>
+<h3 id="qmodmaster-master-module-configuration"><strong>QModMaster master module configuration</strong></h3>
+<p>The configuration of the master module is equally simple, it is necessary to keep in mind some parameters consistent with the slave that we have created:</p>
+<p><strong>Mobbus Mode:</strong> TCP<br>
+<strong>Unit ID:</strong> 1 (corresponds to the number of the slave we declared earlier)<br>
+<strong>Function Code:</strong> Read Holding Registers (0x03)<br>
+<strong>Number of Registers:</strong> 8</p>
+<p><img src="/images/2021/mod_sim_8.png" alt=""></p>
+<p>The &ldquo;Function Code&rdquo; and &ldquo;Mumber of Registers&rdquo; correspond to the type and amount of data that we declared in the slave module.</p>
+<p>By default the master app is configured to communicate with IP address 127.0.0.1 and port 502 (as well as the slave). We can change these values by selecting the screen from the &ldquo;Options&rdquo; menu and then &ldquo;Modbus TCP&rdquo;.</p>
+<p><img src="/images/2021/mod_sim_9.png" alt=""></p>
+<p>At this point we just have to activate the connection and the continuous updating of the data using the &ldquo;Connect&rdquo; and &ldquo;Scan&rdquo; buttons. The continuous updating time of the data is determined by the &ldquo;Scan Rate (ms)&rdquo; parameter, which in our case corresponds to an interval of 1 second.</p>
+<h3 id="data-update">Data update</h3>
+<p><img src="/images/2021/mod_sim_10.png" alt=""></p>
+<p>And here is that if we go to modify the data of the registers of our slave we will have the corresponding update on the master.</p>
+<h3 id="lets-try-to-write-with-the-master">Let&rsquo;s try to write with the master</h3>
+<p>Now that we have seen how it is possible to read data from the slave let&rsquo;s try to modify the values of the registers from the master. We interrupt the continuous scan and choose &ldquo;Write Multiple Registers&rdquo; in the &ldquo;Function Code&rdquo; parameter of the QModMaster main screen.</p>
+<p><img src="/images/2021/mod_sim_11.png" alt="We select Write Multiple Registers"></p>
+<p>Let&rsquo;s reactivate the continuous scan, now we can double click on each field of the register to modify its value, which we will see updated on the slave module.</p>
+<p><img src="/images/2021/mod_sim_12.png" alt=""></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Profibus/Profinet</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/</guid>
+            <description>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that they often share have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</description>
+            <content type="html"><![CDATA[<p>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that they often share have little in common with standard Ethernet and TCP/IP. </p>
+<p>This difference has been the strong point of OT installations for years, protecting them through the mechanism of &ldquo;security by obscurity&rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</p>
+<p>In this article we see the main characteristics of one of these protocols: the <strong>Profibus.</strong></p>
+<h2 id="the-profibus-standard">The Profibus standard</h2>
+<p><strong>Profibus</strong> (<strong>Pro</strong>cess <strong>Fi</strong>eld<strong>bus</strong>) is an open standard for industrial communication originally developed in Germany. It was started by a group of 21 companies and institutions called the &ldquo;Central Association for Electrical Industry&rdquo; (ZVEI), led by industrial giant Siemens. For this reason Profibus is widely used in Siemens products and is the communication bus exploited by the Stuxnet malware in the Iranian Natanz nuclear power plant during the famous cyber attack.</p>
+<p>Profibus is an intelligent bi-directional multipoint protocol, where all Profibus devices are interoperable. The data can represent analog or digital values. It is a cheap, simple and high speed protocol. Profibus uses a two-wire connection for power and data.</p>
+<p>The topology of the protocol is master-slave, like many other SCADA/ICS protocols, supporting master nodes through the use of token sharing. Similar to IBM&rsquo;s token-ring protocol, only when the master has the token can it communicate with the slaves. The Profibus slave can only communicate with a master. The master Profibus node is typically a PLC or RTU and the slaves are sensors, motors or other control devices.</p>
+<p><img src="/images/2021/profi_1.png" alt=""></p>
+<h3 id="profibus-types">Profibus types</h3>
+<p>The Profibus protocol family is mainly divided into two categories: Profibus DP and ProfiNet. The uses change significantly: while the first is a traditional master-slave fieldbus with serial transmission with a ring network, the second is its evolution and allows communication between different bus segments using Ethernet.</p>
+<p><img src="/images/2021/profi_2.png" alt=""></p>
+<h4 id="profibus-fms">Profibus FMS</h4>
+<p>This was the initial Profibus protocol. It was designed to communicate between PLC and PC. Unfortunately this simple protocol was not very flexible and consequently could not work in a more complex and complicated network. While still in use, the vast majority of Profibus networks use one of the newer versions.</p>
+<h4 id="profibus-dp-decentralized-periphery">Profibus DP (Decentralized Periphery)</h4>
+<p>Profibus DP is probably the most common of the Profibus protocols. It is easier and faster than the other types. It is available in three separate versions: DP-V0 (cyclic data exchange), DP-V1 (acyclic data exchange) and DP-V2 (isochronous slave-to-slave mode and data exchange) with each new version offering functionality additional.</p>
+<h4 id="profibus-pa-process-automation">Profibus PA (Process Automation)</h4>
+<p>Profibus PA, as the name suggests, was developed for Process Automation. This version of the protocol standardizes the process of transmitting measured data. It has also been designed for use in hazardous environments using Manchester Bus Powered (MBS) technology which uses lower power and therefore reduces the possibility of sparks and explosions.</p>
+<h3 id="prifinet-process-field-net">PrifiNet (Process Field Net)</h3>
+<p>ProfiNet (<strong>Pro</strong>cess <strong>Fi</strong>eld <strong>Net</strong>) is another open standard for industrial automation designed for scalability. Instead of exchanging data using fieldbus (serial), it uses Ethernet (IEEE802.3) as the medium. It is included as part of IEC-61158 and IEC-61784. It initially used standard TCP/IP packets.</p>
+<p>ProfiNet has the strength of providing data with tight time constraints. It uses IT standards such as TCP/IP and XML to communicate, configure and diagnose machines and devices. It can operate up to 100 Mbit/s over twisted pair or fiber optic cables.</p>
+<p>ProfiNet is NOT Profibus over Ethernet, but they are compatible with using specific proxies to connect them.</p>
+<p>ProfiNet has two classes of functions:</p>
+<ol>
+<li>ProfiNet I/O (input/output)</li>
+<li>ProfiNet CBA (Component Based Automation)</li>
+</ol>
+<h4 id="profinet-io">ProfiNet I/O</h4>
+<p>Connect distributed field devices and use real-time (RT) and standard (TCP/IP) communications.</p>
+<p>The real-time channel (RT) is used for critical data that requires very short exchange times, such as cyclic process data, alarms and communication monitoring and is capable of executing 10 ms cycles.</p>
+<p>The standard channel is used for configuration and parameter downloads, diagnostics, device management information, and other non-critical communications with exchange times in the 100ms range.</p>
+<p>Still belonging to the I/O family, there is also the ProfiNet IRT (Isochronous Real-Time), which is used in drive systems with cycle times of less than 1 ms. Since ProfiNet IRT is a hardware based Layer 2 technology it is not routable.</p>
+<p>Profibus I/O uses TCP/UDP port numbers 34962, 34963 and 34964.</p>
+<h4 id="profinet-cba">ProfiNet CBA</h4>
+<p>It is designed for distributed industrial automation applications. ProfiNet CBA is based on the DCOM (Distributed Component Model) and RPC (Remote Procedure Call) standard. This also means that it then inherits its DCOM and RPC vulnerabilities.</p>
+<p>ProfiNet CBA uses standard TCP port number 135.</p>
+<h2 id="the-security-of-protocols">The security of protocols</h2>
+<p>Like many OT/ICS protocols, Profibus DP also lacks authentication. This means that any node can spoof a master node. Since only the latter can control the slaves, this is one of the major vulnerabilities of the system. A forged master node would be able to acquire the token, disrupt the node&rsquo;s functions and even cause a Denial of Service (DoS). Since most master nodes in a Profibus DP network are connected to an Ethernet network, this makes them susceptible to an Ethernet-based quasi-type of attack.</p>
+<p>The same is true for ProfiNet. Since there are different technologies in this suite the risk depends on the one used. The exception, at least in part, is the ProfiNet IRT protocol which uses non-routable addresses and is therefore immune to IP vulnerabilities.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Schneider Electric Building Automation</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/</guid>
+            <description>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives).</description>
+            <content type="html"><![CDATA[<p>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives). Despite this, these systems are unusually vulnerable to hacking and malicious activity.</p>
+<p>In this tutorial I will show how to hack an industrial control system from Schneider Electric, one of the world&rsquo;s largest manufacturers of ICS and Building Automation systems. Due to weak in-development security, a common problem with IIoT products, some of these systems are incredibly easy to hack and take over.</p>
+<h3 id="we-know-our-target-better">We know our target better</h3>
+<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> is a Paris-based company, world leader in the industrial control sector. They were among the pioneers in this field by introducing many innovative concepts then replicated by their competitors, and they also have the merit of having developed the most used communication protocol in industrial control systems: the [Modbus](<a href="https://it.wikipedia">https://it.wikipedia</a>. org/wiki/Modbus).</p>
+<p>Schneider Electric also has a range of PLCs dedicated to building automation in its vast catalogue.</p>
+<p><img src="/images/2021/building_1.png" alt="A server of the SmartStruxure family"></p>
+<p>One of their products, the SmartStruxure Automation Server, is used in commercial buildings to control and automate the many systems including heating and cooling, lighting, security, etc. In 2016, independent researcher Karn Ganeshen discovered a 0-day vulnerability, which was later patched by Schneider, which allowed logging into the server with a shell and acquiring root privileges.</p>
+<p>But let&rsquo;s go in order.</p>
+<h3 id="find-schneider-automation-servers-with-shodan">Find Schneider Automation servers with Shodan</h3>
+<p>We can find these automation servers on Shodan by searching for:</p>
+<p><code>&quot;schneider electric&quot; automation</code></p>
+<p><img src="/images/2021/building_2.png" alt="The results on Shodan"></p>
+<p>As we can see, a long list of devices directly connected to the Internet appears, with the relative public IP address. In our case I will use a demo product within the local network.</p>
+<h2 id="vulnerability">Vulnerability</h2>
+<p>The vulnerability in question allows an attacker to connect to the automation server with an SSH shell using default credentials and easily gain &ldquo;root&rdquo; privileges. By doing so, the attacker not only owns the &ldquo;box&rdquo;, but the entire building!</p>
+<h3 id="connection-to-building-automation-server">Connection to Building Automation Server</h3>
+<p>First, let&rsquo;s connect to our server with an SSH shell. I will be using Kali Linux, but since this hack is very simple it can be done using any distribution, without the help of special hacking tools such as e.g. Metasploit.</p>
+<pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
+</code></pre><p>After we connect the server will ask us for a password. We use the default password &ldquo;<strong>admin</strong>&rdquo;.</p>
+<p><img src="/images/2021/root_1.png" alt=""></p>
+<p>At this point we are inside the Automation Server administrator account. We can type <code>help</code> to see what commands we can use with this account.</p>
+<p><img src="/images/2021/root_2.png" alt=""></p>
+<p>For example, we type <code>release</code>. The system responds with server version information. Also, it should be noted that one of the commands is <code>reboot</code>, which could be useful in the event of a DoS attack.</p>
+<p><img src="/images/2021/root_3.png" alt=""></p>
+<p>We can also see the elapsed time since the last boot by typing the <code>uptime</code> command. This information is always very useful in the attack phase because it can normally indicate the time elapsed since the system has undergone an update patch.</p>
+<pre tabindex="0"><code>admin:&gt; uptime
+</code></pre><p><img src="/images/2021/root_4.png" alt=""></p>
+<p>One of the weaknesses of this system is that we can use the Linux pipe command &ldquo;|&rdquo; to forward further commands to the underlying server. Taking a practical example, we can see the &ldquo;passwd&rdquo; file on the server by typing:</p>
+<pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
+</code></pre><p><img src="/images/2021/root_5.png" alt=""></p>
+<p>In this way we have listed all the accounts present on the server. Naturally this file contains only the accounts and not the passwords, which instead are found in the <strong>/etc/shadow</strong> file accessible only with <strong>root</strong> rights.</p>
+<h3 id="privilege-escalation">Privilege escalation</h3>
+<p>The privilege escalation phase, in most cases in the IT field, requires sometimes long and complex procedures, regardless of whether you are attacking a Windows or Linux machine. But as I said, in the OT field the security levels are not always (in this case, &ldquo;were&rdquo;) adequate. We can get the root level by simply typing:</p>
+<pre tabindex="0"><code>admin:&gt; sudo -i
+</code></pre><p><img src="/images/2021/root_6.png" alt=""></p>
+<p><strong>Boom!</strong> The default configuration of this building automation server has no password for the &ldquo;root&rdquo; account, so just hit Enter when prompted for a password.</p>
+<p>As we can see, the prompt turns green and indicates that we are root!</p>
+<p>Since we now have root privileges we are able to do just about anything. Type <code>cat /etc/shadow</code> to see if we can recover the password hashes in the <strong>/etc/shadow</strong> folder.</p>
+<p><img src="/images/2021/root_7.png" alt=""></p>
+<p>Lo and behold we managed to get all the accounts and their password hashes! If needed, we could discover them through a brute-force attack like <strong>hashcat</strong> to recover plaintext passwords.</p>
+<p>The configuration file for the Automation Server is likely to be in the <strong>/etc</strong> directory. We enter this folder and list all the files and directories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root:&gt; cd /etc
+</span></span><span style="display:flex;"><span>root:&gt; ls -l
+</span></span></code></pre></div><p><img src="/images/2021/root_8.png" alt=""></p>
+<p>If we scroll through this list we find a file called &ldquo;whitelist.rules&rdquo;, which probably contains the rules for connecting to the server. Let&rsquo;s open it.</p>
+<pre tabindex="0"><code>root:&gt; cat whitelist.rules
+</code></pre><p><img src="/images/2021/root_9.png" alt=""></p>
+<p>The system administrator has never set &ldquo;whitelist.rules&rdquo; on this server and, therefore, anyone can connect.</p>
+<p>Finally, since we have root privileges we can add a new user who can act as a backdoor. Before I leave, I can add myself to users, grant myself root privileges, and add myself to whitelist.rules, so that even if the admin fixes this vulnerability I will still have an account and can still access this server.</p>
+<pre tabindex="0"><code>root:&gt; useradd cyberhood
+</code></pre><p>This example dates back to vulnerabilities discovered in 2016 and recognized by Schneider Electric, which subsequently updated its systems in order to prevent such easy access to the server. You can find more information <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">here</a>.</p>
+<p><strong>NB</strong> The purpose of this guide is certainly not to discredit one manufacturer to the detriment of another, but only wants to highlight how much work there is to be done on the <strong>OT products of all the main manufacturers</strong> in order to make them &ldquo;<strong>secure by design</strong>&rdquo;, designed and built with intrinsic safety criteria.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Hacking: Stuxnet-like attack on a Modicon PLC</title>
+            <link>https://scadasploit.dev/posts/1/01/hacking-stuxnet-like-attack-on-a-modicon-plc/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/hacking-stuxnet-like-attack-on-a-modicon-plc/</guid>
+            <description>Airbus CyberSecurity researchers recently demonstrated that hackers could launch an attack in Stuxnet-style against Schneider Electric&amp;rsquo;s Modicon programmable logic controllers (PLCs), but it is believed that products from other vendors could also be vulnerable to the same type of attack.
+How does it work The infamous malware Stuxnet, which the United States and Israel used to damage the nuclear program Iranian, was designed to target the SIMATIC S7-300 and S7-400 PLCs manufactured by Siemens.</description>
+            <content type="html"><![CDATA[<p><a href="https://airbus-cyber-security.com/applying-a-stuxnet-type-attack-to-a-modicon-plc/">Airbus CyberSecurity</a> researchers recently demonstrated that hackers could launch an attack in Stuxnet-style against Schneider Electric&rsquo;s Modicon programmable logic controllers (PLCs), but it is believed that products from other vendors could also be vulnerable to the same type of attack.</p>
+<h2 id="how-does-it-work">How does it work</h2>
+<p>The infamous malware <a href="https://blog.omarmorando.com/hacking/ot-ics-hacking/hacking-attaccare-un-plc-con-stuxnet">Stuxnet</a>, which the United States and Israel used to damage the nuclear program Iranian, was designed to target the SIMATIC S7-300 and S7-400 PLCs manufactured by Siemens. Stuxnet uploaded malicious code to targeted PLCs by abusing Siemens&rsquo; STEP7 software, which the German industrial giant supplied to program the controllers.</p>
+<p><img src="/images/2021/stuxnet_schneider_1.png" alt=""></p>
+<p>As I described in the previous article, Stuxnet replaced a library named s7otbxdx.dll, which STEP7 uses to access a PLC, with a malicious version using a method called &ldquo;<strong>reflective DLL loading</strong>&rdquo;. This technique involves renaming the concerned DLL (e.g. asmArm.dll) with another name (e.g. asm_Arm.dll) and creating a second DLL with the name of the original one (asmArm.dll) which, in turn , recalls the functions of the first one. This allowed attackers to inject their malicious code into the target controller.</p>
+<p><img src="/images/2021/stuxnet_schneider_2.png" alt=""></p>
+<p>Airbus CyberSecurity researchers analyzed Schneider Electric&rsquo;s Modicon M340 PLC to determine if it is vulnerable to similar attacks. The attack targeted the controller via Schneider EcoStruxure Control Expert engineering software, formerly known as Unity Pro.</p>
+<p>Their analysis led to the discovery of a vulnerability that can be exploited to load malicious code onto Modicon M340 and M580 PLCs by replacing one of the DLL files associated with the engineering software, following the same pattern as Stuxnet.</p>
+<p><img src="/images/2021/stuxnet_schneider_3.png" alt=""></p>
+<p>“Such an attack could have serious consequences, including disruption of production processes or other types of damage,” said Airbus CyberSecurity.</p>
+<p>&ldquo;Even more interesting from an IT perspective, the attacker could turn the PLC into a proxy,&rdquo; explained the Airbus researchers. “This would allow it to send requests and communicate with the network that the PLC is connected to. For example, it could access the internal corporate network to steal intellectual property or launch attacks to target other connected systems.&quot;</p>
+<p>&ldquo;The legitimate automation software would be running without showing any sign of the presence of a malicious program. The malware part periodically sends requests to a command and control server operated by the attacker via the Internet,&rdquo; they explained.</p>
+<h2 id="how-to-lead-the-attack">How to lead the attack</h2>
+<p>While such an attack could be highly malicious or disruptive - or could give an advantage to the attacker - exploiting the vulnerability is no easy task. The attacker must first gain access to the target organization&rsquo;s ICS perimeter and be able to communicate with the target PLC.</p>
+<p>“This is already a very significant operation likely involving privileged access on a number of machines. If the attackers have reached this point, several security defense measures are either not in place or have failed,” noted the researchers at Airbus CyberSecurity.</p>
+<p>The attacker must then download the automation program from the PLC. This can be done from a compromised engineering station or if the PLC is accessible to any machine on the network without authentication. The attacker must then recompile the automation program using the techniques described by the Airbus researchers and create a malicious program to embed into the legitimate automation software.</p>
+<p>Finally, the attacker must upload the modified program to the PLC and execute it, but this requires stopping and starting the automation software, and experts say this could be noticed.</p>
+<h2 id="the-solutions-in-place">The solutions in place</h2>
+<p>The vulnerability discovered by Airbus researchers in Schneider Electric products is referred to as <a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-7475">CVE-2020-7475</a> and classified as strict. It has been patched by the company with a hotfix for EcoStruxure Control Expert and firmware updates for Modicon M340 and M580 controllers as noted in [this note](<a href="https://www.se.com/ww/en/download/document">https://www.se.com/ww/en/download/document</a> /SEVD-2020-080-01/).</p>
+<p>Schneider Electric and Airbus encourage all customer companies to implement cybersecurity best practices across their operations in an effort to reduce the risk of attacks.</p>
+<p>&ldquo;Where necessary, this includes locating industrial systems and remotely accessible devices behind firewalls; installing physical controls to prevent unauthorized access; preventing access to mission-critical systems and devices from external networks; systematically patching security and activation of antivirus software; and the enforcement of whitelisting solutions,” Schneider said.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Industrial cybersecurity</title>
+            <link>https://scadasploit.dev/posts/1/01/industrial-cybersecurity/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>https://scadasploit.dev/posts/1/01/industrial-cybersecurity/</guid>
+            <description>Industrial cybersecurity has always been a challenge. As complex as it is already, the pandemic we are facing in 2020 further complicates things. According to the recent report by the ARC Advisory Group, the number of remote workers among industrial organizations has increased by 53%, creating additional tasks for IT and OT professionals. At the same time, only about a quarter of industrial companies have developed a strategic incident response plan.</description>
+            <content type="html"><![CDATA[<p><img src="/images/2021/safety_ot_1.png" alt=""></p>
+<p>Industrial cybersecurity has always been a challenge. As complex as it is already, the pandemic we are facing in 2020 further complicates things. According to the recent report by the ARC Advisory Group, the number of remote workers among industrial organizations has increased by 53%, creating additional tasks for IT and OT professionals. At the same time, only about a quarter of industrial companies have developed a strategic incident response plan.</p>
+<p><img src="/images/2021/safety_ot_2.png" alt=""></p>
+<p>While some of the large industrial enterprises may have sufficient budgets and competent professionals to effectively tackle an OT security project, others experience a lack of resources. According to the same report, 24% of industry organizations have experienced a reduction in their ICS budget. The paradox is that access needs are growing, requiring remote visibility of the most critical areas of their industrial infrastructures.</p>
+<p><img src="/images/2021/safety_ot_3.png" alt=""></p>
+<h2 id="structured-approach-to-ot-security">Structured approach to OT security</h2>
+<p>There&rsquo;s good news for companies, who are thinking about how to approach their OT security program. By following the 5 universal steps outlined below, any industrial organization can recognise, structure and prioritize their real security needs. Furthermore, it can identify the most requested actions with the available budgets and resources.</p>
+<p><img src="/images/2021/safety_ot_4.png" alt=""></p>
+<h3 id="phase-1-conducting-the-safety-audit">PHASE 1. Conducting the safety audit</h3>
+<p>Companies often underestimate the importance of cybersecurity diagnostics. However, this step is critical for sensitive OT networks, as it allows you to gain visibility into your existing security processes. It also helps you identify problems, set proper security goals, and plan next steps with confidence. By gaining an understanding of which technologies are really needed, you can spend your budget wisely.</p>
+<h3 id="phase-2-find-the-technologies-for-security">PHASE 2. Find the technologies for security</h3>
+<p>With the high diversity of OT environments across multiple industry verticals, it may be challenging to find a single technology or vendor that can address all of a customer&rsquo;s OT security requirements. It is more common to find a combination of compatible technologies that can scale for the needs of the industrial organization. If there is no suitable solution on the market, the best option may be to look for a suitable technology among large or small security vendors or even develop it from scratch.</p>
+<h3 id="phase-3-properly-implement-security">PHASE 3. Properly implement security</h3>
+<p>Continuity of industrial processes and human and environmental safety are top priorities for OT networks. Therefore, OT security solutions must be carefully implemented and configured according to local and international compliance standards, which include ISO/IEC 27001, NIST SP, ISA/IEC 62443, NERC CIP and other relevant standards.</p>
+<h3 id="phase-4-professional-safety-management">PHASE 4. Professional safety management</h3>
+<p>Managing OT security can be complex, covering multiple areas and requiring different security management skills. Furthermore, the cybersecurity approach of IT and OT networks is different, leading to the shortage of security professionals among industrial organizations. Industrial enterprises can overcome this challenge by filling security management roles and governing security projects, internally or with outsourced SOC services. Constant security monitoring helps recognize suspicious patterns and detect security incidents and cyber attacks in their early stages.</p>
+<h3 id="phase-5-continuing-safety-training">PHASE 5. Continuing safety training</h3>
+<p>Cybersecurity is an area in constant development, requiring the contribution of every employee within an industrial organization. Common security awareness training is used to develop security skills and healthy daily habits among non-IT teams and C-level managers. At the same time, advanced training, including dedicated OT security, Threat Intelligence and other courses advanced, is used to enhance the skills of IT and OT security professionals responsible for protecting OT infrastructures against cyber-attacks.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
 <p>Stay safe, stay free.</p>
 ]]></content>
         </item>

@@ -20,7 +20,7 @@
     <item>
       <title>hacking</title>
       <link>https://scadasploit.dev/tags/hacking/</link>
-      <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
+      <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
       
       <guid>https://scadasploit.dev/tags/hacking/</guid>
       <description></description>
@@ -29,36 +29,9 @@
     <item>
       <title>ot</title>
       <link>https://scadasploit.dev/tags/ot/</link>
-      <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
+      <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
       
       <guid>https://scadasploit.dev/tags/ot/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>modbus</title>
-      <link>https://scadasploit.dev/tags/modbus/</link>
-      <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
-      
-      <guid>https://scadasploit.dev/tags/modbus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>profibus</title>
-      <link>https://scadasploit.dev/tags/profibus/</link>
-      <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
-      
-      <guid>https://scadasploit.dev/tags/profibus/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>building_automation</title>
-      <link>https://scadasploit.dev/tags/building_automation/</link>
-      <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
-      
-      <guid>https://scadasploit.dev/tags/building_automation/</guid>
       <description></description>
     </item>
     
@@ -68,6 +41,33 @@
       <pubDate>Sat, 03 Jul 2021 15:09:35 +0200</pubDate>
       
       <guid>https://scadasploit.dev/tags/dorks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>building_automation</title>
+      <link>https://scadasploit.dev/tags/building_automation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scadasploit.dev/tags/building_automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modbus</title>
+      <link>https://scadasploit.dev/tags/modbus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scadasploit.dev/tags/modbus/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>profibus</title>
+      <link>https://scadasploit.dev/tags/profibus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scadasploit.dev/tags/profibus/</guid>
       <description></description>
     </item>
     

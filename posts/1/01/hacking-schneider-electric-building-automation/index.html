@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)." />
+<meta name="keywords" content=", hacking, ot, building_automation" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/" />
+
+
+    <title>
+        
+            Hacking: Schneider Electric Building Automation :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Schneider Electric Building Automation">
+<meta itemprop="description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives).">
+
+<meta itemprop="wordCount" content="1107"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,ot,building_automation," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: Schneider Electric Building Automation"/>
+<meta name="twitter:description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)."/>
+
+
+
+    <meta property="og:title" content="Hacking: Schneider Electric Building Automation" />
+<meta property="og:description" content="ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/">Hacking: Schneider Electric Building Automation</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives). Despite this, these systems are unusually vulnerable to hacking and malicious activity.</p>
+<p>In this tutorial I will show how to hack an industrial control system from Schneider Electric, one of the world&rsquo;s largest manufacturers of ICS and Building Automation systems. Due to weak in-development security, a common problem with IIoT products, some of these systems are incredibly easy to hack and take over.</p>
+<h3 id="we-know-our-target-better">We know our target better</h3>
+<p><a href="https://www.se.com/ww/en/">Schneider Electric</a> is a Paris-based company, world leader in the industrial control sector. They were among the pioneers in this field by introducing many innovative concepts then replicated by their competitors, and they also have the merit of having developed the most used communication protocol in industrial control systems: the [Modbus](<a href="https://it.wikipedia">https://it.wikipedia</a>. org/wiki/Modbus).</p>
+<p>Schneider Electric also has a range of PLCs dedicated to building automation in its vast catalogue.</p>
+<p><img src="https://scadasploit.dev/images/2021/building_1.png" alt="A server of the SmartStruxure family"></p>
+<p>One of their products, the SmartStruxure Automation Server, is used in commercial buildings to control and automate the many systems including heating and cooling, lighting, security, etc. In 2016, independent researcher Karn Ganeshen discovered a 0-day vulnerability, which was later patched by Schneider, which allowed logging into the server with a shell and acquiring root privileges.</p>
+<p>But let&rsquo;s go in order.</p>
+<h3 id="find-schneider-automation-servers-with-shodan">Find Schneider Automation servers with Shodan</h3>
+<p>We can find these automation servers on Shodan by searching for:</p>
+<p><code>&quot;schneider electric&quot; automation</code></p>
+<p><img src="https://scadasploit.dev/images/2021/building_2.png" alt="The results on Shodan"></p>
+<p>As we can see, a long list of devices directly connected to the Internet appears, with the relative public IP address. In our case I will use a demo product within the local network.</p>
+<h2 id="vulnerability">Vulnerability</h2>
+<p>The vulnerability in question allows an attacker to connect to the automation server with an SSH shell using default credentials and easily gain &ldquo;root&rdquo; privileges. By doing so, the attacker not only owns the &ldquo;box&rdquo;, but the entire building!</p>
+<h3 id="connection-to-building-automation-server">Connection to Building Automation Server</h3>
+<p>First, let&rsquo;s connect to our server with an SSH shell. I will be using Kali Linux, but since this hack is very simple it can be done using any distribution, without the help of special hacking tools such as e.g. Metasploit.</p>
+<pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
+</code></pre><p>After we connect the server will ask us for a password. We use the default password &ldquo;<strong>admin</strong>&rdquo;.</p>
+<p><img src="https://scadasploit.dev/images/2021/root_1.png" alt=""></p>
+<p>At this point we are inside the Automation Server administrator account. We can type <code>help</code> to see what commands we can use with this account.</p>
+<p><img src="https://scadasploit.dev/images/2021/root_2.png" alt=""></p>
+<p>For example, we type <code>release</code>. The system responds with server version information. Also, it should be noted that one of the commands is <code>reboot</code>, which could be useful in the event of a DoS attack.</p>
+<p><img src="https://scadasploit.dev/images/2021/root_3.png" alt=""></p>
+<p>We can also see the elapsed time since the last boot by typing the <code>uptime</code> command. This information is always very useful in the attack phase because it can normally indicate the time elapsed since the system has undergone an update patch.</p>
+<pre tabindex="0"><code>admin:&gt; uptime
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_4.png" alt=""></p>
+<p>One of the weaknesses of this system is that we can use the Linux pipe command &ldquo;|&rdquo; to forward further commands to the underlying server. Taking a practical example, we can see the &ldquo;passwd&rdquo; file on the server by typing:</p>
+<pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_5.png" alt=""></p>
+<p>In this way we have listed all the accounts present on the server. Naturally this file contains only the accounts and not the passwords, which instead are found in the <strong>/etc/shadow</strong> file accessible only with <strong>root</strong> rights.</p>
+<h3 id="privilege-escalation">Privilege escalation</h3>
+<p>The privilege escalation phase, in most cases in the IT field, requires sometimes long and complex procedures, regardless of whether you are attacking a Windows or Linux machine. But as I said, in the OT field the security levels are not always (in this case, &ldquo;were&rdquo;) adequate. We can get the root level by simply typing:</p>
+<pre tabindex="0"><code>admin:&gt; sudo -i
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_6.png" alt=""></p>
+<p><strong>Boom!</strong> The default configuration of this building automation server has no password for the &ldquo;root&rdquo; account, so just hit Enter when prompted for a password.</p>
+<p>As we can see, the prompt turns green and indicates that we are root!</p>
+<p>Since we now have root privileges we are able to do just about anything. Type <code>cat /etc/shadow</code> to see if we can recover the password hashes in the <strong>/etc/shadow</strong> folder.</p>
+<p><img src="https://scadasploit.dev/images/2021/root_7.png" alt=""></p>
+<p>Lo and behold we managed to get all the accounts and their password hashes! If needed, we could discover them through a brute-force attack like <strong>hashcat</strong> to recover plaintext passwords.</p>
+<p>The configuration file for the Automation Server is likely to be in the <strong>/etc</strong> directory. We enter this folder and list all the files and directories.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root:&gt; cd /etc
+</span></span><span style="display:flex;"><span>root:&gt; ls -l
+</span></span></code></pre></div><p><img src="https://scadasploit.dev/images/2021/root_8.png" alt=""></p>
+<p>If we scroll through this list we find a file called &ldquo;whitelist.rules&rdquo;, which probably contains the rules for connecting to the server. Let&rsquo;s open it.</p>
+<pre tabindex="0"><code>root:&gt; cat whitelist.rules
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_9.png" alt=""></p>
+<p>The system administrator has never set &ldquo;whitelist.rules&rdquo; on this server and, therefore, anyone can connect.</p>
+<p>Finally, since we have root privileges we can add a new user who can act as a backdoor. Before I leave, I can add myself to users, grant myself root privileges, and add myself to whitelist.rules, so that even if the admin fixes this vulnerability I will still have an account and can still access this server.</p>
+<pre tabindex="0"><code>root:&gt; useradd cyberhood
+</code></pre><p>This example dates back to vulnerabilities discovered in 2016 and recognized by Schneider Electric, which subsequently updated its systems in order to prevent such easy access to the server. You can find more information <a href="https://download.schneider-electric.com/files?p_Doc_Ref=SEVD-2016-025-01">here</a>.</p>
+<p><strong>NB</strong> The purpose of this guide is certainly not to discredit one manufacturer to the detriment of another, but only wants to highlight how much work there is to be done on the <strong>OT products of all the main manufacturers</strong> in order to make them &ldquo;<strong>secure by design</strong>&rdquo;, designed and built with intrinsic safety criteria.</p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/building_automation/">building_automation</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1107 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          0001-01-01 00:49
+        
+
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: Profibus/Profinet</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-stuxnet-like-attack-on-a-modicon-plc/">
+                    <span class="button__text">Hacking: Stuxnet-like attack on a Modicon PLC</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

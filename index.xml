@@ -68,16 +68,6 @@ framework exclusively dedicated to vulnerabilities of SCADA, PLC and other ICS d
     </item>
     
     <item>
-      <title>Hacking: attacco tipo Stuxnet a un PLC Modicon</title>
-      <link>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</link>
-      <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
-      
-      <guid>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</guid>
-      <description>I ricercatori di Airbus CyberSecurity hanno recentemente dimostrato che gli hacker potrebbero lanciare un attacco in stile Stuxnet contro i controllori logici programmabili (PLC) Modicon di Schneider Electric, ma si ritiene che anche i prodotti di altri fornitori potrebbero essere vulnerabili allo stesso tipo di attacco.
-Come funziona Il famigerato malware Stuxnet, che gli Stati Uniti e Israele usavano per danneggiare il programma nucleare iraniano, è stato progettato per colpire i PLC SIMATIC S7-300 e S7-400 prodotti da Siemens.</description>
-    </item>
-    
-    <item>
       <title>Hacking: Pentest on a PLC</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</link>
       <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
@@ -88,22 +78,33 @@ perimeter protection, such as firewalls to reduce the risk of unwanted network t
     </item>
     
     <item>
-      <title>Hacking: attaccare un PLC con Stuxnet</title>
-      <link>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</link>
-      <pubDate>Fri, 09 Jul 2021 15:09:35 +0200</pubDate>
+      <title>Hacking: finding SCADA on Internet using Google Dorks</title>
+      <link>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</link>
+      <pubDate>Sat, 03 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</guid>
-      <description>Per illustrare come sia possibile attaccare un PLC e quali potrebbero essere le conseguenze di ciò diamo un&amp;rsquo;occhiata al worm Stuxnet.;
-Introduzione a Stuxnet Stuxnet è un worm indipendente, destinato esclusivamente ai sistemi di controllo di supervisione e acquisizione dati (SCADA) di Siemens. Il worm è stato progettato per attaccare specifici PLC Siemens e ha sfruttato quattro vulnerabilità 0-day. La versione finale di Stuxnet è stata scoperta per la prima volta in Bielorussia nel giugno 2010 da Sergey Ulasen di Kaspersky Labs.</description>
+      <guid>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</guid>
+      <description>It is estimated that Google has stored more pages than any other search engine in the world. With more than billions of pages and a relatively low execution time, the popular Californian search engine manages to satisfy all searches, whether performed for curiosity or for less harmless purposes. It is so powerful that it can categorise over 15 million pages in less than a minute.
+Moreover, it is assumed that 60+ thousand searches are conducted through Google&amp;rsquo;s search engine every second.</description>
     </item>
     
     <item>
-      <title>Hacking: simulazione Modbus TCP in Linux</title>
-      <link>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</link>
-      <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
+      <title>Differences between IT and OT</title>
+      <link>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</link>
+      <pubDate>Thu, 01 Jul 2021 15:09:35 +0200</pubDate>
       
-      <guid>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</guid>
-      <description>I sistemi ICS utilizzano molti protocolli diversi per comunicare rispetto ai sistemi IT standard. Lo standard più utilizzato è il protocollo Modbus. Sviluppato per la prima volta da Modicon (ora Schneider Electric) nel 1979 come protocollo seriale, è stato modificato e aggiornato per funzionare su rete Ethernet TCP, assumendo il nome di Modbus TCP. Di seguito puoi vedere un diagramma che riassume la struttura del pacchetto RTU (seriale) e quella TCP.</description>
+      <guid>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</guid>
+      <description>For those coming from IT, securing ICS systems can be frustrating at the beginning. This is because the technologies used and the ways of working are very different when it comes to OT systems. The objectives pursued in these two areas are also very different. How so? Let&amp;rsquo;s find out.
+Data protection vs. process protection When securing IT systems, the main focus is on protecting data - such as intellectual property (IP), credit card numbers, emails and Personal Identifiable Information (PII) - thus trying to prevent hackers from gaining access to what, for a company, may be a great part of its assets.</description>
+    </item>
+    
+    <item>
+      <title>Empower your Red Team with cutting-edge Adversary Simulation Tool for OT Environments!</title>
+      <link>https://scadasploit.dev/features/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://scadasploit.dev/features/</guid>
+      <description>In today&amp;rsquo;s interconnected world, OT systems are the backbone of critical infrastructures such as power plants, manufacturing facilities, and transportation networks. However, their unique security challenges demand a specialized approach. With SCADAsploit, you gain a powerful ally in identifying vulnerabilities and fortifying the defenses of your OT environment.
+SCADAsploit can emulate different stages of an attacker killchain, and provide exploitation modules to help the SOC to validate the attacks and improve the internal defensive mechanisms.</description>
     </item>
     
   </channel>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="segfaultx00 ">
+<meta name="description" content="As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
+For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols." />
+<meta name="keywords" content=", hacking, ot" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/" />
+
+
+    <title>
+        
+            Hacking: Metasploit SCADA modules :: SCADAsploit 
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="https://scadasploit.dev/main.dacbc4bc3c700b51f08b5ac83e9eb70daf49d755028b1490288a2e6193098272.css">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="https://scadasploit.dev/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://scadasploit.dev/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://scadasploit.dev/favicon-16x16.png">
+    <link rel="manifest" href="https://scadasploit.dev/site.webmanifest">
+    <link rel="mask-icon" href="https://scadasploit.dev/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="https://scadasploit.dev/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+<meta itemprop="name" content="Hacking: Metasploit SCADA modules">
+<meta itemprop="description" content="As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
+For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.">
+
+<meta itemprop="wordCount" content="263"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="keywords" content="hacking,ot," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://scadasploit.dev"/>
+
+<meta name="twitter:title" content="Hacking: Metasploit SCADA modules"/>
+<meta name="twitter:description" content="As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
+For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols."/>
+
+
+
+    <meta property="og:title" content="Hacking: Metasploit SCADA modules" />
+<meta property="og:description" content="As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
+For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="posts" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="https://scadasploit.dev/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">$</span>
+            <span class="logo__text"> ssf &gt; </span>
+            <span class="logo__cursor" style=
+                  "
+                   background-color:#a90c1c;
+                   animation-duration:1s;">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://scadasploit.dev/features/">01_Features</a></li><li><a href="https://scadasploit.dev/posts/">02_Blogs</a></li><li><a href="https://scadasploit.dev/contact/">03_Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        2 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/">Hacking: Metasploit SCADA modules</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is <a href="https://www.metasploit.com/">Metasploit Framework</a>, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.</p>
+<p>For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</p>
+<p>And it is precisely due to the fact that ICS sites use different hardware and protocols that a very careful reconnaissance phase must be carried out in order to carry out a successful attack. You need to know the manufacturer and the protocol to find the appropriate module.</p>
+<p>Below I have summarized the list of modules present at the time of writing this article, divided into auxiliaries (reconnaissance and commands) and exploitation ones.</p>
+<p><img src="https://scadasploit.dev/images/2021/metasploit_ot_1.png" alt="Auxiliary modules"></p>
+<p><img src="https://scadasploit.dev/images/2021/metasploit_ot_2.png" alt="Exploit modules"></p>
+<h2 id="important-note"><strong>Important note</strong></h2>
+<p>This article is intended for educational and informational purposes only. <strong>Any unauthorized action</strong> towards any control system present on a public or private network <strong>is illegal</strong>! The information contained in this and other articles are intended to make people understand how necessary it is to improve defense systems, and not to provide tools for attacking them. Violating a computer system is punishable by law and can cause serious damage to property and people, especially when it comes to ICS. All the tests that are illustrated in the tutorials have been carried out in isolated, safe, or manufacturer-authorized laboratories.</p>
+<p>Stay safe, stay free.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="https://scadasploit.dev/tags/hacking/">hacking</a></span>
+        <span class="tag"><a href="https://scadasploit.dev/tags/ot/">ot</a></span>
+        
+    </p>
+
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        263 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          0001-01-01 00:49
+        
+
+        
+      </p>
+    </div>
+      <hr />
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-attacking-a-plc-with-stuxnet/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Hacking: attacking a PLC with Stuxnet</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="https://scadasploit.dev/posts/1/01/hacking-modbus/">
+                    <span class="button__text">Hacking: Modbus</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2023</span>
+            <span><a href="https://scadasploit.dev">segfaultx00</a></span>
+            
+            
+            <span>Made with &#10084</span>
+        </div>
+    </div>
+    
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+
+
+
+    </body>
+</html>

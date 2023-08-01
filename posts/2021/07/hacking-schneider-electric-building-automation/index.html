@@ -150,13 +150,13 @@
 <h3 id="conosciamo-meglio-il-nostro-target">Conosciamo meglio il nostro target</h3>
 <p><a href="https://www.se.com/ww/en/">Schneider Electric</a> è una società con sede a Parigi, leader mondiale nel settore del controllo industriale. Sono stati tra i pionieri in questo campo introducendo molti concetti innovativi poi replicati dai concorrenti, e hanno anche il merito di aver sviluppato il protocollo di comunicazione più utilizzato nei sistemi di controllo industriale: il <a href="https://it.wikipedia.org/wiki/Modbus">Modbus</a>.</p>
 <p>Schneider Electric all&rsquo;interno del proprio vasto catalogo conta anche una gamma di PLC dedicati all&rsquo;automazione degli edifici.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/building_1.png" alt="Un server della famiglia SmartStruxure"></p>
+<p><img src="https://scadasploit.dev/images/2021/building_1.png" alt="Un server della famiglia SmartStruxure"></p>
 <p>Uno dei loro prodotti, lo SmartStruxure Automation Server, viene utilizzato negli edifici commerciali per controllare e automatizzare i numerosi sistemi tra cui riscaldamento e raffreddamento, illuminazione, sicurezza, ecc. Nel 2016, il ricercatore indipendente Karn Ganeshen ha individuato una vulnerabilità 0-day, oggetto poi di una patch da parte di Schneider, che permetteva di entrare nel server con una shell e acquisire i privilegi di root.</p>
 <p>Ma andiamo con ordine.</p>
 <h3 id="trovare-i-server-schneider-automation-con-shodan">Trovare i server Schneider Automation con Shodan</h3>
 <p>Possiamo trovare questi server di automazione su Shodan cercando:</p>
 <p><code>&quot;schneider electric&quot; automation</code></p>
-<p><img src="https://scadasploit.dev/uploads/2021/building_2.png" alt="I risultati su Shodan"></p>
+<p><img src="https://scadasploit.dev/images/2021/building_2.png" alt="I risultati su Shodan"></p>
 <p>Come possiamo notare, compare un lungo elenco di dispositivi direttamente connessi a Internet, con il relativo indirizzo IP pubblico. Nel nostro caso userò un prodotto dimostrativo all&rsquo;interno della rete locale.</p>
 <h2 id="la-vulnerabilità">La vulnerabilità</h2>
 <p>La vulnerabilità in oggetto consente all&rsquo;autore dell&rsquo;attacco di connettersi al server di automazione con una shell SSH utilizzando le credenziali predefinite e di ottenere facilmente i privilegi di &ldquo;root&rdquo;. Così facendo, l&rsquo;attaccante non possiede solo la &ldquo;scatola&rdquo;, ma l&rsquo;intero edificio!</p>
@@ -164,34 +164,34 @@
 <p>Innanzitutto, colleghiamoci al nostro server con una shell SSH. Userò Kali Linux, ma dal momento che questo hack è molto semplice può essere eseguito usando qualsiasi distribuzione, senza l&rsquo;ausilio di strumenti di hacking particolari come ad es. Metasploit.</p>
 <pre tabindex="0"><code>root@kali:~# ssh &lt;IP_address&gt; -l admin
 </code></pre><p>Dopo che ci siamo connessi il server ci chiederà una password. Utilizziamo la password predefinita &ldquo;<strong>admin</strong>&rdquo;.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/root_1.png" alt=""></p>
+<p><img src="https://scadasploit.dev/images/2021/root_1.png" alt=""></p>
 <p>A questo punto siamo all&rsquo;interno dell&rsquo;account amministratore di Automation Server. Possiamo digitare <code>help</code> per vedere quali comandi possiamo usare con questo account.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/root_2.png" alt=""></p>
+<p><img src="https://scadasploit.dev/images/2021/root_2.png" alt=""></p>
 <p>Ad esempio, digitiamo <code>release</code>. Il sistema risponde con le informazioni sulla versione del server. Inoltre, va notato che uno dei comandi è <code>reboot</code>, che potrebbe essere utile nel caso di un attacco DoS.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/root_3.png" alt=""></p>
+<p><img src="https://scadasploit.dev/images/2021/root_3.png" alt=""></p>
 <p>Possiamo inoltre vedere il tempo trascorso dall&rsquo;ultimo avvio digitando il comando <code>uptime</code>. Questa informazione è sempre molto utile in fase di attacco perchè può indicare, normalmente, il tempo trascorso da quando il sistema ha subito una patch di aggiornamento.</p>
 <pre tabindex="0"><code>admin:&gt; uptime
-</code></pre><p><img src="https://scadasploit.dev/uploads/2021/root_4.png" alt=""></p>
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_4.png" alt=""></p>
 <p>Uno dei punti deboli di questo sistema è che possiamo usare il comando Linux pipe &ldquo;|&rdquo; per inoltrare ulteriori comandi al server sottostante. Facendo un esempio pratico, possiamo vedere il file &ldquo;passwd&rdquo; sul server digitando:</p>
 <pre tabindex="0"><code>admin:&gt; uptime | cat /etc/passwd
-</code></pre><p><img src="https://scadasploit.dev/uploads/2021/root_5.png" alt=""></p>
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_5.png" alt=""></p>
 <p>In questo modo abbiamo elencato tutti gli account presenti sul server. Naturalmente questo file contiene solo gli account e non le password, che invece si trovano nel file <strong>/etc/shadow</strong> accessibile unicamente con i diritti di <strong>root</strong>.</p>
 <h3 id="privilege-escalation">Privilege escalation</h3>
 <p>La fase di privilege escalation, nella maggior parte dei casi in campo IT, richiede procedure a volte lunghe e complesse, indipendentemente che si stia attaccando una macchina Windows o Linux. Ma come ho detto, nel campo OT non sempre i livelli di sicurezza sono (in questo caso, &ldquo;erano&rdquo;) adeguati. Possiamo ottenere il livello di root semplicemente digitando:</p>
 <pre tabindex="0"><code>admin:&gt; sudo -i
-</code></pre><p><img src="https://scadasploit.dev/uploads/2021/root_6.png" alt=""></p>
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_6.png" alt=""></p>
 <p><strong>Boom!</strong> La configurazione predefinita di questo server di automazione dell&rsquo;edificio non ha password per l&rsquo;account &ldquo;root&rdquo;, quindi è sufficiente premere Invio quando viene richiesta una password.</p>
 <p>Come possiamo vedere, il prompt diventa verde e indica che siamo root!</p>
 <p>Dato che ora abbiamo i privilegi di root siamo in grado di fare praticamente qualsiasi cosa. Digitiamo <code>cat /etc/shadow</code> per vedere se riusciamo a recuperare gli hash delle password nella cartella <strong>/etc/shadow</strong>.</p>
-<p><img src="https://scadasploit.dev/uploads/2021/root_7.png" alt=""></p>
+<p><img src="https://scadasploit.dev/images/2021/root_7.png" alt=""></p>
 <p>Ed ecco che siamo riusciti a ottenere tutti gli account e i loro hash delle password! Se necessario, potremmo scoprirle attraverso un attacco brute-force come <strong>hashcat</strong> per recuperare le password in chiaro.</p>
 <p>È probabile che il file di configurazione per Automation Server sia nella directory <strong>/etc</strong>. Entriamo in questa cartella ed elenchiamo tutti i file e le directory.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root:&gt; cd /etc
 </span></span><span style="display:flex;"><span>root:&gt; ls -l
-</span></span></code></pre></div><p><img src="https://scadasploit.dev/uploads/2021/root_8.png" alt=""></p>
+</span></span></code></pre></div><p><img src="https://scadasploit.dev/images/2021/root_8.png" alt=""></p>
 <p>Se scorriamo questo elenco troviamo un file chiamato &ldquo;whitelist.rules&rdquo;, che probabilmente contiene le regole per la connessione al server. Apriamolo.</p>
 <pre tabindex="0"><code>root:&gt; cat whitelist.rules
-</code></pre><p><img src="https://scadasploit.dev/uploads/2021/root_9.png" alt=""></p>
+</code></pre><p><img src="https://scadasploit.dev/images/2021/root_9.png" alt=""></p>
 <p>L&rsquo;amministratore di sistema non ha mai impostato &ldquo;whitelist.rules&rdquo; su questo server e, di conseguenza, chiunque può connettersi.</p>
 <p>Infine, poiché abbiamo i privilegi di root possiamo aggiungere un nuovo utente che possano fare da backdoor. Prima di partire, posso aggiungermi agli utenti, concedermi i privilegi di root e aggiungermi a whitelist.rules, in modo che anche se l&rsquo;amministratore dovesse correggere questa vulnerabilità avrò comunque un account e potrò accedere ancora a questo server.</p>
 <pre tabindex="0"><code>root:&gt; useradd cyberhood

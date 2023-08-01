@@ -33,43 +33,13 @@
     <lastmod>2022-04-14T15:09:35+02:00</lastmod>
   </url><url>
     <loc>https://scadasploit.dev/tags/hacking/</loc>
-    <lastmod>2021-07-11T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-attacco-tipo-stuxnet-a-un-plc-modicon/</loc>
-    <lastmod>2021-07-11T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/tags/ot/</loc>
-    <lastmod>2021-07-11T15:09:35+02:00</lastmod>
+    <lastmod>2021-07-10T15:09:35+02:00</lastmod>
   </url><url>
     <loc>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</loc>
     <lastmod>2021-07-10T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-attaccare-un-plc-con-stuxnet/</loc>
-    <lastmod>2021-07-09T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-simulazione-modbus-tcp-in-linux/</loc>
-    <lastmod>2021-07-08T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/tags/modbus/</loc>
-    <lastmod>2021-07-08T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-modbus/</loc>
-    <lastmod>2021-07-07T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</loc>
-    <lastmod>2021-07-06T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/tags/profibus/</loc>
-    <lastmod>2021-07-06T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</loc>
-    <lastmod>2021-07-05T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/tags/building_automation/</loc>
-    <lastmod>2021-07-04T15:09:35+02:00</lastmod>
-  </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</loc>
-    <lastmod>2021-07-04T15:09:35+02:00</lastmod>
+    <loc>https://scadasploit.dev/tags/ot/</loc>
+    <lastmod>2021-07-10T15:09:35+02:00</lastmod>
   </url><url>
     <loc>https://scadasploit.dev/tags/dorks/</loc>
     <lastmod>2021-07-03T15:09:35+02:00</lastmod>
@@ -77,15 +47,34 @@
     <loc>https://scadasploit.dev/posts/2021/07/hacking-finding-scada-on-internet-using-google-dorks/</loc>
     <lastmod>2021-07-03T15:09:35+02:00</lastmod>
   </url><url>
-    <loc>https://scadasploit.dev/posts/2021/07/la-sicurezza-industriale/</loc>
-    <lastmod>2021-07-02T15:09:35+02:00</lastmod>
-  </url><url>
     <loc>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</loc>
     <lastmod>2021-07-01T15:09:35+02:00</lastmod>
+  </url><url>
+    <loc>https://scadasploit.dev/tags/building_automation/</loc>
   </url><url>
     <loc>https://scadasploit.dev/categories/</loc>
   </url><url>
     <loc>https://scadasploit.dev/features/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-attacking-a-plc-with-stuxnet/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-metasploit-scada-modules/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-modbus/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-modbus-tcp-simulation-in-linux/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-profibus/profinet/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-schneider-electric-building-automation/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/hacking-stuxnet-like-attack-on-a-modicon-plc/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/posts/1/01/industrial-cybersecurity/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/tags/modbus/</loc>
+  </url><url>
+    <loc>https://scadasploit.dev/tags/profibus/</loc>
   </url><url>
     <loc>https://scadasploit.dev/series/</loc>
   </url>
