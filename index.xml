@@ -9,13 +9,12 @@
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
     <lastBuildDate>Tue, 09 May 2023 18:14:13 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Workshop</title>
+      <title>Workshop &amp; Advanced Training</title>
       <link>https://scadasploit.dev/workshop/</link>
       <pubDate>Tue, 01 Aug 2023 00:00:00 +0000</pubDate>
       
       <guid>https://scadasploit.dev/workshop/</guid>
-      <description>Advanced Training OT Advanced OT is dedicated to the cybersecurity of OT/ICS equipment as a result of more than 20 years of experience on SCADA systems, PLCs, fieldbuses, remote I/O, etc.
-Fundamentals of Information Security, explaining attacks, risks, vulnerabilities detection and the role of human resources. Protection systems for OT devices. Fundamentals of secure network, secure communication protocols, segmentation, detection &amp;amp; protection (IDS/IPS). Secure Network Architecture, network management, OT security devices, and architecture monitoring.</description>
+      <description>All courses and workshops are led by Omar Morando. I&amp;rsquo;m a cybersecurity expert that provides offensive security assessments &amp;amp; penetration testing services expecially in OT/ICS. I&amp;rsquo;ve 20+ years of experience in OT/ICS Industrial Automation domain (SCADA, PLC, remote I/O, fieldbus) with expertise in ISA/IEC 62443 and in Automotive with ISO/SAE 21434 standards. I&amp;rsquo;m a trainer and speaker at security conferences/locations, such as University of Genova, CSET, HackInBo, BSides (Roma, Budapest, Athens, Milano), E-TechEurope on offensive techniques in the OT domain.</description>
     </item>
     
     <item>
