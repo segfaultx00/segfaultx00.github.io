@@ -7,101 +7,82 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License.</copyright>
-    <lastBuildDate>Sun, 11 Jul 2021 15:09:35 +0200</lastBuildDate><atom:link href="https://scadasploit.dev/tags/ot/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 15:09:35 +0200</lastBuildDate>
+    <atom:link href="https://scadasploit.dev/tags/ot/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacking: Stuxnet-like attack on a Modicon PLC</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-stuxnet-like-attack-on-a-modicon-plc/</link>
       <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-stuxnet-like-attack-on-a-modicon-plc/</guid>
       <description>Airbus CyberSecurity researchers recently demonstrated that hackers could launch an attack in Stuxnet-style against Schneider Electric&amp;rsquo;s Modicon programmable logic controllers (PLCs), but it is believed that products from other vendors could also be vulnerable to the same type of attack.
 How does it work The infamous malware Stuxnet, which the United States and Israel used to damage the nuclear program Iranian, was designed to target the SIMATIC S7-300 and S7-400 PLCs manufactured by Siemens.</description>
     </item>
-    
     <item>
       <title>Hacking: Pentest on a PLC</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</link>
       <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</guid>
       <description>Penetration Test on a PLC Protecting an ICS environment, including PLCs, is not trivial, as these systems are not designed to be resilient to cyber attacks. This means that you have to somehow integrate cybersecurity resilience measures inside and around the ICS. Such measures include, for example:
 perimeter protection, such as firewalls to reduce the risk of unwanted network traffic; network monitoring - preferably non-intrusive, ICS-specific, anomaly-based monitoring so as not to create any additional load on ICS networks; endpoint protection and monitoring to reduce the exposure of PLCs to attacks via remote connections.</description>
     </item>
-    
     <item>
       <title>Hacking: attacking a PLC with Stuxnet</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-attacking-a-plc-with-stuxnet/</link>
       <pubDate>Fri, 09 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-attacking-a-plc-with-stuxnet/</guid>
       <description>To illustrate how a PLC can be attacked and what the consequences might be, let&amp;rsquo;s look at the Stuxnet worm.;
 Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemens Supervisory Control and Data Acquisition (SCADA) systems. The worm was designed to attack specific Siemens PLCs and exploited four 0-day vulnerabilities. The final version of Stuxnet was first discovered in Belarus in June 2010 by Sergey Ulasen from Kaspersky Labs.</description>
     </item>
-    
     <item>
       <title>Hacking: Modbus TCP simulation in Linux</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-modbus-tcp-simulation-in-linux/</link>
       <pubDate>Thu, 08 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-modbus-tcp-simulation-in-linux/</guid>
       <description>ICS systems use many different protocols to communicate than standard IT systems. The most used standard is the Modbus protocol. Developed for the first time by Modicon (now Schneider Electric) in 1979 as a serial protocol, it has been modified and updated to work on an Ethernet TCP network, assuming the name of Modbus TCP. Below you can see a diagram summarizing the RTU (serial) packet structure and the TCP one.</description>
     </item>
-    
     <item>
       <title>Hacking: Modbus</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-modbus/</link>
       <pubDate>Wed, 07 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-modbus/</guid>
       <description>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that often have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</description>
     </item>
-    
     <item>
       <title>Hacking: Profibus/Profinet</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</link>
       <pubDate>Tue, 06 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-profibus/profinet/</guid>
       <description>One of the challenges of pentesting in the OT/ICS environment is given by the protocols used which can also be very different from those of IT. ICS installations use a wide variety of protocols that they often share have little in common with standard Ethernet and TCP/IP. This difference has been the strong point of OT installations for years, protecting them through the mechanism of &amp;ldquo;security by obscurity&amp;rdquo;. Now that these protocols are becoming more known and understood, security concerns in these facilities have been heightened.</description>
     </item>
-    
     <item>
       <title>Hacking: Metasploit SCADA modules</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</link>
       <pubDate>Mon, 05 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</guid>
       <description>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
 For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</description>
     </item>
-    
     <item>
       <title>Hacking: Schneider Electric Building Automation</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</link>
       <pubDate>Sun, 04 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/hacking-schneider-electric-building-automation/</guid>
       <description>ICS systems control industrial processes around the world. Everything from railroads to traffic lights to oil refineries to commercial buildings is controlled by at least one PLC connected to an HMI operator terminal or SCADA control software. Some of the recent concerns related to them is possible breach by cyber criminals or government entities. Either way the results could be devastating (the Bhopal disaster at the Union Carbide plant cost over 30,000 lives).</description>
     </item>
-    
     <item>
       <title>Industrial cybersecurity</title>
       <link>https://scadasploit.dev/posts/2021/07/industrial-cybersecurity/</link>
       <pubDate>Fri, 02 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/industrial-cybersecurity/</guid>
       <description>Industrial cybersecurity has always been a challenge. As complex as it is already, the pandemic we are facing in 2020 further complicates things. According to the recent report by the ARC Advisory Group, the number of remote workers among industrial organizations has increased by 53%, creating additional tasks for IT and OT professionals. At the same time, only about a quarter of industrial companies have developed a strategic incident response plan.</description>
     </item>
-    
     <item>
       <title>Differences between IT and OT</title>
       <link>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</link>
       <pubDate>Thu, 01 Jul 2021 15:09:35 +0200</pubDate>
-      
       <guid>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</guid>
       <description>For those coming from IT, securing ICS systems can be frustrating at the beginning. This is because the technologies used and the ways of working are very different when it comes to OT systems. The objectives pursued in these two areas are also very different. How so? Let&amp;rsquo;s find out.
 Data protection vs. process protection When securing IT systems, the main focus is on protecting data - such as intellectual property (IP), credit card numbers, emails and Personal Identifiable Information (PII) - thus trying to prevent hackers from gaining access to what, for a company, may be a great part of its assets.</description>
     </item>
-    
   </channel>
 </rss>

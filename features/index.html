@@ -43,7 +43,7 @@ SCADAsploit C2.OT can emulate different stages of an attacker killchain, and pro
 <meta itemprop="description" content="In today&rsquo;s interconnected world, OT systems are the backbone of critical infrastructures such as power plants, manufacturing facilities, and transportation networks. However, their unique security challenges demand a specialized approach. With SCADAsploit, you gain a powerful ally in identifying vulnerabilities and fortifying the defenses of your OT environment.
 SCADAsploit C2.OT can emulate different stages of an attacker killchain, and provide exploitation modules to help the SOC to validate the attacks and improve the internal defensive mechanisms.">
 
-<meta itemprop="wordCount" content="667"><meta itemprop="image" content="https://scadasploit.dev"/>
+<meta itemprop="wordCount" content="753"><meta itemprop="image" content="https://scadasploit.dev"/>
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://scadasploit.dev"/>
@@ -59,6 +59,7 @@ SCADAsploit C2.OT can emulate different stages of an attacker killchain, and pro
 SCADAsploit C2.OT can emulate different stages of an attacker killchain, and provide exploitation modules to help the SOC to validate the attacks and improve the internal defensive mechanisms." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://scadasploit.dev/features/" /><meta property="og:image" content="https://scadasploit.dev"/><meta property="article:section" content="" />
+
 
 
 
@@ -236,11 +237,13 @@ SCADAsploit offers sophisticated techniques for lateral movement, starting from 
     />
 </div>
 <hr>
-<h2 id="reporting-and-remediation">Reporting and Remediation</h2>
-<p>With SCADAsploit&rsquo;s intuitive interface, generating comprehensive reports becomes a breeze. Detailed insights and actionable recommendations empower your Red team to collaborate effectively with other stakeholders, driving prompt remediation and minimizing the window of vulnerability.</p>
+<h2 id="stageless-and-staged-beacon">Stageless and Staged Beacon</h2>
+<p>The beacon can be used in both as <strong>stageless</strong> and <strong>staged</strong> version to incorporate advanced evasion techniques, anti-debugging measures, and anti-sandboxing capabilities. The beacon offers a range of process injection capabilities and allows users to choose between WinAPI, NTAPI, Indirect Syscalls. It also supports multiple pivot options, including SMB, TCP, WMI, WinRM, and the management of remote services via RPC.</p>
+<p>The beacon can be generated as Windows Exe, DLL or Windows Shellcode, whose payload can be encrypted with AES algorithm with QueueUserAPC, NativeAPI, Direct Syscall and Process Injection.</p>
+<p>The SMB and TCP variants of the beacon enable the creation of custom External C2 channels, allowing communication through legitimate websites like Slack, Discord, Microsoft Teams, and more, enhancing evasion capabilities.</p>
 <div class="container">
   <img
-      src="https://scadasploit.dev/images/cve_summary.png"
+      src="https://scadasploit.dev/images/beacons.png"
       class="my_img"
     />
 </div>
@@ -281,7 +284,7 @@ SCADAsploit offers sophisticated techniques for lateral movement, starting from 
 
 
 
-<script type="text/javascript" src="https://scadasploit.dev/bundle.min.bb2c6bc3ed452ca4759660e4020811f248bc2320081559e8a32d8b0092773852941133639d35e8370d03d3ddaa750b1edd6b343c5bd22a55d5bdeae8f648f49b.js" integrity="sha512-uyxrw&#43;1FLKR1lmDkAggR8ki8IyAIFVnooy2LAJJ3OFKUETNjnTXoNw0D092qdQse3Ws0PFvSKlXVvero9kj0mw=="></script>
+<script type="text/javascript" src="https://scadasploit.dev/bundle.min.0ff8dfb0afbbd356889404268a3c77b2150f8884d958e7c5cff4053d529b718f4563067607fa968fe39ab722dc94c88e0cb8823cc03cac475cb38e26821d03e5.js" integrity="sha512-D/jfsK&#43;701aIlAQmijx3shUPiITZWOfFz/QFPVKbcY9FYwZ2B/qWj&#43;OatyLclMiODLiCPMA8rEdcs44mgh0D5Q=="></script>
 
 
 
