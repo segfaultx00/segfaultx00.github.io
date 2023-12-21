@@ -14,24 +14,21 @@
       <link>https://scadasploit.dev/posts/2021/07/hacking-stuxnet-like-attack-on-a-modicon-plc/</link>
       <pubDate>Sun, 11 Jul 2021 15:09:35 +0200</pubDate>
       <guid>https://scadasploit.dev/posts/2021/07/hacking-stuxnet-like-attack-on-a-modicon-plc/</guid>
-      <description>Airbus CyberSecurity researchers recently demonstrated that hackers could launch an attack in Stuxnet-style against Schneider Electric&amp;rsquo;s Modicon programmable logic controllers (PLCs), but it is believed that products from other vendors could also be vulnerable to the same type of attack.
-How does it work The infamous malware Stuxnet, which the United States and Israel used to damage the nuclear program Iranian, was designed to target the SIMATIC S7-300 and S7-400 PLCs manufactured by Siemens.</description>
+      <description>Airbus CyberSecurity researchers recently demonstrated that hackers could launch an attack in Stuxnet-style against Schneider Electric&amp;rsquo;s Modicon programmable logic controllers (PLCs), but it is believed that products from other vendors could also be vulnerable to the same type of attack.&#xA;How does it work The infamous malware Stuxnet, which the United States and Israel used to damage the nuclear program Iranian, was designed to target the SIMATIC S7-300 and S7-400 PLCs manufactured by Siemens.</description>
     </item>
     <item>
       <title>Hacking: Pentest on a PLC</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</link>
       <pubDate>Sat, 10 Jul 2021 15:09:35 +0200</pubDate>
       <guid>https://scadasploit.dev/posts/2021/07/hacking-pentest-on-a-plc/</guid>
-      <description>Penetration Test on a PLC Protecting an ICS environment, including PLCs, is not trivial, as these systems are not designed to be resilient to cyber attacks. This means that you have to somehow integrate cybersecurity resilience measures inside and around the ICS. Such measures include, for example:
-perimeter protection, such as firewalls to reduce the risk of unwanted network traffic; network monitoring - preferably non-intrusive, ICS-specific, anomaly-based monitoring so as not to create any additional load on ICS networks; endpoint protection and monitoring to reduce the exposure of PLCs to attacks via remote connections.</description>
+      <description>Penetration Test on a PLC Protecting an ICS environment, including PLCs, is not trivial, as these systems are not designed to be resilient to cyber attacks. This means that you have to somehow integrate cybersecurity resilience measures inside and around the ICS. Such measures include, for example:&#xA;perimeter protection, such as firewalls to reduce the risk of unwanted network traffic; network monitoring - preferably non-intrusive, ICS-specific, anomaly-based monitoring so as not to create any additional load on ICS networks; endpoint protection and monitoring to reduce the exposure of PLCs to attacks via remote connections.</description>
     </item>
     <item>
       <title>Hacking: attacking a PLC with Stuxnet</title>
       <link>https://scadasploit.dev/posts/2021/07/hacking-attacking-a-plc-with-stuxnet/</link>
       <pubDate>Fri, 09 Jul 2021 15:09:35 +0200</pubDate>
       <guid>https://scadasploit.dev/posts/2021/07/hacking-attacking-a-plc-with-stuxnet/</guid>
-      <description>To illustrate how a PLC can be attacked and what the consequences might be, let&amp;rsquo;s look at the Stuxnet worm.;
-Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemens Supervisory Control and Data Acquisition (SCADA) systems. The worm was designed to attack specific Siemens PLCs and exploited four 0-day vulnerabilities. The final version of Stuxnet was first discovered in Belarus in June 2010 by Sergey Ulasen from Kaspersky Labs.</description>
+      <description>To illustrate how a PLC can be attacked and what the consequences might be, let&amp;rsquo;s look at the Stuxnet worm.;&#xA;Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemens Supervisory Control and Data Acquisition (SCADA) systems. The worm was designed to attack specific Siemens PLCs and exploited four 0-day vulnerabilities. The final version of Stuxnet was first discovered in Belarus in June 2010 by Sergey Ulasen from Kaspersky Labs.</description>
     </item>
     <item>
       <title>Hacking: Modbus TCP simulation in Linux</title>
@@ -59,8 +56,7 @@ Introduction to Stuxnet Stuxnet is an independent worm, intended only for Siemen
       <link>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</link>
       <pubDate>Mon, 05 Jul 2021 15:09:35 +0200</pubDate>
       <guid>https://scadasploit.dev/posts/2021/07/hacking-metasploit-scada-modules/</guid>
-      <description>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.
-For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</description>
+      <description>As penetration testers we have many resources at our disposal to test the security level of an IT system. One of the popular tools is Metasploit Framework, developed by Rapid7. It is a tool capable of covering the phases of enumeration, exploitation and privilege escalation, very flexible and modular.&#xA;For some time now, given the attention that the world of cybersec is dedicating to ICS infrastructures, we can find a long list of Metasploit modules that target SCADA systems, PLCs and the main industrial communication protocols.</description>
     </item>
     <item>
       <title>Hacking: Schneider Electric Building Automation</title>
@@ -81,8 +77,7 @@ For some time now, given the attention that the world of cybersec is dedicating 
       <link>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</link>
       <pubDate>Thu, 01 Jul 2021 15:09:35 +0200</pubDate>
       <guid>https://scadasploit.dev/posts/2021/07/differences-between-it-and-ot/</guid>
-      <description>For those coming from IT, securing ICS systems can be frustrating at the beginning. This is because the technologies used and the ways of working are very different when it comes to OT systems. The objectives pursued in these two areas are also very different. How so? Let&amp;rsquo;s find out.
-Data protection vs. process protection When securing IT systems, the main focus is on protecting data - such as intellectual property (IP), credit card numbers, emails and Personal Identifiable Information (PII) - thus trying to prevent hackers from gaining access to what, for a company, may be a great part of its assets.</description>
+      <description>For those coming from IT, securing ICS systems can be frustrating at the beginning. This is because the technologies used and the ways of working are very different when it comes to OT systems. The objectives pursued in these two areas are also very different. How so? Let&amp;rsquo;s find out.&#xA;Data protection vs. process protection When securing IT systems, the main focus is on protecting data - such as intellectual property (IP), credit card numbers, emails and Personal Identifiable Information (PII) - thus trying to prevent hackers from gaining access to what, for a company, may be a great part of its assets.</description>
     </item>
   </channel>
 </rss>
