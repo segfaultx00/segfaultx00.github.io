@@ -1,0 +1,1 @@
+(function(){var choice='dark';try{var saved=localStorage.getItem('om-theme');if(['dark','light','system'].includes(saved))choice=saved;}catch(e){}var theme=choice==='system'?(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'):choice;document.documentElement.dataset.theme=theme;document.documentElement.dataset.themeChoice=choice;})();
